@@ -5,8 +5,9 @@ public static class HexMetrics
     private const float RadiusRatio = 0.866025404f;
 
     public const float outerRadius = 10f;
-
     public const float innerRadius = outerRadius * RadiusRatio;
+    public const float solidFactor = 0.90f;
+    public const float blendFactor = 1f - solidFactor;
 
     private static readonly Vector3[] corners =
     {
@@ -27,5 +28,20 @@ public static class HexMetrics
     public static Vector3 GetSecondCorner(HexDirection direction)
     {
         return corners[(int) direction + 1];
+    }
+
+    public static Vector3 GetFirstSolidCorner(HexDirection direction)
+    {
+        return corners[(int) direction] * solidFactor;
+    }
+
+    public static Vector3 GetSecondSolidCorner(HexDirection direction)
+    {
+        return corners[(int) direction + 1] * solidFactor;
+    }
+
+    public static Vector3 GetBridge(HexDirection direction)
+    {
+        return (corners[(int) direction] + corners[(int) direction + 1]) * blendFactor;
     }
 }

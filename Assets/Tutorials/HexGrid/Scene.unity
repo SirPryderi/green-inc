@@ -561,7 +561,7 @@ MonoBehaviour:
   height: 16
   cellPrefab: {fileID: 3330827638504535760, guid: 30fd0548e234641b5b1da65a44269d67, type: 3}
   cellLabelPrefab: {fileID: 5650340714194284966, guid: 2bd7b51fac3ebf9728fad76e111e5a44, type: 3}
-  defaultColor: {r: 0.1662208, g: 0.6981132, b: 0.13822642, a: 1}
+  defaultColor: {r: 0, g: 0.3117442, b: 1, a: 1}
 --- !u!4 &616697430
 Transform:
   m_ObjectHideFlags: 0
