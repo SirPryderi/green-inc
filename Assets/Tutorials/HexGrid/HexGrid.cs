@@ -7,13 +7,11 @@ public class HexGrid : MonoBehaviour
     public int height = 6;
     public HexCell cellPrefab;
     public Text cellLabelPrefab;
+    public Color defaultColor = Color.white;
 
     private HexCell[] cells;
-
-    private Canvas gridCanvas;
     private HexMesh hexMesh;
-
-    public Color defaultColor = Color.white;
+    private Canvas gridCanvas;
 
     void Awake()
     {
@@ -23,7 +21,7 @@ public class HexGrid : MonoBehaviour
 
         for (int z = 0, i = 0; z < height; z++)
         {
-            for (int x = 0; x < width; x++)
+            for (var x = 0; x < width; x++)
             {
                 CreateCell(x, z, i++);
             }
@@ -48,6 +46,8 @@ public class HexGrid : MonoBehaviour
         cell.coordinates = HexCoordinates.FromOffsetCoordinates(x, z);
         cell.color = defaultColor;
 
+        AddNeighbors(x, z, i, cell);
+
         var label = Instantiate(cellLabelPrefab, gridCanvas.transform, false);
         var rectTransform = label.rectTransform;
 
@@ -55,6 +55,34 @@ public class HexGrid : MonoBehaviour
         rectTransform.anchoredPosition = new Vector2(position.x, position.z);
 
         label.text = cell.coordinates.ToString();
+    }
+
+    private void AddNeighbors(int x, int z, int i, HexCell cell)
+    {
+        if (x > 0)
+        {
+            cell.SetNeighbor(HexDirection.W, cells[i - 1]);
+        }
+
+        if (z > 0)
+        {
+            if ((z & 1) == 0)
+            {
+                cell.SetNeighbor(HexDirection.SE, cells[i - width]);
+                if (x > 0)
+                {
+                    cell.SetNeighbor(HexDirection.SW, cells[i - width - 1]);
+                }
+            }
+            else
+            {
+                cell.SetNeighbor(HexDirection.SW, cells[i - width]);
+                if (x < width - 1)
+                {
+                    cell.SetNeighbor(HexDirection.SE, cells[i - width + 1]);
+                }
+            }
+        }
     }
 
     public void ColorCell(Vector3 position, Color color)
