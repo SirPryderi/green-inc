@@ -30,7 +30,7 @@ public class HexGrid : MonoBehaviour
 
     void Start()
     {
-        TriangulateMesh();
+        Refresh();
     }
 
     void CreateCell(int x, int z, int i)
@@ -85,15 +85,19 @@ public class HexGrid : MonoBehaviour
         }
     }
 
-    public void ColorCell(Vector3 position, Color color)
+    public HexCell GetCell(Vector3 position)
     {
         position = transform.InverseTransformPoint(position);
-        var cell = cells[HexCoordinates.FromPosition(position).toIndex(this)];
-        cell.color = color;
-        TriangulateMesh();
+        return cells[HexCoordinates.FromPosition(position).toIndex(this)];
     }
 
-    private void TriangulateMesh()
+    public void ColorCell(Vector3 position, Color color)
+    {
+        GetCell(position).color = color;
+        Refresh();
+    }
+
+    public void Refresh()
     {
         hexMesh.Triangulate(cells);
     }
