@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class HexCell : MonoBehaviour
 {
+    public RectTransform uiRect;
+
     public int Elevation
     {
         get => elevation;
@@ -11,6 +13,10 @@ public class HexCell : MonoBehaviour
             var position = transform.localPosition;
             position.y = value * HexMetrics.elevationStep;
             transform.localPosition = position;
+
+            var uiPosition = uiRect.localPosition;
+            uiPosition.z = elevation * -HexMetrics.elevationStep;
+            uiRect.localPosition = uiPosition;
         }
     }
 

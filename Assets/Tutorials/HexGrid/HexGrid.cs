@@ -50,6 +50,7 @@ public class HexGrid : MonoBehaviour
 
         var label = Instantiate(cellLabelPrefab, gridCanvas.transform, false);
         var rectTransform = label.rectTransform;
+        cell.uiRect = rectTransform;
 
         rectTransform.sizeDelta = new Vector2(HexMetrics.outerRadius, HexMetrics.outerRadius);
         rectTransform.anchoredPosition = new Vector2(position.x, position.z);
