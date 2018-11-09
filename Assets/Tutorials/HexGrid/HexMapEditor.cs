@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using Debug = System.Diagnostics.Debug;
 
 public class HexMapEditor : MonoBehaviour
 {
