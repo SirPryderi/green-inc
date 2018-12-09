@@ -1,20 +1,14 @@
+using Atmo;
 using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-    public Atmosphere atmosphere { get; private set; }
+    public ClimateManager ClimateManager { get; private set; }
 
     protected override void OnAwake()
     {
         base.OnAwake();
 
-        atmosphere = new Atmosphere();
-
-        Debug.Log(Instance.atmosphere.text);
+        ClimateManager = new ClimateManager();
     }
-}
-
-public class Atmosphere
-{
-    public string text = "Atmosphere placeholder text";
 }
