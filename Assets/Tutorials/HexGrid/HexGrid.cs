@@ -100,10 +100,11 @@ public class HexGrid : MonoBehaviour
 
     public void Refresh()
     {
+        EvaluateTemperature();
         hexMesh.Triangulate(cells);
     }
 
-    public void EvaluateTemperature()
+    private void EvaluateTemperature()
     {
         foreach (var cell in cells)
         {
@@ -111,7 +112,7 @@ public class HexGrid : MonoBehaviour
 
             var seaColor = new Color(0, 0.3117442f, 1);
             var sandColor = new Color(0.94f, 0.73f, 0.38f);
-            
+
             // TODO improve code
 
             var temp = GameManager.Instance.ClimateManager.GetTemperature(latitude, cell.Elevation * 100);
@@ -157,7 +158,6 @@ public class HexGrid : MonoBehaviour
         var latitude = Remap(cell.coordinates.Z, 0, height - 1, -90, 90);
         return latitude;
     }
-
 
     public static float Remap(float from, float fromMin, float fromMax, float toMin, float toMax)
     {

@@ -13,10 +13,13 @@ public class HexMapEditor : MonoBehaviour
 
     public Text co2Text;
     public Text temperatureText;
+    private Camera camera;
 
     void Awake()
     {
         SelectColor(0);
+        camera = Camera.main;
+        Debug.Assert(camera != null, "Camera.main != null");
     }
 
     void Update()
@@ -29,9 +32,7 @@ public class HexMapEditor : MonoBehaviour
 
     void HandleInput()
     {
-        Debug.Assert(Camera.main != null, "Camera.main != null");
-
-        var inputRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+        var inputRay = camera.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(inputRay, out var hit))
         {
             var cell = hexGrid.GetCell(hit.point);
@@ -49,8 +50,13 @@ public class HexMapEditor : MonoBehaviour
 
         c.color = activeColor;
         c.Elevation = activeElevation;
-        
-        EvaluateTemperature();
+
+        RefreshGrid();
+    }
+
+    public void RefreshGrid()
+    {
+        hexGrid.Refresh();
     }
 
     public void SelectColor(int index)
@@ -63,12 +69,6 @@ public class HexMapEditor : MonoBehaviour
         activeElevation = (int) elevation;
     }
 
-    public void EvaluateTemperature()
-    {
-        hexGrid.EvaluateTemperature();
-        hexGrid.Refresh();
-    }
-
     public void setCO2Levels(float level)
     {
         var manager = GameManager.Instance.ClimateManager;
@@ -77,11 +77,12 @@ public class HexMapEditor : MonoBehaviour
 
         manager.Atmosphere.SetCO2Concentration(level / 1_000_000f);
 
-        EvaluateTemperature();
+        RefreshGrid();
     }
 
+    // ReSharper disable once UnusedMember.Global
     public void SetLocked(bool value)
     {
-        this.IsLocked = value;
+        IsLocked = value;
     }
 }
