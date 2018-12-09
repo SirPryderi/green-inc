@@ -72,6 +72,7 @@
     <Compile Include="Assets\Tutorials\HexGrid\HexMapEditor.cs" />
     <Compile Include="Assets\Tutorials\HexGrid\HexMesh.cs" />
     <Compile Include="Assets\Tutorials\HexGrid\HexMetrics.cs" />
+    <Compile Include="Assets\Tutorials\HexGrid\Overlay.cs" />
     <Compile Include="Assets\Tutorials\ProceduralGrid\Grid.cs" />
     <None Include="Assets\Tutorials\HexGrid\NewSurfaceShader.shader" />
     <Reference Include="Unity.TextMeshPro.Editor">

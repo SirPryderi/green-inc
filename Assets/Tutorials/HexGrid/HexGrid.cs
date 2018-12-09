@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,7 @@ public class HexGrid : MonoBehaviour
     public HexCell cellPrefab;
     public Text cellLabelPrefab;
     public Color defaultColor = Color.white;
+    public Overlay overlayType = Overlay.NONE;
 
     private HexCell[] cells;
     private HexMesh hexMesh;
@@ -58,6 +60,43 @@ public class HexGrid : MonoBehaviour
         label.text = cell.coordinates.ToString();
     }
 
+    public void RefreshOverlay()
+    {
+        // Turns off the overlay and quits for performance
+        if (overlayType == Overlay.NONE)
+        {
+            gridCanvas.enabled = false;
+            return;
+        }
+
+        // Enables the canvas is not already enabled
+        if (!gridCanvas.enabled)
+        {
+            gridCanvas.enabled = true;
+        }
+
+        // Updates each cell according to the overlay status
+        foreach (var cell in cells)
+        {
+            var label = cell.uiRect.GetComponent<Text>();
+
+            switch (overlayType)
+            {
+                case Overlay.NONE:
+                    label.text = "";
+                    break;
+                case Overlay.COORDINATES:
+                    label.text = cell.coordinates.ToString();
+                    break;
+                case Overlay.TEMPERATURE:
+                    label.text = $"{GetCellTemperature(cell):0.##}\u00A0°C";
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+    }
+
     private void AddNeighbors(int x, int z, int i, HexCell cell)
     {
         if (x > 0)
@@ -102,20 +141,25 @@ public class HexGrid : MonoBehaviour
     {
         EvaluateTemperature();
         hexMesh.Triangulate(cells);
+        RefreshOverlay();
+    }
+
+    public double GetCellTemperature(HexCell cell)
+    {
+        var latitude = Latitude(cell);
+        var temp = GameManager.Instance.ClimateManager.GetTemperature(latitude, cell.Elevation * 100);
+        return temp;
     }
 
     private void EvaluateTemperature()
     {
         foreach (var cell in cells)
         {
-            var latitude = Latitude(cell);
-
+            var temp = GetCellTemperature(cell);
             var seaColor = new Color(0, 0.3117442f, 1);
             var sandColor = new Color(0.94f, 0.73f, 0.38f);
 
             // TODO improve code
-
-            var temp = GameManager.Instance.ClimateManager.GetTemperature(latitude, cell.Elevation * 100);
 
             var desert = 35;
             var temperate = 25;

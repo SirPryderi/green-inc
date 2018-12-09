@@ -4068,15 +4068,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: HexGrid
       objectReference: {fileID: 0}
-    - target: {fileID: 2428902723228327182, guid: 0b25a4d34d98549bdbf0369731bac725,
+    - target: {fileID: 2428902722296164637, guid: 0b25a4d34d98549bdbf0369731bac725,
         type: 3}
-      propertyPath: width
-      value: 30
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2428902723228327182, guid: 0b25a4d34d98549bdbf0369731bac725,
         type: 3}
-      propertyPath: height
-      value: 30
+      propertyPath: overlayType
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b25a4d34d98549bdbf0369731bac725, type: 3}
