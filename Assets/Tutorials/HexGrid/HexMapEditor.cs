@@ -97,4 +97,11 @@ public class HexMapEditor : MonoBehaviour
     {
         IsLocked = value;
     }
+
+    [UsedImplicitly]
+    public void SetOverlay(int overlay)
+    {
+        hexGrid.overlayType = (Overlay) overlay;
+        hexGrid.RefreshOverlay();
+    }
 }
