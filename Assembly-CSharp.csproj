@@ -64,6 +64,7 @@
     <Compile Include="Assets\Scripts\CameraControl.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\MainMenuManager.cs" />
+    <Compile Include="Assets\Scripts\MathExtension.cs" />
     <Compile Include="Assets\Scripts\Singleton.cs" />
     <Compile Include="Assets\Tutorials\HexGrid\HexCell.cs" />
     <Compile Include="Assets\Tutorials\HexGrid\HexCoordinates.cs" />

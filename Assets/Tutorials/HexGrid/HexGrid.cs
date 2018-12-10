@@ -146,6 +146,7 @@ public class HexGrid : MonoBehaviour
 
     public double GetCellTemperature(HexCell cell)
     {
+        // TODO this should to the Climate Manager
         var latitude = Latitude(cell);
         var temp = GameManager.Instance.ClimateManager.GetTemperature(latitude, cell.Elevation * 100);
         return temp;
@@ -155,7 +156,7 @@ public class HexGrid : MonoBehaviour
     {
         foreach (var cell in cells)
         {
-            var temp = GetCellTemperature(cell);
+            var temp = (float) GetCellTemperature(cell);
             var seaColor = new Color(0, 0.3117442f, 1);
             var sandColor = new Color(0.94f, 0.73f, 0.38f);
 
@@ -172,17 +173,17 @@ public class HexGrid : MonoBehaviour
             }
             else if (temp > temperate)
             {
-                var f = Remap((float) temp, temperate, desert, 0, 1);
+                var f = temp.Remap(temperate, desert, 0, 1);
                 cell.color = Color.Lerp(new Color(0.074f, 0.427f, 0.082f), sandColor, f);
             }
             else if (temp > tundra)
             {
-                var f = Remap((float) temp, tundra, temperate, 0, 1);
+                var f = temp.Remap(tundra, temperate, 0, 1);
                 cell.color = Color.Lerp(new Color(0.254f, 0.596f, 0.039f), new Color(0.074f, 0.427f, 0.082f), f);
             }
             else if (temp > ice)
             {
-                var f = Remap((float) temp, ice, tundra, 0, 1);
+                var f = temp.Remap(ice, tundra, 0, 1);
                 cell.color = Color.Lerp(Color.white, new Color(0.254f, 0.596f, 0.039f), f);
             }
             else
@@ -199,22 +200,6 @@ public class HexGrid : MonoBehaviour
 
     public float Latitude(HexCell cell)
     {
-        var latitude = Remap(cell.coordinates.Z, 0, height - 1, -90, 90);
-        return latitude;
-    }
-
-    public static float Remap(float from, float fromMin, float fromMax, float toMin, float toMax)
-    {
-        var fromAbs = from - fromMin;
-        var fromMaxAbs = fromMax - fromMin;
-
-        var normal = fromAbs / fromMaxAbs;
-
-        var toMaxAbs = toMax - toMin;
-        var toAbs = toMaxAbs * normal;
-
-        var to = toAbs + toMin;
-
-        return to;
+        return cell.coordinates.Z.Remap(0, height - 1, -90, 90);
     }
 }
