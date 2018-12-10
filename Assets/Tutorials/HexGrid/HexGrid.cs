@@ -11,7 +11,7 @@ public class HexGrid : MonoBehaviour
     public Color defaultColor = Color.white;
     public Overlay overlayType = Overlay.NONE;
 
-    private HexCell[] cells;
+    internal HexCell[] cells;
     private HexMesh hexMesh;
     private Canvas gridCanvas;
 

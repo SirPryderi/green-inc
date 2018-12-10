@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -80,7 +81,18 @@ public class HexMapEditor : MonoBehaviour
         RefreshGrid();
     }
 
-    // ReSharper disable once UnusedMember.Global
+    [UsedImplicitly]
+    public void Flatten()
+    {
+        new HexGridGenerator(hexGrid).Flatten();
+    }
+
+    public void Random()
+    {
+        new HexGridGenerator(hexGrid).GenerateFromPerlin();
+    }
+
+    [UsedImplicitly]
     public void SetLocked(bool value)
     {
         IsLocked = value;

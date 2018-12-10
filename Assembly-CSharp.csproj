@@ -69,6 +69,7 @@
     <Compile Include="Assets\Tutorials\HexGrid\HexCoordinates.cs" />
     <Compile Include="Assets\Tutorials\HexGrid\HexDirection.cs" />
     <Compile Include="Assets\Tutorials\HexGrid\HexGrid.cs" />
+    <Compile Include="Assets\Tutorials\HexGrid\HexGridGenerator.cs" />
     <Compile Include="Assets\Tutorials\HexGrid\HexMapEditor.cs" />
     <Compile Include="Assets\Tutorials\HexGrid\HexMesh.cs" />
     <Compile Include="Assets\Tutorials\HexGrid\HexMetrics.cs" />
