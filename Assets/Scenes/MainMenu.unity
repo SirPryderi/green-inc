@@ -399,6 +399,11 @@ PrefabInstance:
       propertyPath: m_Text
       value: Settings
       objectReference: {fileID: 0}
+    - target: {fileID: 8452853813512037974, guid: 18475259efa36b70d9fa8936d805f28b,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18475259efa36b70d9fa8936d805f28b, type: 3}
 --- !u!1001 &464108248
@@ -522,6 +527,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Text
       value: Load Game
+      objectReference: {fileID: 0}
+    - target: {fileID: 8452853813512037974, guid: 18475259efa36b70d9fa8936d805f28b,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18475259efa36b70d9fa8936d805f28b, type: 3}
@@ -1227,6 +1237,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 217236092}
     m_Modifications:
+    - target: {fileID: 8452853813512037974, guid: 18475259efa36b70d9fa8936d805f28b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8452853813512037975, guid: 18475259efa36b70d9fa8936d805f28b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1341,6 +1356,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Text
       value: Quit to OS
+      objectReference: {fileID: 0}
+    - target: {fileID: 8452853813512037974, guid: 18475259efa36b70d9fa8936d805f28b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8452853813512037974, guid: 18475259efa36b70d9fa8936d805f28b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8452853813512037974, guid: 18475259efa36b70d9fa8936d805f28b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 557506310}
+    - target: {fileID: 8452853813512037974, guid: 18475259efa36b70d9fa8936d805f28b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 8452853813512037974, guid: 18475259efa36b70d9fa8936d805f28b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18475259efa36b70d9fa8936d805f28b, type: 3}
@@ -1501,6 +1541,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Text
       value: Start Game
+      objectReference: {fileID: 0}
+    - target: {fileID: 8452853813512037974, guid: 18475259efa36b70d9fa8936d805f28b,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18475259efa36b70d9fa8936d805f28b, type: 3}
