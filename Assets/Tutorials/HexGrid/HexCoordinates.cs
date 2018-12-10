@@ -52,6 +52,12 @@ public struct HexCoordinates
         return new HexCoordinates(iX, iZ);
     }
 
+    public Vector2Int ToOffsetCoordinates()
+    {
+        // TODO Check this might be wrong
+        return new Vector2Int(X, Y);
+    }
+
     public int toIndex(HexGrid grid)
     {
         return X + Z * grid.width + Z / 2;
