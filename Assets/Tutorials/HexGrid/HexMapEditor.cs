@@ -82,9 +82,9 @@ public class HexMapEditor : MonoBehaviour
     }
 
     [UsedImplicitly]
-    public void Flatten()
+    public void Flatten(int elevation)
     {
-        new HexGridGenerator(hexGrid).Flatten();
+        new HexGridGenerator(hexGrid).Flatten(elevation);
     }
 
     public void Random()

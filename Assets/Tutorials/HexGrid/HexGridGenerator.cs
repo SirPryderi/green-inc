@@ -9,11 +9,11 @@ public class HexGridGenerator
         this.grid = grid;
     }
 
-    public void Flatten()
+    public void Flatten(int elevation)
     {
         foreach (var cell in grid.cells)
         {
-            cell.Elevation = 0;
+            cell.Elevation = elevation;
         }
 
         grid.Refresh();
