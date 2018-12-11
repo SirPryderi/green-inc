@@ -21,6 +21,8 @@ public class HexMapEditor : MonoBehaviour
         SelectColor(0);
         camera = Camera.main;
         Debug.Assert(camera != null, "Camera.main != null");
+        
+        SetOverlay(0);
     }
 
     void Update()

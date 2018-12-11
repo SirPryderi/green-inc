@@ -134,7 +134,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2428902722296164632}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
@@ -222,3 +222,4 @@ MonoBehaviour:
   cellLabelPrefab: {fileID: 5650340714194284966, guid: 2bd7b51fac3ebf9728fad76e111e5a44,
     type: 3}
   defaultColor: {r: 0, g: 0.3117442, b: 1, a: 1}
+  overlayType: 0

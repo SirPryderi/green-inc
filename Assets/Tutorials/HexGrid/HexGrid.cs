@@ -62,6 +62,11 @@ public class HexGrid : MonoBehaviour
 
     public void RefreshOverlay()
     {
+        if (gridCanvas == null)
+        {
+            return;
+        }
+
         // Turns off the overlay and quits for performance
         if (overlayType == Overlay.NONE)
         {
