@@ -43,11 +43,11 @@ namespace Atmo
         private static void printTemps(ClimateManager manager)
         {
             Console.WriteLine($"== Annual Average Temperature ({manager.Atmosphere.GetGasPercentage("Carbon Dioxide")*1_000_000} CO₂ ppm) ==" );
-            Console.WriteLine($"Equator:\t{manager.GetTemperature(0):0.## °C}");
-            Console.WriteLine($"Catania:\t{manager.GetTemperature(37):0.## °C}");
-            Console.WriteLine($"Temperate:\t{manager.GetTemperature(45):0.## °C}");
-            Console.WriteLine($"Stirling:\t{manager.GetTemperature(56):0.## °C}");
-            Console.WriteLine($"North Pole:\t{manager.GetTemperature(90):0.## °C}");
+            Console.WriteLine($"Equator:\t{manager.GetBaseTemperature(0):0.## °C}");
+            Console.WriteLine($"Catania:\t{manager.GetBaseTemperature(37):0.## °C}");
+            Console.WriteLine($"Temperate:\t{manager.GetBaseTemperature(45):0.## °C}");
+            Console.WriteLine($"Stirling:\t{manager.GetBaseTemperature(56):0.## °C}");
+            Console.WriteLine($"North Pole:\t{manager.GetBaseTemperature(90):0.## °C}");
         }
     }
 }

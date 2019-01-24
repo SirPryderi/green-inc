@@ -1,4 +1,5 @@
 using System;
+using Atmo;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,9 +15,12 @@ public class HexGrid : MonoBehaviour
     internal HexCell[] cells;
     private HexMesh hexMesh;
     private Canvas gridCanvas;
+    private ClimateManager _climateManager;
 
     void Awake()
     {
+        _climateManager = GameManager.Instance.MapManager.ClimateManager;
+
         cells = new HexCell[height * width];
         gridCanvas = GetComponentInChildren<Canvas>();
         hexMesh = GetComponentInChildren<HexMesh>();
@@ -46,6 +50,7 @@ public class HexGrid : MonoBehaviour
         cell.transform.SetParent(transform, false);
         cell.transform.localPosition = position;
         cell.coordinates = HexCoordinates.FromOffsetCoordinates(x, z);
+        cell.grid = this;
         cell.color = defaultColor;
 
         AddNeighbors(x, z, i, cell);
@@ -94,7 +99,7 @@ public class HexGrid : MonoBehaviour
                     label.text = cell.coordinates.ToString();
                     break;
                 case Overlay.TEMPERATURE:
-                    label.text = $"{GetCellTemperature(cell):0.##}\u00A0°C";
+                    label.text = $"{_climateManager.GetCellTemperature(cell):0.##}\u00A0°C";
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -149,25 +154,11 @@ public class HexGrid : MonoBehaviour
         RefreshOverlay();
     }
 
-    public double GetCellTemperature(HexCell cell)
-    {
-        // TODO this should to the Climate Manager
-        var latitude = Latitude(cell);
-        var pos = cell.coordinates.ToOffsetCoordinates();
-        pos += new Vector2Int((int) GameManager.Instance.MapManager.RandomGenerator.ClimateNoiseX,
-            (int) GameManager.Instance.MapManager.RandomGenerator.ClimateNoiseY);
-        var temp = GameManager.Instance.MapManager.ClimateManager.GetTemperature(latitude, cell.Elevation * 100);
-        var i = 1f / 30f; // Scaling factor
-        var tDelta = 20f; // 20 °C difference
-        var noise = Mathf.PerlinNoise(pos.x * i, pos.y * i); // returns value from 0..1
-        return temp + noise.Remap(0f, 1f, -tDelta, tDelta);
-    }
-
     private void EvaluateTemperature()
     {
         foreach (var cell in cells)
         {
-            var temp = (float) GetCellTemperature(cell);
+            var temp = _climateManager.GetCellTemperature(cell);
             var seaColor = new Color(0, 0.3117442f, 1);
             var sandColor = new Color(0.94f, 0.73f, 0.38f);
 
@@ -207,10 +198,5 @@ public class HexGrid : MonoBehaviour
                 cell.color = seaColor;
             }
         }
-    }
-
-    public float Latitude(HexCell cell)
-    {
-        return cell.coordinates.Z.Remap(0, height - 1, -90, 90);
     }
 }

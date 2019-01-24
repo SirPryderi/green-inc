@@ -3,24 +3,29 @@ using UnityEngine;
 public class HexCell : MonoBehaviour
 {
     public RectTransform uiRect;
+    public HexGrid grid;
 
     public int Elevation
     {
-        get => elevation;
+        get => _elevation;
         set
         {
-            elevation = value;
-            var position = transform.localPosition;
+            var transform1 = transform;
+            _elevation = value;
+
+            var position = transform1.localPosition;
             position.y = value * HexMetrics.elevationStep;
-            transform.localPosition = position;
+            transform1.localPosition = position;
 
             var uiPosition = uiRect.localPosition;
-            uiPosition.z = elevation * -HexMetrics.elevationStep;
+            uiPosition.z = _elevation * -HexMetrics.elevationStep;
             uiRect.localPosition = uiPosition;
         }
     }
 
-    int elevation;
+    public float Latitude => coordinates.Z.Remap(0, grid.height - 1, -90, 90);
+
+    private int _elevation;
     public HexCoordinates coordinates;
     public Color color;
 

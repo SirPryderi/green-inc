@@ -7,8 +7,15 @@ namespace Atmo
     {
         public Atmosphere Atmosphere { get; }
 
-        public double equatorTemperature = 27d; // °C
-        public double poleTemperature = -30d; // °C
+        // Model Parameters
+        private const float EquatorTemperature = 27f; // °C
+        private const float PoleTemperature = -30f; // °C
+        private const float K = 5.2f; // equatorial falloff factor
+        private const float D = -0.04f; // degrees per meter of altitude
+        
+        // Noise parameters
+        private const float NoiseScalingFactor = 1f / 30f; // Scaling factor, size of the noise patches
+        private const float NoiseStrength = 20f; // °C - Noise max effect
 
         public ClimateManager()
         {
@@ -18,18 +25,41 @@ namespace Atmo
         /**
          * Average Annual Temperature
          */
-        public double GetTemperature(double latitude, double altitude = 0)
+        public float GetBaseTemperature(float latitude)
         {
-            const double k = 5.2d; // equatorial falloff
-            const double d = 0.04d; // degrees per meter 
-            latitude = Math.PI / 180 * latitude;
+            latitude = Mathf.PI / 180f * latitude;
 
             // Yeah! polynomial, bitch!
-            var equatorialTemperature = equatorTemperature
-                                        - (equatorTemperature - poleTemperature)
-                                        * Math.Pow(Math.Sin(Math.Abs(latitude)), k);
+            var equatorialTemperature = EquatorTemperature
+                                        - (EquatorTemperature - PoleTemperature)
+                                        * Mathf.Pow(Mathf.Sin(Mathf.Abs(latitude)), K);
 
-            return equatorialTemperature + Atmosphere.DeltaTemperature - d * altitude;
+            return equatorialTemperature + (float) Atmosphere.DeltaTemperature;
+        }
+
+        public float GetCellTemperature(HexCell cell)
+        {
+            var pos = cell.coordinates.ToOffsetCoordinates();
+
+            var randomOffset = new Vector2Int(
+                (int) GameManager.Instance.MapManager.RandomGenerator.ClimateNoiseX,
+                (int) GameManager.Instance.MapManager.RandomGenerator.ClimateNoiseY
+            );
+
+            pos += randomOffset;
+
+            var baseTemp = GetBaseTemperature(cell.Latitude);
+
+            var noise = Mathf.PerlinNoise( // returns value from 0..1
+                pos.x * NoiseScalingFactor,
+                pos.y * NoiseScalingFactor
+            );
+
+            var noiseDelta = noise.Remap(0f, 1f, -NoiseStrength, NoiseStrength);
+
+            var altitudeDelta = D * cell.Elevation * 100f;
+
+            return baseTemp + noiseDelta + altitudeDelta;
         }
     }
 }

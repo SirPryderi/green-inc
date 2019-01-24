@@ -40,7 +40,6 @@ public class HexMapEditor : MonoBehaviour
         {
             var cell = hexGrid.GetCell(hit.point);
             EditCell(cell);
-            Debug.Log(hexGrid.Latitude(cell));
         }
     }
 
@@ -76,7 +75,7 @@ public class HexMapEditor : MonoBehaviour
     {
         var manager = GameManager.Instance.MapManager.ClimateManager;
         co2Text.text = $"{(int) level} ppm";
-        temperatureText.text = $"{manager.GetTemperature(0)} °C";
+        temperatureText.text = $"{manager.GetBaseTemperature(0)} °C";
 
         manager.Atmosphere.SetCO2Concentration(level / 1_000_000f);
 
