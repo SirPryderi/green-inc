@@ -74,7 +74,7 @@ public class HexMapEditor : MonoBehaviour
 
     public void setCO2Levels(float level)
     {
-        var manager = GameManager.Instance.ClimateManager;
+        var manager = GameManager.Instance.MapManager.ClimateManager;
         co2Text.text = $"{(int) level} ppm";
         temperatureText.text = $"{manager.GetTemperature(0)} °C";
 
@@ -91,6 +91,8 @@ public class HexMapEditor : MonoBehaviour
 
     public void Random()
     {
+        GameManager.Instance.MapManager.Randomise();
+        
         new HexGridGenerator(hexGrid).GenerateFromPerlin();
     }
 

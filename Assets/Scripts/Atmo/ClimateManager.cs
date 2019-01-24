@@ -21,7 +21,7 @@ namespace Atmo
         public double GetTemperature(double latitude, double altitude = 0)
         {
             const double k = 5.2d; // equatorial falloff
-            const double d = 0.05d; // degrees per meter 
+            const double d = 0.04d; // degrees per meter 
             latitude = Math.PI / 180 * latitude;
 
             // Yeah! polynomial, bitch!

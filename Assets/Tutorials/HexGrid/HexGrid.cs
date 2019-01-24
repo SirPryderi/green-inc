@@ -154,8 +154,10 @@ public class HexGrid : MonoBehaviour
         // TODO this should to the Climate Manager
         var latitude = Latitude(cell);
         var pos = cell.coordinates.ToOffsetCoordinates();
-        var temp = GameManager.Instance.ClimateManager.GetTemperature(latitude, cell.Elevation * 100);
-        var i = 1f / 15f;
+        pos += new Vector2Int((int) GameManager.Instance.MapManager.RandomGenerator.ClimateNoiseX,
+            (int) GameManager.Instance.MapManager.RandomGenerator.ClimateNoiseY);
+        var temp = GameManager.Instance.MapManager.ClimateManager.GetTemperature(latitude, cell.Elevation * 100);
+        var i = 1f / 30f; // Scaling factor
         var tDelta = 20f; // 20 °C difference
         var noise = Mathf.PerlinNoise(pos.x * i, pos.y * i); // returns value from 0..1
         return temp + noise.Remap(0f, 1f, -tDelta, tDelta);
