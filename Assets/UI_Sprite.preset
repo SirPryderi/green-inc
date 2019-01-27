@@ -13,10 +13,6 @@ Preset:
     m_ManagedTypeFallback: 
   m_Properties:
   - target: {fileID: 0}
-    propertyPath: m_FileIDToRecycleName.Array.size
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
     propertyPath: m_ExternalObjects.Array.size
     value: 0
     objectReference: {fileID: 0}
