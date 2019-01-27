@@ -25,7 +25,7 @@ public class CameraControl : MonoBehaviour
     {
         var zoomDelta = Input.GetAxis("Mouse ScrollWheel");
 
-        if (Math.Abs(zoomDelta) > SENSITIVITY)
+        if (Mathf.Abs(zoomDelta) > SENSITIVITY)
         {
             AdjustZoom(zoomDelta);
         }
@@ -33,7 +33,7 @@ public class CameraControl : MonoBehaviour
         var xDelta = Input.GetAxis("Horizontal");
         var zDelta = Input.GetAxis("Vertical");
 
-        if (Math.Abs(xDelta) > SENSITIVITY || Math.Abs(zDelta) > SENSITIVITY)
+        if (Mathf.Abs(xDelta) > SENSITIVITY || Mathf.Abs(zDelta) > SENSITIVITY)
         {
             AdjustPosition(xDelta, zDelta);
         }
