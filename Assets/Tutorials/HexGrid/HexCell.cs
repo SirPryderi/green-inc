@@ -43,4 +43,25 @@ public class HexCell : MonoBehaviour
         neighbors[(int) direction] = cell;
         cell.neighbors[(int) direction.Opposite()] = this;
     }
+
+    public GameObject Spawn(string resource)
+    {
+        var tmp = transform;
+
+        return Instantiate(
+            Resources.Load(resource) as GameObject,
+            tmp.position,
+            Quaternion.identity,
+            tmp
+        );
+    }
+
+    public void Clear()
+    {
+        // Removes all children
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+    }
 }
