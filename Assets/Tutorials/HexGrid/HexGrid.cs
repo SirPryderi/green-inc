@@ -99,7 +99,7 @@ public class HexGrid : MonoBehaviour
                     label.text = cell.coordinates.ToString();
                     break;
                 case Overlay.TEMPERATURE:
-                    label.text = $"{_climateManager.GetCellTemperature(cell):0.##}\u00A0°C";
+                    label.text = $"{cell.Temperature:0.##}\u00A0°C";
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

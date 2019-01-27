@@ -2,8 +2,14 @@ using UnityEngine;
 
 public class HexCell : MonoBehaviour
 {
-    public RectTransform uiRect;
+    private int _elevation;
+    public Color color;
+
+    public HexCoordinates coordinates;
     public HexGrid grid;
+
+    [SerializeField] private HexCell[] neighbors;
+    public RectTransform uiRect;
 
     public int Elevation
     {
@@ -25,11 +31,7 @@ public class HexCell : MonoBehaviour
 
     public float Latitude => coordinates.Z.Remap(0, grid.height - 1, -90, 90);
 
-    private int _elevation;
-    public HexCoordinates coordinates;
-    public Color color;
-
-    [SerializeField] private HexCell[] neighbors;
+    public float Temperature => GameManager.Instance.MapManager.ClimateManager.GetCellTemperature(this);
 
     public HexCell GetNeighbor(HexDirection direction)
     {
