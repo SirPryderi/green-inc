@@ -39,5 +39,26 @@ public class HexGridGenerator
         }
 
         _grid.Refresh();
+
+        GenerateTrees();
+    }
+
+    public void GenerateTrees()
+    {
+        foreach (var cell in _grid.cells)
+        {
+            if (cell.Elevation <= 0) continue;
+
+            if (Random.value < MathExtension.GaussianProbability(cell.Temperature, 20, 10))
+            {
+                var tree = cell.Spawn("BroadLeafTree");
+
+                var scale = Random.Range(0.5f, 1.5f);
+
+                tree.transform.localScale = new Vector3(scale, scale, scale);
+
+                tree.transform.Rotate(Vector3.up, Random.Range(0f, 360f), Space.Self);
+            }
+        }
     }
 }

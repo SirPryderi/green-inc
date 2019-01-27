@@ -1,5 +1,6 @@
 using System;
 using Atmo;
+using Pawns;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -196,6 +197,16 @@ public class HexGrid : MonoBehaviour
             if (cell.Elevation == 0 && temp > 0)
             {
                 cell.color = seaColor;
+            }
+
+            if (cell.transform.childCount > 0)
+            {
+                var pawn = cell.transform.GetChild(0).GetComponent<Pawn>();
+
+                if (pawn != null)
+                {
+                    pawn.Evaluate();
+                }
             }
         }
     }

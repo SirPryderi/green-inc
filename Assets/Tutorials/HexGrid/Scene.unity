@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641252, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44659358, g: 0.49642962, b: 0.5748247, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -659,8 +659,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1556949718}
-        m_MethodName: Flatten
-        m_Mode: 3
+        m_MethodName: Reset
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5357,6 +5357,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: HexGrid
       objectReference: {fileID: 0}
+    - target: {fileID: 2428902723228327182, guid: 0b25a4d34d98549bdbf0369731bac725,
+        type: 3}
+      propertyPath: width
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2428902723228327182, guid: 0b25a4d34d98549bdbf0369731bac725,
+        type: 3}
+      propertyPath: height
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 2428902723228327181, guid: 0b25a4d34d98549bdbf0369731bac725,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5411,16 +5421,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2428902723228327182, guid: 0b25a4d34d98549bdbf0369731bac725,
-        type: 3}
-      propertyPath: width
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 2428902723228327182, guid: 0b25a4d34d98549bdbf0369731bac725,
-        type: 3}
-      propertyPath: height
-      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b25a4d34d98549bdbf0369731bac725, type: 3}
@@ -5490,6 +5490,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4479680027799850280, guid: f15a09ed8b33484c69dab4049d398ce5,
+        type: 3}
+      propertyPath: swivelMaxZoom
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f15a09ed8b33484c69dab4049d398ce5, type: 3}

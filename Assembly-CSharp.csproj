@@ -71,6 +71,9 @@
     <Compile Include="Assets\Scripts\Organisations\Company.cs" />
     <Compile Include="Assets\Scripts\Organisations\Government.cs" />
     <Compile Include="Assets\Scripts\Organisations\Organisation.cs" />
+    <Compile Include="Assets\Scripts\Pawns\Pawn.cs" />
+    <Compile Include="Assets\Scripts\Pawns\Trees\BroadLeafTree.cs" />
+    <Compile Include="Assets\Scripts\Pawns\Trees\PineTree.cs" />
     <Compile Include="Assets\Scripts\RandomGenerator.cs" />
     <Compile Include="Assets\Scripts\Singleton.cs" />
     <Compile Include="Assets\Tutorials\HexGrid\HexCell.cs" />

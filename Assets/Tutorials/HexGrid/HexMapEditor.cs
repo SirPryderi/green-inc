@@ -21,7 +21,7 @@ public class HexMapEditor : MonoBehaviour
         SelectColor(0);
         camera = Camera.main;
         Debug.Assert(camera != null, "Camera.main != null");
-        
+
         SetOverlay(0);
     }
 
@@ -88,10 +88,24 @@ public class HexMapEditor : MonoBehaviour
         new HexGridGenerator(hexGrid).Flatten(elevation);
     }
 
+    public void Reset()
+    {
+        ClearAll();
+        Flatten(0);
+    }
+
+    public void ClearAll()
+    {
+        foreach (var cell in hexGrid.cells)
+        {
+            cell.Clear();
+        }
+    }
+
     public void Random()
     {
+        ClearAll();
         GameManager.Instance.MapManager.Randomise();
-        
         new HexGridGenerator(hexGrid).GenerateFromPerlin();
     }
 
