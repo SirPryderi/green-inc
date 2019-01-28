@@ -1,5 +1,4 @@
 using System;
-using Atmo;
 using Evaluators;
 using Pawns;
 using UnityEngine;
@@ -18,29 +17,25 @@ public class HexGrid : MonoBehaviour
     private HexMesh hexMesh;
     private Canvas gridCanvas;
 
-    void Awake()
+    public int NumberOfCells => height * width;
+
+    private void Awake()
     {
         cells = new HexCell[height * width];
         gridCanvas = GetComponentInChildren<Canvas>();
         hexMesh = GetComponentInChildren<HexMesh>();
 
         for (int z = 0, i = 0; z < height; z++)
-        {
-            for (var x = 0; x < width; x++)
-            {
-                CreateCell(x, z, i++);
-            }
-        }
+        for (var x = 0; x < width; x++)
+            CreateCell(x, z, i++);
     }
 
-    void Start()
+    private void Start()
     {
         Refresh();
     }
 
-    public int NumberOfCells => height * width;
-
-    void CreateCell(int x, int z, int i)
+    private void CreateCell(int x, int z, int i)
     {
         Vector3 position;
         position.x = (x + z * 0.5f - z / 2) * (HexMetrics.innerRadius * 2f);
@@ -68,10 +63,7 @@ public class HexGrid : MonoBehaviour
 
     public void RefreshOverlay()
     {
-        if (gridCanvas == null)
-        {
-            return;
-        }
+        if (gridCanvas == null) return;
 
         // Turns off the overlay and quits for performance
         if (overlayType == Overlay.NONE)
@@ -81,10 +73,7 @@ public class HexGrid : MonoBehaviour
         }
 
         // Enables the canvas is not already enabled
-        if (!gridCanvas.enabled)
-        {
-            gridCanvas.enabled = true;
-        }
+        if (!gridCanvas.enabled) gridCanvas.enabled = true;
 
         // Updates each cell according to the overlay status
         foreach (var cell in cells)
@@ -110,28 +99,19 @@ public class HexGrid : MonoBehaviour
 
     private void AddNeighbors(int x, int z, int i, HexCell cell)
     {
-        if (x > 0)
-        {
-            cell.SetNeighbor(HexDirection.W, cells[i - 1]);
-        }
+        if (x > 0) cell.SetNeighbor(HexDirection.W, cells[i - 1]);
 
         if (z > 0)
         {
             if ((z & 1) == 0)
             {
                 cell.SetNeighbor(HexDirection.SE, cells[i - width]);
-                if (x > 0)
-                {
-                    cell.SetNeighbor(HexDirection.SW, cells[i - width - 1]);
-                }
+                if (x > 0) cell.SetNeighbor(HexDirection.SW, cells[i - width - 1]);
             }
             else
             {
                 cell.SetNeighbor(HexDirection.SW, cells[i - width]);
-                if (x < width - 1)
-                {
-                    cell.SetNeighbor(HexDirection.SE, cells[i - width + 1]);
-                }
+                if (x < width - 1) cell.SetNeighbor(HexDirection.SE, cells[i - width + 1]);
             }
         }
     }
@@ -167,10 +147,7 @@ public class HexGrid : MonoBehaviour
             {
                 var pawn = cell.transform.GetChild(0).GetComponent<Pawn>();
 
-                if (pawn != null)
-                {
-                    pawn.Evaluate();
-                }
+                if (pawn != null) pawn.Evaluate();
             }
         }
     }
