@@ -11,10 +11,7 @@ public class HexGridGenerator
 
     public void Flatten(int elevation)
     {
-        foreach (var cell in _grid.cells)
-        {
-            cell.Elevation = elevation;
-        }
+        foreach (var cell in _grid.cells) cell.Elevation = elevation;
 
         _grid.Refresh();
     }
@@ -49,11 +46,31 @@ public class HexGridGenerator
         {
             if (cell.Elevation <= 0) continue;
 
-            if (Random.value < MathExtension.GaussianProbability(cell.Temperature, 20, 10))
+            if (Random.value < MathExtension.GaussianProbability(cell.Temperature, 20, 5))
             {
                 var tree = cell.Spawn("BroadLeafTree");
 
-                var scale = Random.Range(0.5f, 1.5f);
+                var scale = Random.Range(0.7f, 1.5f);
+
+                tree.transform.localScale = new Vector3(scale, scale, scale);
+
+                tree.transform.Rotate(Vector3.up, Random.Range(0f, 360f), Space.Self);
+            }
+            else if (Random.value < MathExtension.GaussianProbability(cell.Temperature, 7, 5))
+            {
+                var tree = cell.Spawn("PineTree");
+
+                var scale = Random.Range(0.7f, 1.5f);
+
+                tree.transform.localScale = new Vector3(scale, scale, scale);
+
+                tree.transform.Rotate(Vector3.up, Random.Range(0f, 360f), Space.Self);
+            }
+            else if (Random.value + 0.5f < MathExtension.GaussianProbability(cell.Temperature, 35, 10))
+            {
+                var tree = cell.Spawn("Cactus");
+
+                var scale = Random.Range(1f, 1.5f);
 
                 tree.transform.localScale = new Vector3(scale, scale, scale);
 
