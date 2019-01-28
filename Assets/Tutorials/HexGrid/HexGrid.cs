@@ -40,6 +40,8 @@ public class HexGrid : MonoBehaviour
         Refresh();
     }
 
+    public int NumberOfCells => height * width;
+
     void CreateCell(int x, int z, int i)
     {
         Vector3 position;

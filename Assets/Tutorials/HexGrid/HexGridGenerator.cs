@@ -1,4 +1,5 @@
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class HexGridGenerator
 {
@@ -38,6 +39,23 @@ public class HexGridGenerator
         _grid.Refresh();
 
         GenerateTrees();
+
+        GenerateBuildings();
+    }
+
+    private void GenerateBuildings()
+    {
+        var numberOfCities = 6;
+
+        for (int i = 0; i < numberOfCities; i++)
+        {
+            var tile = _grid.cells[Random.Range(0, _grid.NumberOfCells - 1)];
+            
+            tile.Clear();
+
+            tile.Spawn("City");
+              
+        }
     }
 
     public void GenerateTrees()
