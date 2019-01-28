@@ -8,7 +8,7 @@ public class HexCell : MonoBehaviour
     public HexCoordinates coordinates;
     public HexGrid grid;
 
-    [SerializeField] private HexCell[] neighbors;
+    public HexCell[] neighbors;
     public RectTransform uiRect;
 
     public int Elevation
@@ -30,8 +30,8 @@ public class HexCell : MonoBehaviour
     }
 
     public float Latitude => coordinates.Z.Remap(0, grid.height - 1, -90, 90);
-
     public float Temperature => GameManager.Instance.MapManager.ClimateManager.GetCellTemperature(this);
+    public bool HasWater => Elevation == 0;
 
     public HexCell GetNeighbor(HexDirection direction)
     {

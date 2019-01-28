@@ -12,6 +12,7 @@ public class HexGrid : MonoBehaviour
     public Text cellLabelPrefab;
     public Color defaultColor = Color.white;
     public Overlay overlayType = Overlay.NONE;
+    public Evaluator evaluator = new CellColourEvaluator();
 
     internal HexCell[] cells;
     private HexMesh hexMesh;
@@ -91,6 +92,9 @@ public class HexGrid : MonoBehaviour
                 case Overlay.TEMPERATURE:
                     label.text = $"{cell.Temperature:0.##}\u00A0°C";
                     break;
+                case Overlay.CITY_ATTRACTIVENESS:
+                    label.text = $"{evaluator.Evaluate(cell) * 100:0.##}\u00A0%";
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -137,7 +141,7 @@ public class HexGrid : MonoBehaviour
 
     private void EvaluateTemperature()
     {
-        var evaluator = new CellColourEvaluator();
+        if (cells == null) return;
 
         foreach (var cell in cells)
         {

@@ -1,3 +1,4 @@
+using Evaluators;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -119,6 +120,19 @@ public class HexMapEditor : MonoBehaviour
     public void SetOverlay(int overlay)
     {
         hexGrid.overlayType = (Overlay) overlay;
-        hexGrid.RefreshOverlay();
+
+        switch (hexGrid.overlayType)
+        {
+            case Overlay.CITY_ATTRACTIVENESS:
+                hexGrid.evaluator = new CityAttractivenessEvaluator();
+                break;
+            default:
+                hexGrid.evaluator = new CellColourEvaluator();
+                break;
+        }
+
+        if (hexGrid.cells == null) return;
+
+        hexGrid.Refresh();
     }
 }

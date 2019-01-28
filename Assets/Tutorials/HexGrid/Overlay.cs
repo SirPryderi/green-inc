@@ -2,5 +2,6 @@ public enum Overlay
 {
     NONE,
     COORDINATES,
-    TEMPERATURE
+    TEMPERATURE,
+    CITY_ATTRACTIVENESS
 }
