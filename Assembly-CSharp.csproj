@@ -63,6 +63,8 @@
     <Compile Include="Assets\Scripts\Atmo\Gas.cs" />
     <Compile Include="Assets\Scripts\Atmo\Test.cs" />
     <Compile Include="Assets\Scripts\CameraControl.cs" />
+    <Compile Include="Assets\Scripts\Evaluators\CellColourEvaluator.cs" />
+    <Compile Include="Assets\Scripts\Evaluators\Evaluator.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\MainMenuManager.cs" />
     <Compile Include="Assets\Scripts\MapManager.cs" />
@@ -71,6 +73,7 @@
     <Compile Include="Assets\Scripts\Organisations\Company.cs" />
     <Compile Include="Assets\Scripts\Organisations\Government.cs" />
     <Compile Include="Assets\Scripts\Organisations\Organisation.cs" />
+    <Compile Include="Assets\Scripts\Pawns\CityTile.cs" />
     <Compile Include="Assets\Scripts\Pawns\Pawn.cs" />
     <Compile Include="Assets\Scripts\Pawns\Trees\BroadLeafTree.cs" />
     <Compile Include="Assets\Scripts\Pawns\Trees\PineTree.cs" />

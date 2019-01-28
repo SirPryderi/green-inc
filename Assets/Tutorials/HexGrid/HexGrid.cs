@@ -1,5 +1,6 @@
 using System;
 using Atmo;
+using Evaluators;
 using Pawns;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,12 +17,9 @@ public class HexGrid : MonoBehaviour
     internal HexCell[] cells;
     private HexMesh hexMesh;
     private Canvas gridCanvas;
-    private ClimateManager _climateManager;
 
     void Awake()
     {
-        _climateManager = GameManager.Instance.MapManager.ClimateManager;
-
         cells = new HexCell[height * width];
         gridCanvas = GetComponentInChildren<Canvas>();
         hexMesh = GetComponentInChildren<HexMesh>();
@@ -159,47 +157,11 @@ public class HexGrid : MonoBehaviour
 
     private void EvaluateTemperature()
     {
+        var evaluator = new CellColourEvaluator();
+
         foreach (var cell in cells)
         {
-            var temp = _climateManager.GetCellTemperature(cell);
-            var seaColor = new Color(0, 0.3117442f, 1);
-            var sandColor = new Color(0.94f, 0.73f, 0.38f);
-
-            // TODO improve code
-
-            var desert = 35;
-            var temperate = 25;
-            var tundra = 10;
-            var ice = 0;
-
-            if (temp > desert)
-            {
-                cell.color = sandColor;
-            }
-            else if (temp > temperate)
-            {
-                var f = temp.Remap(temperate, desert, 0, 1);
-                cell.color = Color.Lerp(new Color(0.074f, 0.427f, 0.082f), sandColor, f);
-            }
-            else if (temp > tundra)
-            {
-                var f = temp.Remap(tundra, temperate, 0, 1);
-                cell.color = Color.Lerp(new Color(0.254f, 0.596f, 0.039f), new Color(0.074f, 0.427f, 0.082f), f);
-            }
-            else if (temp > ice)
-            {
-                var f = temp.Remap(ice, tundra, 0, 1);
-                cell.color = Color.Lerp(Color.white, new Color(0.254f, 0.596f, 0.039f), f);
-            }
-            else
-            {
-                cell.color = Color.white;
-            }
-
-            if (cell.Elevation == 0 && temp > 0)
-            {
-                cell.color = seaColor;
-            }
+            cell.color = evaluator.CellToColour(cell);
 
             if (cell.transform.childCount > 0)
             {
