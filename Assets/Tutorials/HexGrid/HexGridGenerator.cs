@@ -91,11 +91,11 @@ public class HexGridGenerator
 
     public void GenerateTrees()
     {
+        Random.InitState(GameManager.Instance.MapManager.RandomGenerator.Seed + "trees".GetHashCode());
+        
         foreach (var cell in _grid.cells)
         {
             if (cell.Elevation <= 0) continue;
-
-            Random.InitState(GameManager.Instance.MapManager.RandomGenerator.Seed + "trees".GetHashCode());
 
             if (Random.value < MathExtension.GaussianProbability(cell.Temperature, 20, 5))
             {
