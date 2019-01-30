@@ -1,8 +1,11 @@
+using System;
+using Evaluators;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class HexGridGenerator
 {
+    private const int NumberOfCities = 5;
     private readonly HexGrid _grid;
 
     public HexGridGenerator(HexGrid grid)
@@ -45,17 +48,45 @@ public class HexGridGenerator
 
     private void GenerateBuildings()
     {
-        var numberOfCities = 6;
+        var evaluator = new CityAttractivenessEvaluator();
+        var results = evaluator.EvaluateAll(_grid);
 
-        for (int i = 0; i < numberOfCities; i++)
+        for (int i = 0; i < NumberOfCities; i++)
         {
-            var tile = _grid.cells[Random.Range(0, _grid.NumberOfCells - 1)];
-            
-            tile.Clear();
+            if (Math.Abs(results[0].Item1) < 0.001)
+            {
+                throw new Exception("Unable to find suitable tile for city.");
+            }
 
+            var tile = results[0].Item2;
+
+            tile.Clear();
             tile.Spawn("City");
-              
+
+            // Makes nearby cells less attractive
+            UpdateResults(results, tile);
         }
+    }
+
+    private void UpdateResults(Tuple<float, HexCell>[] results, HexCell tile)
+    {
+        // Makes the current tile not unusable
+        results[0] = new Tuple<float, HexCell>(0, tile);
+
+        // Weights the each cell's score based on the new added city
+        for (var j = 0; j < results.Length; j++)
+        {
+            var (score, tCell) = results[j];
+            var distance = (tile.transform.position - tCell.transform.position).magnitude;
+            var newScore = score - 1f / distance;
+
+            newScore = Mathf.Clamp01(newScore);
+
+            results[j] = new Tuple<float, HexCell>(newScore, tCell);
+        }
+
+        // Sorts the results again so that the best cell will be on top of the queue
+        Evaluator.SortAll(results);
     }
 
     public void GenerateTrees()
@@ -63,6 +94,8 @@ public class HexGridGenerator
         foreach (var cell in _grid.cells)
         {
             if (cell.Elevation <= 0) continue;
+
+            Random.InitState(GameManager.Instance.MapManager.RandomGenerator.Seed + "trees".GetHashCode());
 
             if (Random.value < MathExtension.GaussianProbability(cell.Temperature, 20, 5))
             {
