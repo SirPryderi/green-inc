@@ -135,7 +135,7 @@ public class HexGrid : MonoBehaviour
     public void Refresh()
     {
         EvaluateTemperature();
-        hexMesh.Triangulate(cells);
+        if (hexMesh != null) hexMesh.Triangulate(cells);
         RefreshOverlay();
     }
 
