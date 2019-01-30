@@ -16,7 +16,7 @@ namespace Evaluators
 
             var score = 0f;
 
-            score += MathExtension.GaussianProbability(cell.Temperature, 15, 10) * 60;
+            score += MathExtension.GaussianProbability(cell.Temperature, 17, 15) * 60;
 
             score += MathExtension.GaussianProbability(cell.Elevation, 1, 2) * 10;
 
