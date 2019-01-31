@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 public class HexGridGenerator
 {
     private const int NumberOfCities = 5;
+    private const int NumberOfMines = 10;
     private readonly HexGrid _grid;
 
     public HexGridGenerator(HexGrid grid)
@@ -42,16 +43,29 @@ public class HexGridGenerator
         _grid.Refresh();
 
         GenerateTrees();
-
-        GenerateBuildings();
+        GenerateCities();
+        GenerateMines();
     }
 
-    private void GenerateBuildings()
+    private void GenerateMines()
+    {
+        var results = new MineEvaluator().EvaluateAll(_grid);
+
+        for (var i = 0; i < NumberOfMines; i++)
+        {
+            var tile = results[i].Item2;
+
+            tile.Clear();
+            tile.Spawn("CoalMine");
+        }
+    }
+
+    private void GenerateCities()
     {
         var evaluator = new CityAttractivenessEvaluator();
         var results = evaluator.EvaluateAll(_grid);
 
-        for (int i = 0; i < NumberOfCities; i++)
+        for (var i = 0; i < NumberOfCities; i++)
         {
             if (Math.Abs(results[0].Item1) < 0.001)
             {
@@ -92,7 +106,7 @@ public class HexGridGenerator
     public void GenerateTrees()
     {
         Random.InitState(GameManager.Instance.MapManager.RandomGenerator.Seed + "trees".GetHashCode());
-        
+
         foreach (var cell in _grid.cells)
         {
             if (cell.Elevation <= 0) continue;
