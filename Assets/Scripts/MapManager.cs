@@ -1,4 +1,5 @@
 using Atmo;
+using Mechanics;
 using UnityEngine;
 
 public class MapManager
@@ -7,10 +8,13 @@ public class MapManager
 
     public RandomGenerator RandomGenerator { get; private set; }
 
+    public Observer Observer { get; }
+
     public MapManager()
     {
         ClimateManager = new ClimateManager();
         RandomGenerator = new RandomGenerator(0);
+        Observer = new Observer();
     }
 
     public void Randomise()

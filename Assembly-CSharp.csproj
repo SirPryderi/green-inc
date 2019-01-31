@@ -71,6 +71,8 @@
     <Compile Include="Assets\Scripts\MainMenuManager.cs" />
     <Compile Include="Assets\Scripts\MapManager.cs" />
     <Compile Include="Assets\Scripts\MathExtension.cs" />
+    <Compile Include="Assets\Scripts\Mechanics\IObservable.cs" />
+    <Compile Include="Assets\Scripts\Mechanics\Observer.cs" />
     <Compile Include="Assets\Scripts\Organisations\City.cs" />
     <Compile Include="Assets\Scripts\Organisations\Company.cs" />
     <Compile Include="Assets\Scripts\Organisations\Government.cs" />
@@ -81,6 +83,8 @@
     <Compile Include="Assets\Scripts\Pawns\Trees\PineTree.cs" />
     <Compile Include="Assets\Scripts\RandomGenerator.cs" />
     <Compile Include="Assets\Scripts\Singleton.cs" />
+    <Compile Include="Assets\Scripts\SunControl.cs" />
+    <Compile Include="Assets\Scripts\UI\MainUIController.cs" />
     <Compile Include="Assets\Tutorials\HexGrid\HexCell.cs" />
     <Compile Include="Assets\Tutorials\HexGrid\HexCoordinates.cs" />
     <Compile Include="Assets\Tutorials\HexGrid\HexDirection.cs" />
