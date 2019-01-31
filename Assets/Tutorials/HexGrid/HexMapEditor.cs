@@ -2,6 +2,7 @@ using Evaluators;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class HexMapEditor : MonoBehaviour
@@ -134,5 +135,11 @@ public class HexMapEditor : MonoBehaviour
         if (hexGrid.cells == null) return;
 
         hexGrid.Refresh();
+    }
+
+    public void PlayMap()
+    {
+        DontDestroyOnLoad(hexGrid);
+        SceneManager.LoadSceneAsync(1);
     }
 }
