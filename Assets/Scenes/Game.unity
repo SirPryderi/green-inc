@@ -886,6 +886,7 @@ GameObject:
   m_Component:
   - component: {fileID: 275450221261257517}
   - component: {fileID: 5911473754059406406}
+  - component: {fileID: 275450221261257515}
   m_Layer: 0
   m_Name: MainUI
   m_TagString: Untagged
@@ -893,6 +894,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &275450221261257515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275450221261257514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9b9c5f96ca048c68a2f8618c8d67b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayPause: {fileID: 1694687777451313653}
+  Speed: {fileID: 2931276398763254359}
+  DateDay: {fileID: 3707310606656300062}
+  DateMonth: {fileID: 1929830076}
+  DateYear: {fileID: 1119081280}
+  MoneyBudget: {fileID: 5269828303573312803}
+  MoneyIncome: {fileID: 1217085626}
+  CO2Budget: {fileID: 402695203}
+  CO2Income: {fileID: 665448146}
+  MainUIController: {fileID: 5911473754059406406}
 --- !u!4 &275450221261257517
 Transform:
   m_ObjectHideFlags: 0
@@ -1242,9 +1265,9 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 05dea6b03b34eff65b6aaa1c4d9df269, type: 3}
     m_FontSize: 18
-    m_FontStyle: 1
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
@@ -1464,7 +1487,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5484151046266668604}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5911473754059406406}
+        m_MethodName: TogglePause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!224 &4000984605551798469
@@ -1775,6 +1809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeee69705358480fba5cfe132f47ed9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPaused: 0
 --- !u!1 &6309153744213877971
 GameObject:
   m_ObjectHideFlags: 0

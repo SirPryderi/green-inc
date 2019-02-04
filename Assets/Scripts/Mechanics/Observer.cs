@@ -26,6 +26,8 @@ namespace Mechanics
 
         public void AdvanceTime(int hours)
         {
+            Time += hours;
+            
             foreach (var observable in observables)
             {
                 observable.StartFrame();
@@ -35,8 +37,6 @@ namespace Mechanics
             {
                 observable.EndFrame();
             }
-
-            Time += hours;
         }
     }
 }
