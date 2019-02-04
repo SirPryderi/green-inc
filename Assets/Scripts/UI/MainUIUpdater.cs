@@ -25,6 +25,7 @@ namespace UI
         private void Awake()
         {
             GameManager.Instance.MapManager.Observer.Register(this);
+            UpdateAll();
         }
 
         private void OnDestroy()
@@ -38,6 +39,11 @@ namespace UI
         }
 
         public void EndFrame()
+        {
+            UpdateAll();
+        }
+
+        private void UpdateAll()
         {
             UpdateClock();
             UpdateCO2();
