@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameMapSpawner : MonoBehaviour
 {
@@ -9,7 +10,8 @@ public class GameMapSpawner : MonoBehaviour
         var grid = FindObjectOfType<HexGrid>();
         if (grid != null)
         {
-            // Make sure everything is bound to it
+            // Moves the grid to the current scene so that it won't be kept on load
+            SceneManager.MoveGameObjectToScene(grid.gameObject, SceneManager.GetActiveScene());
         }
         else
         {
