@@ -45,5 +45,6 @@ sysinfo.txt
 
 packages/
 
+### Blender backup files ###
 *.blend1
 *.blend1.meta
