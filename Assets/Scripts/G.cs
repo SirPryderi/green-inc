@@ -1,11 +1,12 @@
 using Atmo;
+using Mechanics;
+using Organisations;
 
-namespace DefaultNamespace
+public static class G
 {
-    public class G
-    {
-        public static GameManager GM => GameManager.Instance;
-        public static MapManager MP => GM.MapManager;
-        public static ClimateManager CM => MP.ClimateManager;
-    }
+    public static GameManager GM => GameManager.Instance;
+    public static MapManager MP => GM.MapManager;
+    public static ClimateManager CM => MP.ClimateManager;
+    public static Company PC => MP.Orgs.PlayerCompany;
+    public static Observer O => GM.MapManager.Observer;
 }
