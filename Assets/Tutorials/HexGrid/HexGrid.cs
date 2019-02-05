@@ -1,4 +1,5 @@
 using System;
+using DefaultNamespace;
 using Evaluators;
 using Pawns;
 using UnityEngine;
@@ -22,6 +23,8 @@ public class HexGrid : MonoBehaviour
 
     private void Awake()
     {
+        G.MP.Grid = this;
+
         cells = new HexCell[height * width];
         gridCanvas = GetComponentInChildren<Canvas>();
         hexMesh = GetComponentInChildren<HexMesh>();

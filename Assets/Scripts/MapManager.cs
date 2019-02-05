@@ -10,6 +10,8 @@ public class MapManager
 
     public Observer Observer { get; }
 
+    public HexGrid Grid;
+
     public MapManager()
     {
         ClimateManager = new ClimateManager();
