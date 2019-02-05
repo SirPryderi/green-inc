@@ -20,7 +20,7 @@ public class MapManager
         RandomGenerator = new RandomGenerator(0);
 
         Observer = new Observer();
-        Orgs.PlayerCompany = new Company("Green Inc.", CompanyType.GENERIC);
+        Orgs.PlayerCompany = new Company("Green Inc.", CompanyType.GENERIC, 5000);
         Orgs.Companies.Add(new Company("Black Inc.", CompanyType.ELECTRICAL));
     }
 

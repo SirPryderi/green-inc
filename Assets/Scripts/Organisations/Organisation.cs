@@ -7,20 +7,10 @@ namespace Organisations
         public string Name { get; }
         public int Money { get; protected set; }
 
-        public Organisation(string name)
+        public Organisation(string name, int startingMoney = 0)
         {
             Name = name;
-            Money = 0;
-        }
-
-        /// <summary>
-        /// Calculates the expenses and revenues of the organisation for a week time.
-        /// </summary>
-        public virtual void EvaluateWeek()
-        {
-            // TODO
-
-            // Calculate all expenses/revenues from objects
+            Money = startingMoney;
         }
 
         public void TransferMoney(Organisation organisation, int amount)

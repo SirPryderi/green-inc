@@ -4,7 +4,7 @@ namespace Organisations
     {
         public readonly CompanyType Type;
 
-        public Company(string name, CompanyType type) : base(name)
+        public Company(string name, CompanyType type, int startingMoney = 0) : base(name, startingMoney)
         {
             Type = type;
         }
