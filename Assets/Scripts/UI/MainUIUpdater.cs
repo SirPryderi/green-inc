@@ -41,12 +41,18 @@ namespace UI
         {
             UpdateClock();
             UpdateCO2();
+            UpdateBalance();
+        }
+
+        private void UpdateBalance()
+        {
+            var budget = G.PC.Money;
+            MoneyBudget.text = $"$ {budget:##,###0}";
         }
 
         private void UpdateCO2()
         {
-            var valueF = GameManager.Instance.MapManager.ClimateManager.Atmosphere
-                             .GetGasPercentage("Carbon Dioxide") * 1_000_000f;
+            var valueF = G.CM.Atmosphere.GetGasPercentage("Carbon Dioxide") * 1_000_000f;
             var value = Convert.ToInt32(valueF);
             CO2Budget.text = $"CO₂ {value:##,###} <size=10>ppm</size>";
         }
@@ -57,7 +63,7 @@ namespace UI
 
             var start = DateTime.Parse("1 January 2020");
 
-            var date = start.Add(TimeSpan.FromHours(GameManager.Instance.MapManager.Observer.Time));
+            var date = start.Add(TimeSpan.FromHours(G.O.Time));
 
             DateDay.text = date.Day.ToString();
             DateYear.text = date.Year.ToString();
