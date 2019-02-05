@@ -1,5 +1,7 @@
 using System;
 using Evaluators;
+using Organisations;
+using Pawns;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -72,10 +74,12 @@ public class HexGridGenerator
                 throw new Exception("Unable to find suitable tile for city.");
             }
 
-            var tile = results[0].Item2;
+            var city = new City($"City {i}");
 
+            var tile = results[0].Item2;
             tile.Clear();
-            tile.Spawn("City");
+            var cityTile = tile.Spawn("City");
+            cityTile.GetComponent<CityTile>().City = city;
 
             // Makes nearby cells less attractive
             UpdateResults(results, tile);

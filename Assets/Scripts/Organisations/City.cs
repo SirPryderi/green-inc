@@ -1,39 +1,36 @@
-using System;
-using UnityEngine;
+using System.Collections.Generic;
+using Pawns;
 
 namespace Organisations
 {
     public class City : Organisation
     {
-        public uint Inhabitants { get; private set; }
-        public uint AverageInhabitantWage { get; private set; }
-
-        private float taxPercentage;
-
-        public float TaxPercentage
-        {
-            get => taxPercentage;
-            private set
-            {
-                if (value < 0f || value > 1f)
-                {
-                    throw new ArgumentException("Tax must be between 0..1", nameof(value));
-                }
-
-                taxPercentage = value;
-            }
-        }
+        private readonly List<CityTile> _tiles = new List<CityTile>();
 
         public City(string name) : base(name)
         {
         }
 
-        public override void EvaluateWeek()
+        public int Population
         {
-            // Evaluates tax revenue
-            Money += Mathf.RoundToInt(Inhabitants * AverageInhabitantWage * taxPercentage);
+            get
+            {
+                var sum = 0;
 
-            base.EvaluateWeek();
+                foreach (var tile in _tiles) sum += tile.Population;
+
+                return sum;
+            }
+        }
+
+        public void AddTile(CityTile tile)
+        {
+            _tiles.Add(tile);
+        }
+
+        public void GenerateRevenue(CityTile tile)
+        {
+            Money += tile.CalculateRevenue(GameManager.Instance.MapManager.Observer.DeltaTime);
         }
     }
 }
