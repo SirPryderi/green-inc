@@ -24,13 +24,7 @@ namespace UI
 
         private void Awake()
         {
-            GameManager.Instance.MapManager.Observer.Register(this);
             UpdateAll();
-        }
-
-        private void OnDestroy()
-        {
-            GameManager.Instance.MapManager.Observer.UnRegister(this);
         }
 
         public void StartFrame()
