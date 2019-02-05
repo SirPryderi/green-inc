@@ -26,6 +26,6 @@ public class GameMapSpawner : MonoBehaviour
             gen.GenerateFromPerlin();
         }
 
-        Destroy(this);
+        Destroy(gameObject);
     }
 }
