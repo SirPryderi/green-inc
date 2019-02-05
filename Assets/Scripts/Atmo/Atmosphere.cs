@@ -61,6 +61,16 @@ namespace Atmo
             Gasses["Carbon Dioxide"].Mass = c * EARTH_ATMOSPHERE_MASS;
             Gasses["Other"].Mass = (1 - (Nc + O2c + c)) * EARTH_ATMOSPHERE_MASS;
         }
+
+        public void ReleaseGas(string gas, double mass)
+        {
+            Gasses[gas].Mass += mass;
+        }
+
+        public void Absorb(string gas, double mass)
+        {
+            Gasses[gas].Mass -= mass;
+        }
     }
 
     [Serializable]
