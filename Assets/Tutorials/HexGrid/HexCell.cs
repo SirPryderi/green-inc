@@ -64,4 +64,9 @@ public class HexCell : MonoBehaviour
             Destroy(child.gameObject);
         }
     }
+
+    public bool isClear()
+    {
+        return transform.childCount == 0;
+    }
 }
