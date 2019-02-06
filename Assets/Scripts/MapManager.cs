@@ -1,6 +1,7 @@
 using Atmo;
 using Mechanics;
 using Organisations;
+using Stat;
 
 public class MapManager
 {
@@ -12,12 +13,15 @@ public class MapManager
 
     public HexGrid Grid;
 
+    public readonly Statistics Statistics;
+
     public readonly Orgs Orgs = new Orgs();
 
     public MapManager()
     {
         ClimateManager = new ClimateManager();
         RandomGenerator = new RandomGenerator(0);
+        Statistics = new Statistics();
 
         Observer = new Observer();
         Orgs.PlayerCompany = new Company("Green Inc.", CompanyType.GENERIC, 5_000);

@@ -27,6 +27,8 @@ namespace Mechanics
 
         public void AdvanceTime(int hours)
         {
+            G.MP.Statistics.TakeSnapshot();
+
             Time += hours;
             DeltaTime = hours;
 
@@ -39,7 +41,7 @@ namespace Mechanics
             {
                 observable.EndFrame();
             }
-            
+
             Object.FindObjectOfType<HexGrid>().Refresh();
         }
     }
