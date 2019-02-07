@@ -72,10 +72,12 @@ namespace Pawns
             }
         }
 
+#if UNITY_EDITOR
         void OnDrawGizmos()
         {
             if (City != null)
                 Handles.Label(transform.position, $"{City.Name} - {Population}");
         }
+#endif
     }
 }
