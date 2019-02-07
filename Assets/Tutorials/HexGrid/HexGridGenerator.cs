@@ -75,6 +75,7 @@ public class HexGridGenerator
             }
 
             var city = new City($"City {i}");
+            G.MP.Orgs.Cities.Add(city);
 
             var tile = results[0].Item2;
             tile.Clear();
