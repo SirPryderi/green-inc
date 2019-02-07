@@ -6,7 +6,16 @@ namespace Atmo
     [Serializable]
     public class Atmosphere
     {
+        /// <summary>
+        /// Realistic Earth atmosphere mass
+        /// </summary>
         private const double EARTH_ATMOSPHERE_MASS = 5.1480e18;
+
+        /// <summary>
+        /// Deliberately smaller mass to magnify the effects of pollution
+        /// </summary>
+        private const double BALANCED_ATMOSPHERE_MASS = 5e14;
+
         private const double CO2c = 0.000407;
         private const double Nc = 0.78084;
         private const double O2c = 0.20946;
@@ -22,11 +31,13 @@ namespace Atmo
             var carbonDioxide = new Gas("Carbon Dioxide");
             var other = new Gas("Other");
 
-            var nitrogenComposition = new GasComposition(nitrogen, Nc * EARTH_ATMOSPHERE_MASS);
-            var oxygenComposition = new GasComposition(oxygen, O2c * EARTH_ATMOSPHERE_MASS);
+            const double initialAtmosphere = BALANCED_ATMOSPHERE_MASS;
 
-            var carbonDioxideComposition = new GasComposition(carbonDioxide, CO2c * EARTH_ATMOSPHERE_MASS);
-            var otherComposition = new GasComposition(other, (1 - (Nc + O2c + CO2c)) * EARTH_ATMOSPHERE_MASS);
+            var nitrogenComposition = new GasComposition(nitrogen, Nc * initialAtmosphere);
+            var oxygenComposition = new GasComposition(oxygen, O2c * initialAtmosphere);
+
+            var carbonDioxideComposition = new GasComposition(carbonDioxide, CO2c * initialAtmosphere);
+            var otherComposition = new GasComposition(other, (1 - (Nc + O2c + CO2c)) * initialAtmosphere);
 
             Gasses.Add(nitrogen.Name, nitrogenComposition);
             Gasses.Add(oxygen.Name, oxygenComposition);
@@ -58,8 +69,8 @@ namespace Atmo
 
         public void SetCO2Concentration(double c)
         {
-            Gasses["Carbon Dioxide"].Mass = c * EARTH_ATMOSPHERE_MASS;
-            Gasses["Other"].Mass = (1 - (Nc + O2c + c)) * EARTH_ATMOSPHERE_MASS;
+            Gasses["Carbon Dioxide"].Mass = c * Mass;
+            Gasses["Other"].Mass = (1 - (Nc + O2c + c)) * Mass;
         }
 
         public void ReleaseGas(string gas, double mass)
