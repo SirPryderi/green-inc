@@ -61,7 +61,7 @@ namespace Pawns
 
         public int CalculateRevenue(int time)
         {
-            return Convert.ToInt32(Population * taxPercentage * averageWage * time * 10);
+            return Convert.ToInt32(Population * taxPercentage * averageWage * time);
         }
 
         public void EndFrame()
