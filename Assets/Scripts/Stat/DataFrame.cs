@@ -12,7 +12,7 @@ namespace Stat
             {
                 time = G.O.Time,
                 money = G.PC.Money,
-                carbonDioxideConcentration = G.CM.Atmosphere.GetGasPercentage("Carbon Dioxide") * 1_000_000
+                carbonDioxideConcentration = G.CM.Atmosphere.GetGasPercentage("Carbon Dioxide")
             };
         }
     }
