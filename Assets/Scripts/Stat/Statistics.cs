@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Stat
 {
@@ -15,5 +17,11 @@ namespace Stat
         {
             Data.AddLast(DataFrame.TakeSnapshot());
         }
+
+        public static long Population =>
+            Convert.ToInt64(G.MP.Orgs.Cities.Sum(city => city.Population));
+
+        public static float AverageTemperature =>
+            G.MP.Grid.cells.Average(cell => cell.Temperature);
     }
 }
