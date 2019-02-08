@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Pawns
+namespace Pawns.Trees
 {
     public class BroadLeafTree : Pawn
     {

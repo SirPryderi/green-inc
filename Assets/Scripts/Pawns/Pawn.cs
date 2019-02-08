@@ -17,6 +17,8 @@ namespace Pawns
             Mesh = transform.Find("mesh").gameObject;
         }
 
-        public abstract void Evaluate();
+        public virtual void Evaluate()
+        {
+        }
     }
 }

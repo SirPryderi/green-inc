@@ -45,10 +45,6 @@ namespace Pawns
         public int Population => Mathf.FloorToInt(population);
         public float Growth => growth;
 
-        public override void Evaluate()
-        {
-        }
-
         public void StartFrame()
         {
             var atmo = GameManager.Instance.MapManager.ClimateManager.Atmosphere;
