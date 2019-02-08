@@ -47,12 +47,10 @@ namespace Pawns
 
         public void StartFrame()
         {
-            var atmo = GameManager.Instance.MapManager.ClimateManager.Atmosphere;
-            var amount = GameManager.Instance.MapManager.Observer.DeltaTime * EmissionsPerCapita * Population;
-
-            atmo.ReleaseGas("Carbon Dioxide", amount);
-
             _city.GenerateRevenue(this);
+
+            var releasedCo2 = G.DeltaTime * EmissionsPerCapita * Population;
+            G.CM.Atmosphere.ReleaseGas("Carbon Dioxide", releasedCo2);
         }
 
         public int CalculateRevenue(int time)
@@ -64,7 +62,7 @@ namespace Pawns
         {
             if (population < maxPopulation)
             {
-                population += GameManager.Instance.MapManager.Observer.DeltaTime * Growth;
+                population += G.DeltaTime * Growth;
             }
         }
 
