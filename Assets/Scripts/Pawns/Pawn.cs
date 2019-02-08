@@ -1,9 +1,12 @@
+using Organisations;
 using UnityEngine;
 
 namespace Pawns
 {
     public abstract class Pawn : MonoBehaviour
     {
+        public Organisation owner;
+
         protected HexCell ParentCell;
         protected GameObject Mesh;
 
