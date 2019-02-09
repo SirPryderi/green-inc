@@ -1,4 +1,5 @@
 using System;
+using Logistics;
 using Mechanics;
 using Organisations;
 using UnityEditor;
@@ -8,7 +9,7 @@ namespace Pawns
 {
     public class CityTile : Pawn, IObservable
     {
-        [SerializeField] [Tooltip("Total inhabitants")]
+        [Header("Demographics")] [SerializeField] [Tooltip("Total inhabitants")]
         private float population;
 
         [SerializeField] [Tooltip("Maximum number of inhabitants supported")]
@@ -17,13 +18,16 @@ namespace Pawns
         [SerializeField] [Tooltip("Inhabitants per hour")]
         private float growth;
 
-        [SerializeField] [Tooltip("Produced kg of CO2 per hour")]
+        [Header("Emissions")] [SerializeField] [Tooltip("Produced kg of CO2 per hour")]
         private float emissionsPerCapita;
 
-        [SerializeField] [Tooltip("Consumed W per capita each hour")]
-        private float WattPerCapita;
+        [Header("Electrical")] [SerializeField] [Tooltip("Consumed W per capita each hour")]
+        private float wattPerCapita;
 
-        [SerializeField] [Tooltip("Average wage per hour")]
+        [SerializeField] [Tooltip("Requester Object")]
+        private Requester energyRequester;
+
+        [Header("Financial")] [SerializeField] [Tooltip("Average wage per hour")]
         private float averageWage;
 
         [SerializeField] [Tooltip("Tax level")]
@@ -38,6 +42,7 @@ namespace Pawns
             {
                 value.AddTile(this);
                 _city = value;
+                owner = value;
             }
         }
 
@@ -49,8 +54,25 @@ namespace Pawns
         {
             _city.GenerateRevenue(this);
 
+            // Emissions
             var releasedCo2 = G.DeltaTime * EmissionsPerCapita * Population;
             G.CM.Atmosphere.ReleaseGas("Carbon Dioxide", releasedCo2);
+
+            // Electricity
+            var requiredElectricity = Convert.ToUInt32(G.DeltaTime * wattPerCapita * Population);
+            energyRequester.Request(requiredElectricity);
+
+            // TODO Food
+        }
+
+        public void EndFrame()
+        {
+            if (!energyRequester.IsSatisfied) return;
+            
+            if (population < maxPopulation)
+            {
+                population += G.DeltaTime * Growth;
+            }
         }
 
         public int CalculateRevenue(int time)
@@ -58,19 +80,21 @@ namespace Pawns
             return Convert.ToInt32(Population * taxPercentage * averageWage * time);
         }
 
-        public void EndFrame()
-        {
-            if (population < maxPopulation)
-            {
-                population += G.DeltaTime * Growth;
-            }
-        }
-
 #if UNITY_EDITOR
         void OnDrawGizmos()
         {
             if (City != null)
-                Handles.Label(transform.position, $"{City.Name} - {Population}");
+            {
+                var text = $"{City.Name}\nPop: {Population}\nEnergy: {energyRequester.SatisfiedPerc * 100}%";
+
+                Handles.Label(transform.position, text);
+            }
+
+            if (!energyRequester.IsSatisfied)
+            {
+                Handles.color = Color.red;
+                Handles.DrawSolidDisc(transform.position, Vector3.up, 5);
+            }
         }
 #endif
     }
