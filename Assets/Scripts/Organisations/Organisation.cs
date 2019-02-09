@@ -24,7 +24,7 @@ namespace Organisations
 
             if (Money < amount)
             {
-                throw new ArgumentException("Not enough balance", nameof(amount));
+                throw new ArgumentException($"Not enough balance {Money} < {amount}", nameof(amount));
             }
 
             Money -= amount;
