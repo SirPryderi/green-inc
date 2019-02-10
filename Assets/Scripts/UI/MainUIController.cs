@@ -36,12 +36,40 @@ namespace UI
 
         private void Update()
         {
+            if (Input.anyKey)
+            {
+                HandleKeyInput();
+            }
+
             if (_brush == BrushType.NONE)
                 return;
 
             if (!EventSystem.current.IsPointerOverGameObject() && Input.GetMouseButtonDown(0))
             {
                 StartCoroutine(nameof(HandleInput));
+            }
+        }
+
+        private void HandleKeyInput()
+        {
+            if (Input.GetKeyDown(KeyCode.F1))
+            {
+                GameManager.Instance.MapManager.Observer.AdvanceTime(1);
+            }
+
+            if (Input.GetKeyDown(KeyCode.F2))
+            {
+                GameManager.Instance.MapManager.Observer.AdvanceTime(24);
+            }
+
+            if (Input.GetKeyDown(KeyCode.F3))
+            {
+                GameManager.Instance.MapManager.Observer.AdvanceTime(24 * 30);
+            }
+
+            if (Input.GetKeyDown(KeyCode.F4))
+            {
+                GameManager.Instance.MapManager.Observer.AdvanceTime(24 * 30 * 365);
             }
         }
 
