@@ -49,7 +49,7 @@ MonoBehaviour:
   itemsPerHour: 1000000
   pricePerItem: 0.000015
   co2PerItem: 0.15
-  ProvidedInPastFrame: 20844000
+  ProvidedInPastFrame: 0
 --- !u!114 &9075805081457837530
 MonoBehaviour:
   m_ObjectHideFlags: 0
