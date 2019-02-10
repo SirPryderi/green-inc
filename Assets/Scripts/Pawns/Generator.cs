@@ -3,18 +3,20 @@ using Items;
 using Mechanics;
 using Organisations;
 using UnityEditor;
+using UnityEngine;
 
 namespace Pawns
 {
     public class Generator : Pawn, IObservable
     {
+        [Header("Generator")]
         public Item item;
 
         public uint itemsPerHour;
         public float pricePerItem;
         public float co2PerItem;
 
-        public uint ProvidedInPastFrame;
+        [HideInInspector] public uint ProvidedInPastFrame;
 
         private uint provided;
 
