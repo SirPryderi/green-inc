@@ -41,7 +41,7 @@ namespace UI
             UpdateAll();
         }
 
-        private void UpdateAll()
+        public void UpdateAll()
         {
             UpdateClock();
             UpdateCO2();
@@ -55,7 +55,7 @@ namespace UI
             AverageTemperature.text = $"{Statistics.AverageTemperature:##,###0.00 °C}";
         }
 
-        private void UpdateBalance()
+        public void UpdateBalance()
         {
             // Amount
             var budget = G.PC.Money;
