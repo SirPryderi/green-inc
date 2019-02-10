@@ -48,3 +48,6 @@ packages/
 ### Blender backup files ###
 *.blend1
 *.blend1.meta
+
+### Intellij Files ###
+/.idea/.idea.Green Inc/.idea/markdown-navigator.xml
