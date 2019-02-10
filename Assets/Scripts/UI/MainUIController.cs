@@ -21,7 +21,7 @@ namespace UI
 
         public void Advance()
         {
-            GameManager.Instance.MapManager.Observer.AdvanceTime(12);
+            G.O.AdvanceTime(12);
         }
 
         public void SetBrush(BrushType brush)
@@ -54,22 +54,32 @@ namespace UI
         {
             if (Input.GetKeyDown(KeyCode.F1))
             {
-                GameManager.Instance.MapManager.Observer.AdvanceTime(1);
+                G.O.AdvanceTime(1);
             }
 
             if (Input.GetKeyDown(KeyCode.F2))
             {
-                GameManager.Instance.MapManager.Observer.AdvanceTime(24);
+                G.O.AdvanceTime(24);
             }
 
             if (Input.GetKeyDown(KeyCode.F3))
             {
-                GameManager.Instance.MapManager.Observer.AdvanceTime(24 * 30);
+                G.O.AdvanceTime(24 * 30);
             }
 
             if (Input.GetKeyDown(KeyCode.F4))
             {
-                GameManager.Instance.MapManager.Observer.AdvanceTime(24 * 30 * 365);
+                G.O.AdvanceTime(24 * 365);
+            }
+
+            if (Input.GetKeyDown(KeyCode.F5))
+            {
+                G.O.AdvanceTime(24 * 365 * 10);
+            }
+
+            if (Input.GetKeyDown(KeyCode.F6))
+            {
+                G.O.AdvanceTime(24 * 365 * 100);
             }
         }
 
