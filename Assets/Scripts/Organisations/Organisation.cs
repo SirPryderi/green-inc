@@ -4,24 +4,31 @@ namespace Organisations
 {
     public class Organisation
     {
+        protected decimal _money;
         public string Name { get; }
-        public int Money { get; protected set; }
-        public bool CanAfford(int amount) => amount <= Money;
-        public bool CannotAfford(int amount) => !CanAfford(amount);
 
-        public Organisation(string name, int startingMoney = 0)
+        public decimal Money
+        {
+            get => decimal.Round(_money, 2);
+            protected set => _money = value;
+        }
+
+        public bool CanAfford(decimal amount) => amount <= _money;
+        public bool CannotAfford(decimal amount) => !CanAfford(amount);
+
+        public Organisation(string name, decimal startingMoney = 0)
         {
             Name = name;
-            Money = startingMoney;
+            _money = startingMoney;
         }
 
-        public void TransferMoney(Organisation organisation, int amount)
+        public void TransferMoney(Organisation organisation, decimal amount)
         {
             ConsumeMoney(amount);
-            organisation.Money += amount;
+            organisation._money += amount;
         }
 
-        public void ConsumeMoney(int amount)
+        public void ConsumeMoney(decimal amount)
         {
             if (amount < 0)
             {
@@ -30,10 +37,10 @@ namespace Organisations
 
             if (!CanAfford(amount))
             {
-                throw new ArgumentException($"Not enough balance {Money} < {amount}", nameof(amount));
+                throw new ArgumentException($"Not enough balance {Money:## ###.00}$ < {amount}", nameof(amount));
             }
 
-            Money -= amount;
+            _money -= amount;
         }
     }
 }

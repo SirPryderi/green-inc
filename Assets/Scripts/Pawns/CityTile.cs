@@ -59,7 +59,7 @@ namespace Pawns
             G.CM.Atmosphere.ReleaseGas("Carbon Dioxide", releasedCo2);
 
             // Electricity
-            var requiredElectricity = Convert.ToUInt32(G.DeltaTime * wattPerCapita * Population);
+            var requiredElectricity = Convert.ToUInt64(G.DeltaTime * wattPerCapita * Population);
             energyRequester.Request(requiredElectricity);
 
             // TODO Food
@@ -68,16 +68,16 @@ namespace Pawns
         public void EndFrame()
         {
             if (!energyRequester.IsSatisfied) return;
-            
+
             if (population < maxPopulation)
             {
                 population += G.DeltaTime * Growth;
             }
         }
 
-        public int CalculateRevenue(int time)
+        public decimal CalculateRevenue(int time)
         {
-            return Convert.ToInt32(Population * taxPercentage * averageWage * time);
+            return (decimal) (Population * taxPercentage * averageWage * time);
         }
 
 #if UNITY_EDITOR

@@ -10,8 +10,8 @@ namespace Logistics
         public Item item;
         public Pawn parent;
 
-        public uint requested;
-        public uint satisfied;
+        public ulong requested;
+        public ulong satisfied;
 
         public bool IsSatisfied { get; private set; }
 
@@ -22,7 +22,7 @@ namespace Logistics
             this.item = item;
         }
 
-        public void Request(uint amount)
+        public void Request(ulong amount)
         {
             IsSatisfied = false;
             requested = amount;

@@ -3,7 +3,7 @@ namespace Stat
     public class DataFrame
     {
         public int time;
-        public int money;
+        public decimal money;
         public double carbonDioxideConcentration;
 
         public static DataFrame TakeSnapshot()

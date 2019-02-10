@@ -9,16 +9,15 @@ namespace Pawns
 {
     public class Generator : Pawn, IObservable
     {
-        [Header("Generator")]
-        public Item item;
+        [Header("Generator")] public Item item;
 
         public uint itemsPerHour;
         public float pricePerItem;
         public float co2PerItem;
 
-        [HideInInspector] public uint ProvidedInPastFrame;
+        [HideInInspector] public ulong ProvidedInPastFrame;
 
-        private uint provided;
+        private ulong provided;
 
         public void StartFrame()
         {
@@ -31,11 +30,11 @@ namespace Pawns
             provided = 0;
         }
 
-        public uint ProduceItemsFor(uint amount, Organisation org)
+        public ulong ProduceItemsFor(ulong amount, Organisation org)
         {
             provided += amount;
 
-            var providedLimit = Convert.ToUInt32(itemsPerHour * G.DeltaTime);
+            var providedLimit = Convert.ToUInt64(itemsPerHour * G.DeltaTime);
 
             if (provided > providedLimit)
             {
@@ -48,7 +47,7 @@ namespace Pawns
                 return 0;
             }
 
-            var total = Convert.ToInt32(amount * pricePerItem);
+            var total = Convert.ToInt64(amount * pricePerItem);
             org.TransferMoney(owner, total);
 
             G.CM.Atmosphere.ReleaseGas("Carbon Dioxide", amount * co2PerItem);
@@ -60,7 +59,7 @@ namespace Pawns
         void OnDrawGizmos()
         {
             if (G.DeltaTime != 0)
-                Handles.Label(transform.position, $"{ProvidedInPastFrame / 1000 / G.DeltaTime} kW");
+                Handles.Label(transform.position, $"{ProvidedInPastFrame / 1000ul / (ulong) G.DeltaTime} kW");
         }
 #endif
     }
