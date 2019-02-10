@@ -51,7 +51,7 @@ namespace UI
 
             var cell = G.MP.Grid.GetCell(hit.point);
 
-            if (_brush == BrushType.BULLDOZER || cell.isClear())
+            if (_brush == BrushType.BULLDOZER || cell.IsClear())
             {
                 switch (_brush)
                 {
@@ -88,7 +88,7 @@ namespace UI
 
         private void BulldozeCell(HexCell cell)
         {
-            if(cell.isClear()) return;
+            if(cell.IsClear()) return;
             
             // Makes sure you can only bulldoze nobody's or your pawns
             if (cell.Pawn.owner == null || cell.Pawn.owner == G.PC)

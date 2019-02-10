@@ -35,6 +35,7 @@ public class HexCell : MonoBehaviour
     public float Temperature => GameManager.Instance.MapManager.ClimateManager.GetCellTemperature(this);
     public bool HasWater => Elevation == 0;
     public Pawn Pawn => transform.GetChild(0)?.GetComponent<Pawn>();
+    public bool IsClear() => transform.childCount == 0;
 
     public HexCell GetNeighbor(HexDirection direction)
     {
@@ -74,10 +75,5 @@ public class HexCell : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-    }
-
-    public bool isClear()
-    {
-        return transform.childCount == 0;
     }
 }
