@@ -6,12 +6,13 @@ public class CameraControl : MonoBehaviour
     private const double SENSITIVITY = 0.01;
     private Transform swivel, stick;
 
-    public float stickMinZoom, stickMaxZoom;
-    public float swivelMinZoom, swivelMaxZoom;
-    public float moveSpeedMin = 50f;
+    [Header("Stick")] public float stickMinZoom;
+    public float stickMaxZoom;
+    [Header("Swivel")] public float swivelMinZoom;
+    public float swivelMaxZoom;
+    [Header("Speed")] public float moveSpeedMin = 50f;
     public float moveSpeedMax = 100f;
-
-    public float zoom = 1f;
+    [Header("Zoom")] public float zoom = 1f;
 
     void Awake()
     {
@@ -19,6 +20,12 @@ public class CameraControl : MonoBehaviour
         stick = swivel.GetChild(0);
 
         SetZoom();
+    }
+
+    private void Start()
+    {
+        SetZoom(0.5f);
+        transform.localPosition = MaxPosition() / 2f;
     }
 
     void Update()
@@ -43,13 +50,36 @@ public class CameraControl : MonoBehaviour
     {
         Vector3 direction = new Vector3(xDelta, 0f, zDelta).normalized;
         var moveSpeed = Mathf.Lerp(moveSpeedMax, moveSpeedMin, zoom);
+
+        if (Input.GetKey(KeyCode.LeftShift)) moveSpeed *= 2f;
+
         float damping = Mathf.Max(Mathf.Abs(xDelta), Mathf.Abs(zDelta));
         float distance = moveSpeed * damping * Time.deltaTime;
 
         Vector3 position = transform.localPosition;
         position += direction * distance;
 
-        transform.localPosition = position;
+        transform.localPosition = ClampPosition(position);
+    }
+
+    private Vector3 ClampPosition(Vector3 position)
+    {
+        var max = MaxPosition();
+
+        position.x = Mathf.Clamp(position.x, 0f, max.x);
+        position.z = Mathf.Clamp(position.z, 0f, max.z);
+
+        return position;
+    }
+
+    private Vector3 MaxPosition()
+    {
+        var grid = G.MP.Grid;
+
+        var xMax = (grid.width - 0.5f) * (2f * HexMetrics.innerRadius);
+        var zMax = (grid.height - 1) * (1.5f * HexMetrics.outerRadius);
+
+        return new Vector3(xMax, 0, zMax);
     }
 
     void AdjustZoom(float delta)
@@ -66,5 +96,11 @@ public class CameraControl : MonoBehaviour
 
         var angle = Mathf.Lerp(swivelMinZoom, swivelMaxZoom, zoom);
         swivel.localRotation = Quaternion.Euler(angle, 0f, 0f);
+    }
+
+    private void SetZoom(float newZoom)
+    {
+        zoom = newZoom;
+        SetZoom();
     }
 }
