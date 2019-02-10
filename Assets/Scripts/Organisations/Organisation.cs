@@ -6,6 +6,8 @@ namespace Organisations
     {
         public string Name { get; }
         public int Money { get; protected set; }
+        public bool CanAfford(int amount) => amount <= Money;
+        public bool CannotAfford(int amount) => !CanAfford(amount);
 
         public Organisation(string name, int startingMoney = 0)
         {
@@ -15,7 +17,6 @@ namespace Organisations
 
         public void TransferMoney(Organisation organisation, int amount)
         {
-            // TODO should this be thread safe?
             ConsumeMoney(amount);
             organisation.Money += amount;
         }
@@ -27,7 +28,7 @@ namespace Organisations
                 throw new ArgumentException("Amount must be positive", nameof(amount));
             }
 
-            if (Money < amount)
+            if (!CanAfford(amount))
             {
                 throw new ArgumentException($"Not enough balance {Money} < {amount}", nameof(amount));
             }
