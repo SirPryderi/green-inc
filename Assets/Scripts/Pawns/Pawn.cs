@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Pawns
 {
-    public abstract class Pawn : MonoBehaviour
+    public class Pawn : MonoBehaviour
     {
         public Organisation owner;
 
