@@ -16,7 +16,12 @@ namespace Organisations
         public void TransferMoney(Organisation organisation, int amount)
         {
             // TODO should this be thread safe?
+            ConsumeMoney(amount);
+            organisation.Money += amount;
+        }
 
+        public void ConsumeMoney(int amount)
+        {
             if (amount < 0)
             {
                 throw new ArgumentException("Amount must be positive", nameof(amount));
@@ -28,7 +33,6 @@ namespace Organisations
             }
 
             Money -= amount;
-            organisation.Money += amount;
         }
     }
 }
