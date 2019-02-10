@@ -1,3 +1,5 @@
+using Organisations;
+using Pawns;
 using UnityEngine;
 
 public class HexCell : MonoBehaviour
@@ -32,6 +34,7 @@ public class HexCell : MonoBehaviour
     public float Latitude => coordinates.Z.Remap(0, grid.height - 1, -90, 90);
     public float Temperature => GameManager.Instance.MapManager.ClimateManager.GetCellTemperature(this);
     public bool HasWater => Elevation == 0;
+    public Pawn Pawn => transform.GetChild(0)?.GetComponent<Pawn>();
 
     public HexCell GetNeighbor(HexDirection direction)
     {
@@ -54,6 +57,14 @@ public class HexCell : MonoBehaviour
             Quaternion.identity,
             tmp
         );
+    }
+
+    public Pawn Spawn(string resource, Organisation owner)
+    {
+        var obj = Spawn(resource);
+        var pawn = obj.GetComponent<Pawn>();
+        pawn.owner = owner;
+        return pawn;
     }
 
     public void Clear()
