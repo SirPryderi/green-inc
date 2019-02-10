@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b363e59859f431cb57b5bac564ced08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  price: 100000
   population: 500
   maxPopulation: 100000
   growth: 0.08
