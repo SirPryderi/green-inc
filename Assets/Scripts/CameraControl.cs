@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class CameraControl : MonoBehaviour
 {
-    private const double SENSITIVITY = 0.01;
+    private const float SENSITIVITY = 0.01f;
     private Transform swivel, stick;
+    private float rotationAngle;
 
     [Header("Stick")] public float stickMinZoom;
     public float stickMaxZoom;
@@ -12,6 +13,7 @@ public class CameraControl : MonoBehaviour
     public float swivelMaxZoom;
     [Header("Speed")] public float moveSpeedMin = 50f;
     public float moveSpeedMax = 100f;
+    public float rotationSpeed = 180f;
     [Header("Zoom")] public float zoom = 1f;
 
     void Awake()
@@ -37,6 +39,12 @@ public class CameraControl : MonoBehaviour
             AdjustZoom(zoomDelta);
         }
 
+        var rotationDelta = Input.GetAxis("Rotation");
+        if (Math.Abs(rotationDelta) > SENSITIVITY)
+        {
+            AdjustRotation(rotationDelta);
+        }
+
         var xDelta = Input.GetAxis("Horizontal");
         var zDelta = Input.GetAxis("Vertical");
 
@@ -46,9 +54,26 @@ public class CameraControl : MonoBehaviour
         }
     }
 
+    private void AdjustRotation(float delta)
+    {
+        rotationAngle += delta * rotationSpeed * Time.deltaTime;
+
+        if (rotationAngle < 0f)
+        {
+            rotationAngle += 360f;
+        }
+
+        else if (rotationAngle >= 360f)
+        {
+            rotationAngle -= 360f;
+        }
+
+        transform.localRotation = Quaternion.Euler(0f, rotationAngle, 0f);
+    }
+
     void AdjustPosition(float xDelta, float zDelta)
     {
-        Vector3 direction = new Vector3(xDelta, 0f, zDelta).normalized;
+        Vector3 direction = transform.localRotation * new Vector3(xDelta, 0f, zDelta).normalized;
         var moveSpeed = Mathf.Lerp(moveSpeedMax, moveSpeedMin, zoom);
 
         if (Input.GetKey(KeyCode.LeftShift)) moveSpeed *= 2f;

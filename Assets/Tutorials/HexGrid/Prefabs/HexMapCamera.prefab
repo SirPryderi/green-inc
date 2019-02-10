@@ -81,6 +81,7 @@ MonoBehaviour:
   swivelMaxZoom: 45
   moveSpeedMin: 25
   moveSpeedMax: 150
+  rotationSpeed: 90
   zoom: 1
 --- !u!1 &4479680027880938145
 GameObject:
