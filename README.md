@@ -1,8 +1,10 @@
 # Green Inc.
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+A tale of carbon dioxide, wind turbines and improvised science.
 
+------------------------------------------------------------------
 
+## A management game
 - [ ] Game Genre: Management Game
  - [ ] Management are driven by:
     - [ ] Game of emergence
@@ -11,7 +13,9 @@
     - [ ] Progression (unlocking new stuff)
 
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------------------------------------------------
+
+## Core game mechanics
 
 - [ ] Pre-Built Scenarios
 	- [ ] This will allow the creation of comparable scores between players
@@ -19,7 +23,7 @@
 
 - [ ] Player actions
 	- [ ] Build green energy production plants
-		- [ ] Less efficent
+		- [ ] Less efficient
 		- [ ] Less CO2 footprint
 	- [ ] Build high-tech housing
 		- [ ] Less energy?
@@ -29,7 +33,7 @@
 		- [ ] Reduces CO2
 	- [ ] Build sustainable farms and crops
 	- [ ] Buy and dismantle other companies 
-    - [ ] Ultimatly fight for space once the map is full
+    - [ ] Ultimately fight for space once the map is full
 
 - [ ] Other agents
 	- [ ] Cities
@@ -39,7 +43,7 @@
 			- [ ] Food
 	- [ ] Competitor companies
 		- [ ] Electrical companies
-            - [ ] Produce eletrcity for cities
+            - [ ] Produce electricity for cities
 			- [ ] Build new (non-green) electrical plants
 			- [ ] Buy fuel from mining companies
 		- [ ] Food companies
@@ -64,9 +68,9 @@
 		- [ ] Number of population
 		- [ ] CO2 Level
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------------------------------------------------------------
 
-References and further readings:
-     - https://www.reddit.com/r/gamedev/comments/3ngmm1/what_makes_management_games_fun/
-    - Game Mechanics: Advanced Game Design
+## References and further readings
+- https://www.reddit.com/r/gamedev/comments/3ngmm1/what_makes_management_games_fun/
+- Game Mechanics: Advanced Game Design
 
