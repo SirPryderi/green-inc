@@ -6,7 +6,7 @@ A tale of carbon dioxide, wind turbines and improvised science.
 
 ## A management game
 - [ ] Game Genre: Management Game
- - [ ] Management are driven by:
+ - [ ] Management is driven by:
     - [ ] Game of emergence
     - [ ] Non-obvious strategy
     - [ ] Multiple crisis management (more than one problem, limited resource)
@@ -18,18 +18,17 @@ A tale of carbon dioxide, wind turbines and improvised science.
 ## Core game mechanics
 
 - [ ] Pre-Built Scenarios
-	- [ ] This will allow the creation of comparable scores between players
+	- [ ] This will allow for the creation of comparable scores between players
 	- [ ] Promote competitive play
 
 - [ ] Player actions
-	- [ ] Build green energy production plants
+	- [ ] Build green-energy production plants
 		- [ ] Less efficient
 		- [ ] Less CO2 footprint
 	- [ ] Build high-tech housing
 		- [ ] Less energy?
-		- [ ] Revenue from rent
+		- [ ] Higher revenue from rent
 	- [ ] Plant trees
-		- [ ] "waste" a tile
 		- [ ] Reduces CO2
 	- [ ] Build sustainable farms and crops
 	- [ ] Buy and dismantle other companies 
