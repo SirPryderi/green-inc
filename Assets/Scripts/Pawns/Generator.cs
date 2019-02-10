@@ -22,6 +22,7 @@ namespace Pawns
 
         public void StartFrame()
         {
+            owner.ConsumeMoney(upkeep * G.DeltaTime);
         }
 
         public void EndFrame()

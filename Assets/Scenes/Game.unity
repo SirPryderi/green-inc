@@ -2786,6 +2786,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeee69705358480fba5cfe132f47ed9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulldozeCost: 500
   isPaused: 0
 --- !u!1 &6309153744213877971
 GameObject:

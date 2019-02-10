@@ -1,4 +1,5 @@
 using System.Collections;
+using Pawns;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -6,6 +7,7 @@ namespace UI
 {
     public class MainUIController : MonoBehaviour
     {
+        public int bulldozeCost;
         public bool isPaused = false;
 
         private BrushType _brush = BrushType.NONE;
@@ -76,6 +78,8 @@ namespace UI
                 {
                     _brush = BrushType.NONE;
                 }
+
+                GetComponent<MainUIUpdater>().UpdateBalance();
             }
 
             yield return null;
@@ -83,16 +87,25 @@ namespace UI
 
         private void BuyPawn(HexCell cell, string pawn)
         {
+            var price = Pawn.Load(pawn).price;
+            if (G.PC.CannotAfford(price)) return;
+            G.PC.ConsumeMoney(price);
             cell.Spawn(pawn, G.PC);
         }
 
         private void BulldozeCell(HexCell cell)
         {
-            if(cell.IsClear()) return;
-            
+            // The cell has nothing to destroy
+            if (cell.IsClear()) return;
+
             // Makes sure you can only bulldoze nobody's or your pawns
-            if (cell.Pawn.owner == null || cell.Pawn.owner == G.PC)
-                cell.Clear();
+            if (cell.Pawn.owner != null && cell.Pawn.owner != G.PC) return;
+
+            // Checks if the price can be paid
+            if (G.PC.CannotAfford(bulldozeCost)) return;
+
+            G.PC.ConsumeMoney(bulldozeCost);
+            cell.Clear();
         }
     }
 }
