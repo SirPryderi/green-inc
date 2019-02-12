@@ -5,12 +5,12 @@ A tale of carbon dioxide, wind turbines and improvised science.
 ------------------------------------------------------------------
 
 ## A management game
-- [ ] Game Genre: Management Game
- - [ ] Management is driven by:
-    - [ ] Game of emergence
-    - [ ] Non-obvious strategy
-    - [ ] Multiple crisis management (more than one problem, limited resource)
-    - [ ] Progression (unlocking new stuff)
+- Game Genre: Management Game
+ - Management is driven by:
+    - Game of emergence
+    - Non-obvious strategy
+    - Multiple crisis management (more than one problem, limited resource)
+    - Progression (unlocking new stuff)
 
 
 -----------------------------------------------------------------
@@ -22,13 +22,13 @@ A tale of carbon dioxide, wind turbines and improvised science.
 	- [ ] Promote competitive play
 
 - [ ] Player actions
-	- [ ] Build green-energy production plants
-		- [ ] Less efficient
-		- [ ] Less CO2 footprint
+	- [X] Build green-energy production plants
+		- [X] Less efficient
+		- [X] Less CO2 footprint
 	- [ ] Build high-tech housing
 		- [ ] Less energy?
 		- [ ] Higher revenue from rent
-	- [ ] Plant trees
+	- [X] Plant trees
 		- [ ] Reduces CO2
 	- [ ] Build sustainable farms and crops
 	- [ ] Buy and dismantle other companies 
@@ -36,10 +36,12 @@ A tale of carbon dioxide, wind turbines and improvised science.
 
 - [ ] Other agents
 	- [ ] Cities
-		- [ ] Expand over time
+		- [X] Population grows over time
+		- [ ] Build new tiles over time
 		- [ ] Require:
-			- [ ] Energy
+			- [X] Energy
 			- [ ] Food
+			- [ ] Goods
 	- [ ] Competitor companies
 		- [ ] Electrical companies
             - [ ] Produce electricity for cities
@@ -52,6 +54,10 @@ A tale of carbon dioxide, wind turbines and improvised science.
 	- [ ] Other companies
 		- [ ] Mining companies (maybe)
             - [ ] Build new mines
+            
+- [ ] Random events/crisis
+    - [ ] Bonus to the player for certain activities
+    - [ ] Fires
 
 - [ ] Victory Conditions
     - [ ] Unless specified in a scenario, none
