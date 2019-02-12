@@ -81,6 +81,11 @@ namespace Atmo
         public void Absorb(string gas, double mass)
         {
             Gasses[gas].Mass -= mass;
+
+            if (Gasses[gas].Mass < 0)
+            {
+                Gasses[gas].Mass = 0;
+            }
         }
     }
 

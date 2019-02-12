@@ -1,3 +1,4 @@
+using System;
 using Mechanics;
 using Organisations;
 using UnityEngine;
@@ -26,7 +27,7 @@ namespace Pawns
             {
                 G.O.UnRegister(this);
             }
-            finally
+            catch (NullReferenceException)
             {
             }
         }

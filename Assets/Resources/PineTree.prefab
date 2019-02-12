@@ -45,6 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   price: 500
+  upkeep: 0
+  absorbedCo2: 50
+  producedO2: 0
 --- !u!1001 &883863012591741991
 PrefabInstance:
   m_ObjectHideFlags: 0

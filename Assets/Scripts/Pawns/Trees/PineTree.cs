@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Pawns.Trees
 {
-    public class PineTree : Pawn
+    public class PineTree : Tree
     {
         private GameObject _snow;
 
