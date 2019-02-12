@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 951472975639298946}
   - component: {fileID: 1474825920371507448}
-  - component: {fileID: 9075805081457837530}
   m_Layer: 0
   m_Name: ElectricalPlant
   m_TagString: Electricity
@@ -54,18 +53,6 @@ MonoBehaviour:
   pricePerItem: 0.000015
   co2PerItem: 0.15
   ProvidedInPastFrame: 0
---- !u!114 &9075805081457837530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3654753115611755602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b774497bf5d455fa95c68b74ee284b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &385265327338942394
 PrefabInstance:
   m_ObjectHideFlags: 0

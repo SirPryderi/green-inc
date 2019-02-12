@@ -1,13 +1,12 @@
 using System;
 using Logistics;
-using Mechanics;
 using Organisations;
 using UnityEditor;
 using UnityEngine;
 
 namespace Pawns
 {
-    public class CityTile : Pawn, IObservable
+    public class CityTile : Pawn
     {
         [Header("Demographics")] [SerializeField] [Tooltip("Total inhabitants")]
         private float population;
@@ -50,7 +49,7 @@ namespace Pawns
         public int Population => Mathf.FloorToInt(population);
         public float Growth => growth;
 
-        public void StartFrame()
+        public override void StartFrame()
         {
             _city.GenerateRevenue(this);
 
@@ -65,7 +64,7 @@ namespace Pawns
             // TODO Food
         }
 
-        public void EndFrame()
+        public override void EndFrame()
         {
             if (!energyRequester.IsSatisfied) return;
 

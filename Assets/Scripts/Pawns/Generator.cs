@@ -1,13 +1,12 @@
 using System;
 using Items;
-using Mechanics;
 using Organisations;
 using UnityEditor;
 using UnityEngine;
 
 namespace Pawns
 {
-    public class Generator : Pawn, IObservable
+    public class Generator : Pawn
     {
         [Header("Generator")] public Item item;
 
@@ -19,12 +18,12 @@ namespace Pawns
 
         private ulong provided;
 
-        public void StartFrame()
+        public override void StartFrame()
         {
             owner.ConsumeMoney(upkeep * G.DeltaTime);
         }
 
-        public void EndFrame()
+        public override void EndFrame()
         {
             ProvidedInPastFrame = provided;
             provided = 0;

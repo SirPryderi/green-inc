@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6221717666528399019}
   - component: {fileID: 3802543205877558353}
-  - component: {fileID: 1568407095568439959}
   m_Layer: 0
   m_Name: WindTurbine
   m_TagString: Electricity
@@ -52,18 +51,6 @@ MonoBehaviour:
   pricePerItem: 0.000015
   co2PerItem: 0
   ProvidedInPastFrame: 0
---- !u!114 &1568407095568439959
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 781953900391421553}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b774497bf5d455fa95c68b74ee284b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3426284554953588942
 MonoBehaviour:
   m_ObjectHideFlags: 0
