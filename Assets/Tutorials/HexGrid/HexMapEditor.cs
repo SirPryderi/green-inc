@@ -127,6 +127,9 @@ public class HexMapEditor : MonoBehaviour
             case Overlay.CITY_ATTRACTIVENESS:
                 hexGrid.evaluator = new CityAttractivenessEvaluator();
                 break;
+            case Overlay.SOIL_FERTILITY:
+                hexGrid.evaluator = new SoilFertilityEvaluator();
+                break;
             default:
                 hexGrid.evaluator = new CellColourEvaluator();
                 break;

@@ -97,6 +97,9 @@ public class HexGrid : MonoBehaviour
                 case Overlay.CITY_ATTRACTIVENESS:
                     label.text = $"{evaluator.Evaluate(cell) * 100:0.##}\u00A0%";
                     break;
+                case Overlay.SOIL_FERTILITY:
+                    label.text = $"{evaluator.Evaluate(cell) * 100:0.##}\u00A0%";
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
