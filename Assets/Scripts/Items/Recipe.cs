@@ -12,7 +12,7 @@ namespace Items
         [Range(1, 999)] public ushort amount;
     }
 
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = "Items/Recipe")]
     public class Recipe : ScriptableObject
     {
         public List<ItemAmount> ingredients;
