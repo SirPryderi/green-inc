@@ -107,6 +107,9 @@ namespace UI
                     case BrushType.TREE:
                         BuyPawn(cell, "Pawns/Trees/PineTree");
                         break;
+                    case BrushType.CROP:
+                        BuyPawn(cell, "Pawns/Crop");
+                        break;
                     case BrushType.NONE:
                     default:
                         break;

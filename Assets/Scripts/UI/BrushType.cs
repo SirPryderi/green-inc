@@ -7,5 +7,6 @@ namespace UI
         WIND_TURBINE,
         COAL_PLANT,
         TREE,
+        CROP,
     }
 }
