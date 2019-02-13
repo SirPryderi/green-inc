@@ -1,11 +1,15 @@
 using System;
+using System.Linq;
 using UnityEngine;
 
 namespace Evaluators
 {
     public abstract class Evaluator
     {
-        public abstract Color CellToColour(HexCell value);
+        public virtual Color CellToColour(HexCell value)
+        {
+            return HeatMap(Evaluate(value));
+        }
 
         public abstract float Evaluate(HexCell cell);
 
@@ -37,6 +41,20 @@ namespace Evaluators
         public static void SortAll(Tuple<float, HexCell>[] dictionary)
         {
             Array.Sort(dictionary, (a, b) => (int) ((b.Item1 - a.Item1) * 1000));
+        }
+
+        protected static int NumberOfCoastalNeighbours(HexCell cell)
+        {
+            return cell.neighbors.Count(neighbor => neighbor != null && neighbor.HasWater);
+        }
+
+        protected static int NumberOfSameHeightNeighbours(HexCell cell)
+        {
+            var numberOfTilesAtSameHeight = cell.neighbors.Count
+            (
+                neighbor => (neighbor != null && neighbor.Elevation == cell.Elevation)
+            );
+            return numberOfTilesAtSameHeight;
         }
     }
 }

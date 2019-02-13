@@ -1,15 +1,10 @@
-using System.Linq;
 using UnityEngine;
+using Tree = Pawns.Trees.Tree;
 
 namespace Evaluators
 {
     public class MineEvaluator : Evaluator
     {
-        public override Color CellToColour(HexCell value)
-        {
-            return HeatMap(Evaluate(value));
-        }
-
         public override float Evaluate(HexCell cell)
         {
             if (cell.HasWater) return 0f;
@@ -30,12 +25,7 @@ namespace Evaluators
 
             score += MathExtension.GaussianProbability(cell.Elevation, 3, 2) * 35;
 
-            var numberOfTilesAtSameHeight = cell.neighbors.Count
-            (
-                neighbor => (neighbor != null && neighbor.Elevation == cell.Elevation)
-            );
-
-            score += MathExtension.GaussianProbability(numberOfTilesAtSameHeight, 5, 2) * 30;
+            score += MathExtension.GaussianProbability(NumberOfSameHeightNeighbours(cell), 5, 2) * 30;
 
             return Mathf.Clamp01(score / 100f);
         }

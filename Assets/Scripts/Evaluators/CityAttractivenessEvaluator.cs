@@ -5,11 +5,6 @@ namespace Evaluators
 {
     public class CityAttractivenessEvaluator : Evaluator
     {
-        public override Color CellToColour(HexCell value)
-        {
-            return HeatMap(Evaluate(value));
-        }
-
         public override float Evaluate(HexCell cell)
         {
             if (cell.HasWater) return 0f;
@@ -20,7 +15,7 @@ namespace Evaluators
 
             score += MathExtension.GaussianProbability(cell.Elevation, 1, 2) * 10;
 
-            var numberOfCoastalTiles = cell.neighbors.Count(neighbor => neighbor != null && neighbor.HasWater);
+            var numberOfCoastalTiles = NumberOfCoastalNeighbours(cell);
 
             if (numberOfCoastalTiles == 6)
             {
@@ -31,12 +26,7 @@ namespace Evaluators
                 score += numberOfCoastalTiles * 5f;
             }
 
-            var numberOfTilesAtSameHeight = cell.neighbors.Count
-            (
-                neighbor => (neighbor != null && neighbor.Elevation == cell.Elevation)
-            );
-
-            score += numberOfTilesAtSameHeight * 5f;
+            score += NumberOfSameHeightNeighbours(cell) * 5f;
 
             return Mathf.Clamp(score / 100f, 0f, 1f);
         }
