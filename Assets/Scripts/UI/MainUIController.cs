@@ -99,13 +99,13 @@ namespace UI
                         BulldozeCell(cell);
                         break;
                     case BrushType.WIND_TURBINE:
-                        BuyPawn(cell, "WindTurbine");
+                        BuyPawn(cell, "Pawns/Electrical/WindTurbine");
                         break;
                     case BrushType.COAL_PLANT:
-                        BuyPawn(cell, "ElectricalPlant");
+                        BuyPawn(cell, "Pawns/Electrical/ElectricalPlant");
                         break;
                     case BrushType.TREE:
-                        BuyPawn(cell, "PineTree");
+                        BuyPawn(cell, "Pawns/Trees/PineTree");
                         break;
                     case BrushType.NONE:
                     default:
