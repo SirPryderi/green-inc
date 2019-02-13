@@ -58,7 +58,7 @@ public class HexGridGenerator
             var tile = results[i].Item2;
 
             tile.Clear();
-            tile.Spawn("CoalMine");
+            tile.Spawn("Pawns/CoalMine");
         }
     }
 
@@ -79,7 +79,7 @@ public class HexGridGenerator
 
             var tile = results[0].Item2;
             tile.Clear();
-            var cityTile = tile.Spawn("City");
+            var cityTile = tile.Spawn("Pawns/City");
             cityTile.GetComponent<CityTile>().City = city;
 
             // Makes nearby cells less attractive
@@ -118,7 +118,7 @@ public class HexGridGenerator
 
             if (Random.value < MathExtension.GaussianProbability(cell.Temperature, 20, 5))
             {
-                var tree = cell.Spawn("BroadLeafTree");
+                var tree = cell.Spawn("Pawns/Trees/BroadLeafTree");
 
                 var scale = Random.Range(0.7f, 1.5f);
 
@@ -128,7 +128,7 @@ public class HexGridGenerator
             }
             else if (Random.value < MathExtension.GaussianProbability(cell.Temperature, 7, 5))
             {
-                var tree = cell.Spawn("PineTree");
+                var tree = cell.Spawn("Pawns/Trees/PineTree");
 
                 var scale = Random.Range(0.7f, 1.5f);
 
@@ -138,7 +138,7 @@ public class HexGridGenerator
             }
             else if (Random.value + 0.5f < MathExtension.GaussianProbability(cell.Temperature, 35, 10))
             {
-                var tree = cell.Spawn("Cactus");
+                var tree = cell.Spawn("Pawns/Trees/Cactus");
 
                 var scale = Random.Range(1f, 1.5f);
 
