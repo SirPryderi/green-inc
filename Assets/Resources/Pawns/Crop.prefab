@@ -45,10 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   price: 1000
-  upkeep: 1
+  upkeep: 2
   item: {fileID: 11400000, guid: be48f7ec558b819c0b738de7d328079f, type: 2}
-  itemsPerHour: 150
-  pricePerItem: 1
+  itemsPerHour: 500
+  pricePerItem: 0.01
   co2PerItem: 10
   ProvidedInPastFrame: 0
 --- !u!1001 &5115406768147214214

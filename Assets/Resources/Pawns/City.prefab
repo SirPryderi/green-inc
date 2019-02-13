@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1322775824517159773}
   - component: {fileID: 6940190520832214989}
   - component: {fileID: 919117325750433748}
+  - component: {fileID: 6077319122452494683}
   m_Layer: 0
   m_Name: City
   m_TagString: Untagged
@@ -53,6 +54,8 @@ MonoBehaviour:
   emissionsPerCapita: 0.75
   wattPerCapita: 600
   energyRequester: {fileID: 919117325750433748}
+  foodPerCapita: 0.5
+  foodRequester: {fileID: 6077319122452494683}
   averageWage: 10
   taxPercentage: 0.2
 --- !u!114 &919117325750433748
@@ -68,6 +71,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 8dd2baed12231a63c9b7fe40ac8e2165, type: 2}
+  parent: {fileID: 6940190520832214989}
+  requested: 0
+  satisfied: 0
+--- !u!114 &6077319122452494683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2282143484216837659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 199e34b7abb7405da68b9dc51eca2b69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: be48f7ec558b819c0b738de7d328079f, type: 2}
   parent: {fileID: 6940190520832214989}
   requested: 0
   satisfied: 0

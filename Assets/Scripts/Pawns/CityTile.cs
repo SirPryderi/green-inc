@@ -26,6 +26,12 @@ namespace Pawns
         [SerializeField] [Tooltip("Requester Object")]
         private Requester energyRequester;
 
+        [Header("Food")] [SerializeField] [Tooltip("Consumed units of food each hour")]
+        private float foodPerCapita;
+
+        [SerializeField] [Tooltip("Requester Object")]
+        private Requester foodRequester;
+
         [Header("Financial")] [SerializeField] [Tooltip("Average wage per hour")]
         private float averageWage;
 
@@ -61,7 +67,9 @@ namespace Pawns
             var requiredElectricity = Convert.ToUInt64(G.DeltaTime * wattPerCapita * Population);
             energyRequester.Request(requiredElectricity);
 
-            // TODO Food
+            // Food
+            var requiredFood = Convert.ToUInt64(G.DeltaTime * foodPerCapita * Population);
+            foodRequester.Request(requiredFood);
         }
 
         public override void EndFrame()
@@ -84,7 +92,9 @@ namespace Pawns
         {
             if (City != null)
             {
-                var text = $"{City.Name}\nPop: {Population}\nEnergy: {energyRequester.SatisfiedPerc * 100}%";
+                var text = $"{City.Name}\nPop: {Population}\n" +
+                           $"Energy: {energyRequester.SatisfiedPerc * 100:0.##}%\n" +
+                           $"Food: {foodRequester.SatisfiedPerc * 100:0.##}%";
 
                 Handles.Label(transform.position, text);
             }
