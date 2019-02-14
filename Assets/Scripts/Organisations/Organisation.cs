@@ -1,4 +1,5 @@
 using System;
+using Pawns;
 
 namespace Organisations
 {
@@ -41,6 +42,14 @@ namespace Organisations
             }
 
             _money -= amount;
+        }
+
+        public void BuyPawn(HexCell cell, string pawn)
+        {
+            var price = Pawn.Load(pawn).price;
+            if (CannotAfford(price)) return;
+            ConsumeMoney(price);
+            cell.Spawn(pawn, this);
         }
     }
 }

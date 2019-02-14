@@ -128,10 +128,7 @@ namespace UI
 
         private void BuyPawn(HexCell cell, string pawn)
         {
-            var price = Pawn.Load(pawn).price;
-            if (G.PC.CannotAfford(price)) return;
-            G.PC.ConsumeMoney(price);
-            cell.Spawn(pawn, G.PC);
+            G.PC.BuyPawn(cell, pawn);
         }
 
         private void BulldozeCell(HexCell cell)
