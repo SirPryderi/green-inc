@@ -1,4 +1,5 @@
 using System;
+using cakeslice;
 using Mechanics;
 using Organisations;
 using UnityEngine;
@@ -19,6 +20,22 @@ namespace Pawns
             ParentCell = transform.parent.GetComponent<HexCell>();
             Mesh = transform.Find("mesh").gameObject;
             G.O.Register(this);
+        }
+
+        public void Focus()
+        {
+            var meshFilters = GetComponentsInChildren<MeshFilter>();
+
+            foreach (var filter in meshFilters)
+            {
+                filter.gameObject.AddComponent<Outline>();
+            }
+        }
+
+        public void UnFocus()
+        {
+            var outlines = GetComponentsInChildren<Outline>();
+            foreach (var outline in outlines) Destroy(outline);
         }
 
         private void OnDestroy()

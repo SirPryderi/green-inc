@@ -1,4 +1,4 @@
-using Atmo;
+using UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,7 +17,10 @@ public class GameManager : Singleton<GameManager>
     {
         if (Input.GetKeyDown("escape"))
         {
-            SceneManager.LoadSceneAsync(0);
+            if (FindObjectOfType<MainUIController>() == null)
+            {
+                SceneManager.LoadSceneAsync(0);
+            }
         }
     }
 }

@@ -12,6 +12,11 @@ namespace UI
 
         private BrushType _brush = BrushType.NONE;
 
+        public Texture2D destroyCursor;
+        public Texture2D buildCursor;
+
+        public Pawn Focused { get; private set; }
+
         public void TogglePause()
         {
             isPaused = !isPaused;
@@ -27,6 +32,19 @@ namespace UI
         public void SetBrush(BrushType brush)
         {
             _brush = brush;
+
+            switch (brush)
+            {
+                case BrushType.NONE:
+                    Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+                    break;
+                case BrushType.BULLDOZER:
+                    Cursor.SetCursor(destroyCursor, Vector2.zero, CursorMode.Auto);
+                    break;
+                default:
+                    Cursor.SetCursor(buildCursor, Vector2.zero, CursorMode.Auto);
+                    break;
+            }
         }
 
         public void SetBrush(int brush)
@@ -41,10 +59,10 @@ namespace UI
                 HandleKeyInput();
             }
 
-            if (_brush == BrushType.NONE)
+            if (EventSystem.current.IsPointerOverGameObject())
                 return;
 
-            if (!EventSystem.current.IsPointerOverGameObject() && Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButton(0) || Input.GetMouseButton(1) || Input.GetMouseButton(2))
             {
                 StartCoroutine(nameof(HandleInput));
             }
@@ -52,6 +70,12 @@ namespace UI
 
         private void HandleKeyInput()
         {
+            if (Input.GetKeyDown("escape"))
+            {
+                SetBrush(BrushType.NONE);
+                Focus(null);
+            }
+            
             if (Input.GetKeyDown(KeyCode.F1))
             {
                 G.O.AdvanceTime(1);
@@ -91,43 +115,59 @@ namespace UI
 
             var cell = G.MP.Grid.GetCell(hit.point);
 
-            if (_brush == BrushType.BULLDOZER || cell.IsClear())
+            switch (_brush)
             {
-                switch (_brush)
-                {
-                    case BrushType.BULLDOZER:
+                case BrushType.BULLDOZER:
+                    if (Input.GetMouseButton(0))
                         BulldozeCell(cell);
-                        break;
-                    case BrushType.WIND_TURBINE:
+                    break;
+                case BrushType.WIND_TURBINE:
+                    if (Input.GetMouseButtonDown(0))
                         BuyPawn(cell, "Pawns/Electrical/WindTurbine");
-                        break;
-                    case BrushType.COAL_PLANT:
+                    break;
+                case BrushType.COAL_PLANT:
+                    if (Input.GetMouseButtonDown(0))
                         BuyPawn(cell, "Pawns/Electrical/ElectricalPlant");
-                        break;
-                    case BrushType.TREE:
+                    break;
+                case BrushType.TREE:
+                    if (Input.GetMouseButton(0))
                         BuyPawn(cell, "Pawns/Trees/PineTree");
-                        break;
-                    case BrushType.CROP:
+                    break;
+                case BrushType.CROP:
+                    if (Input.GetMouseButtonDown(0))
                         BuyPawn(cell, "Pawns/Crop");
-                        break;
-                    case BrushType.NONE:
-                    default:
-                        break;
-                }
-
-                if (!Input.GetKey(KeyCode.LeftShift))
-                {
-                    _brush = BrushType.NONE;
-                }
-
-                GetComponent<MainUIUpdater>().UpdateBalance();
+                    break;
+                case BrushType.NONE:
+                    if (Input.GetMouseButtonDown(0))
+                        Focus(cell.Pawn);
+                    break;
+                default:
+                    break;
             }
+
+            if (!Input.GetKey(KeyCode.LeftShift))
+            {
+                SetBrush(BrushType.NONE);
+            }
+
+            GetComponent<MainUIUpdater>().UpdateBalance();
 
             yield return null;
         }
 
+        public void Focus(Pawn pawn)
+        {
+            if (Focused != null) Focused.UnFocus();
+
+            Focused = pawn;
+
+            if (pawn != null) Focused.Focus();
+        }
+
         private void BuyPawn(HexCell cell, string pawn)
         {
+            if (!cell.IsClear()) return;
+
             G.PC.BuyPawn(cell, pawn);
         }
 

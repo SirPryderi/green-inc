@@ -34,7 +34,7 @@ public class HexCell : MonoBehaviour
     public float Latitude => coordinates.Z.Remap(0, grid.height - 1, -90, 90);
     public float Temperature => GameManager.Instance.MapManager.ClimateManager.GetCellTemperature(this);
     public bool HasWater => Elevation == 0;
-    public Pawn Pawn => transform.GetChild(0)?.GetComponent<Pawn>();
+    public Pawn Pawn => transform.childCount > 0 ? transform.GetChild(0).GetComponent<Pawn>() : null;
     public bool IsClear() => transform.childCount == 0;
 
     public HexCell GetNeighbor(HexDirection direction)
