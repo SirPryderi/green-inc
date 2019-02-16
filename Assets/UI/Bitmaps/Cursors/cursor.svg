@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="0 0 51 51"
+   width="51"
+   height="51"
+   version="1.1"
+   id="svg11"
+   sodipodi:docname="cursor.svg"
+   inkscape:export-filename="/home/vittorio/Downloads/cursor (1).svg.png"
+   inkscape:export-xdpi="45.18"
+   inkscape:export-ydpi="45.18"
+   inkscape:version="0.92.1 r15371">
+  <metadata
+     id="metadata15">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1440"
+     inkscape:window-height="836"
+     id="namedview13"
+     showgrid="false"
+     inkscape:zoom="9.254902"
+     inkscape:cx="23.651997"
+     inkscape:cy="22.276447"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="Hand Cursors - Claudio Guglieri" />
+  <defs
+     id="defs5">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="cp1">
+      <path
+         d="M-227 -275L373 -275L373 325L-227 325Z"
+         id="path2" />
+    </clipPath>
+  </defs>
+  <style
+     id="style7">
+		tspan { white-space:pre }
+		.shp0 { fill: #ffffff;stroke: #000000;paint-order:stroke fill markers;stroke-width: 6 } 
+	</style>
+  <g
+     id="Hand Cursors - Claudio Guglieri"
+     clip-path="url(#cp1)">
+    <path
+       id="cursor"
+       class="shp0"
+       d="M 47.143645,43.687893 33.837399,30.381648 c 0.335708,-0.244152 0.671416,-0.47813 0.986778,-0.65107 l 10.640927,-5.981707 c 1.851481,-1.037643 1.770097,-2.553416 -0.17294,-3.377426 L 5.3937727,3.5148329 C 3.4507353,2.6908222 2.535168,3.6165626 3.3490056,5.549427 l 16.8566124,39.89839 c 0.824011,1.943038 2.339784,2.024421 3.377427,0.172941 l 5.981706,-10.6511 c 0.172941,-0.30519 0.396746,-0.630725 0.630724,-0.95626 l 13.306246,13.306246 c 0.915567,0.915567 2.472032,0.844356 3.468983,-0.162768 1.007124,-0.996951 1.088508,-2.553415 0.172941,-3.468983 z"
+       inkscape:connector-curvature="0"
+       style="fill:#ffffff;stroke:#000000;stroke-width:6.10378218;paint-order:stroke fill markers"
+       sodipodi:nodetypes="cccccccccccsccc" />
+  </g>
+</svg>
