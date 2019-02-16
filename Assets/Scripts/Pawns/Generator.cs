@@ -16,6 +16,8 @@ namespace Pawns
 
         [HideInInspector] public ulong ProvidedInPastFrame;
 
+        public float ProductivityPercentage => (float) ProvidedInPastFrame / G.DeltaTime / itemsPerHour;
+
         private ulong provided;
 
         public override void StartFrame()

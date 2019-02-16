@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using System.Threading;
+using AI;
 using UnityEngine;
 
 namespace Mechanics
@@ -43,6 +43,8 @@ namespace Mechanics
             }
 
             Object.FindObjectOfType<HexGrid>().Refresh();
+            
+            CompanyController.ControlAll();
         }
     }
 }

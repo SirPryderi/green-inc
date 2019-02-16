@@ -25,7 +25,7 @@ public class MapManager
 
         Observer = new Observer();
         Orgs.PlayerCompany = new Company("Green Inc.", CompanyType.GENERIC, 20_000);
-        Orgs.Companies.Add(new Company("Energy Inc.", CompanyType.ELECTRICAL, 10_000));
+        Orgs.Companies.Add(new Company("Energy Inc.", CompanyType.ELECTRICAL, 50_000));
         Orgs.Companies.Add(new Company("Food Inc.", CompanyType.FOOD, 10_000));
     }
 

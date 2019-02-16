@@ -16,6 +16,8 @@ namespace Organisations
 
         public bool CanAfford(decimal amount) => amount <= _money;
         public bool CannotAfford(decimal amount) => !CanAfford(amount);
+        public bool CanAfford(string pawn) => CanAfford(Pawn.Load(pawn).price);
+        public bool CannotAfford(string pawn) => !CanAfford(pawn);
 
         public Organisation(string name, decimal startingMoney = 0)
         {
