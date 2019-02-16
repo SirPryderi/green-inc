@@ -31,14 +31,14 @@ namespace Organisations
             organisation._money += amount;
         }
 
-        public void ConsumeMoney(decimal amount)
+        public void ConsumeMoney(decimal amount, bool allowNegative = false)
         {
             if (amount < 0)
             {
                 throw new ArgumentException("Amount must be positive", nameof(amount));
             }
 
-            if (!CanAfford(amount))
+            if (!allowNegative && !CanAfford(amount))
             {
                 throw new ArgumentException($"Not enough balance {Money:## ###.00}$ < {amount}", nameof(amount));
             }

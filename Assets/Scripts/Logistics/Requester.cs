@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Items;
@@ -33,12 +34,18 @@ namespace Logistics
 
             foreach (var provider in providers)
             {
-                satisfied += provider.ProduceItemsFor(requested - satisfied, parent.owner);
-
-                if (satisfied >= requested)
+                try
                 {
+                    satisfied += provider.ProduceItemsFor(requested - satisfied, parent.owner);
+
+                    if (satisfied < requested) continue;
+
                     IsSatisfied = true;
                     break;
+                }
+                catch (ArgumentException)
+                {
+                    Debug.LogWarning("Payment failed.");
                 }
             }
         }

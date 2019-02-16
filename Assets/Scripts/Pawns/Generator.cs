@@ -22,7 +22,7 @@ namespace Pawns
 
         public override void StartFrame()
         {
-            owner.ConsumeMoney(upkeep * G.DeltaTime);
+            owner.ConsumeMoney(upkeep * G.DeltaTime, true);
         }
 
         public override void EndFrame()
