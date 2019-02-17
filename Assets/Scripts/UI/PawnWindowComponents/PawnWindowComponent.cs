@@ -15,7 +15,12 @@ namespace UI.PawnWindowComponents
 
         protected static string FormatEmissions(float emissions)
         {
-            return $"{emissions:0.00} kg/h";
+            if (emissions > 1000)
+            {
+                return $"{emissions/1000:N} tonnes/h";
+            } 
+            
+            return $"{emissions:N} kg/h";
         }
     }
 }

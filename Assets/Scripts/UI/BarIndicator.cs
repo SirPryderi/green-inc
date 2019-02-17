@@ -11,6 +11,7 @@ namespace UI
 
         [SerializeField] private Slider slider;
         [SerializeField] private Image progressBar;
+        [SerializeField] private Text text;
 
         public float Value
         {
@@ -21,6 +22,12 @@ namespace UI
                 progressBar.color = value < 1f ? Color.Lerp(bad, warn, value) : good;
                 slider.value = value;
             }
+        }
+
+        public string Text
+        {
+            get => text.text;
+            set => text.text = value;
         }
     }
 }

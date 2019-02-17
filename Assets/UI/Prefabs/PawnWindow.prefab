@@ -18,6 +18,8 @@ MonoBehaviour:
     type: 3}
   requesterComponent: {fileID: 4144127120381909718, guid: 7ec92ae476973fe2ea4a119756912410,
     type: 3}
+  generatorComponent: {fileID: 1318643845140644981, guid: 2a958295e45e589438bc6f412f701d00,
+    type: 3}
 --- !u!1001 &564345242235646129
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -188,12 +190,12 @@ PrefabInstance:
     - target: {fileID: 1598669977028387165, guid: ae65b5395709c0be4a139c9108964ee2,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 1598669977028387165, guid: ae65b5395709c0be4a139c9108964ee2,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 280
       objectReference: {fileID: 0}
     - target: {fileID: 1598669977028387165, guid: ae65b5395709c0be4a139c9108964ee2,
         type: 3}
