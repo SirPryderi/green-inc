@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using AI;
+using UI;
 using UnityEngine;
 
 namespace Mechanics
@@ -43,8 +44,8 @@ namespace Mechanics
             }
 
             Object.FindObjectOfType<HexGrid>().Refresh();
-            
             CompanyController.ControlAll();
+            PawnWindow.RefreshAll();
         }
     }
 }

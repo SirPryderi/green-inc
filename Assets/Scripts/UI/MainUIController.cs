@@ -15,6 +15,9 @@ namespace UI
         public Texture2D destroyCursor;
         public Texture2D buildCursor;
 
+        public Canvas canvas;
+        public PawnWindow pawnWindowPrefab;
+
         public Pawn Focused { get; private set; }
 
         public void TogglePause()
@@ -72,10 +75,9 @@ namespace UI
         {
             if (Input.GetKeyDown("escape"))
             {
-                SetBrush(BrushType.NONE);
-                Focus(null);
+                HandleEscapeButton();
             }
-            
+
             if (Input.GetKeyDown(KeyCode.F1))
             {
                 G.O.AdvanceTime(1);
@@ -105,6 +107,35 @@ namespace UI
             {
                 G.O.AdvanceTime(24 * 365 * 100);
             }
+        }
+
+        private void HandleEscapeButton()
+        {
+            var window = FindObjectOfType<Window>();
+
+            if (window != null)
+            {
+                // Close one window and absorb the event
+                Destroy(window.gameObject);
+                return;
+            }
+
+            if (_brush != BrushType.NONE)
+            {
+                // Unset the brush and absorb the event
+                SetBrush(BrushType.NONE);
+                return;
+            }
+
+            if (Focused != null)
+            {
+                // Unset the focus and absorb the event
+                Focus(null);
+                return;
+            }
+
+            // Finally, if nothing has been done, quit to main menu.
+            GameManager.ToMainMenu();
         }
 
         private IEnumerator HandleInput()
@@ -161,7 +192,27 @@ namespace UI
 
             Focused = pawn;
 
-            if (pawn != null) Focused.Focus();
+            CloseAllPawnWindows();
+
+            if (pawn != null)
+            {
+                OpenPawnWindow(pawn);
+                Focused.Focus();
+            }
+        }
+
+        private void OpenPawnWindow(Pawn pawn)
+        {
+            pawnWindowPrefab.pawn = pawn;
+            Instantiate(pawnWindowPrefab, canvas.transform);
+        }
+
+        private static void CloseAllPawnWindows()
+        {
+            foreach (var components in FindObjectsOfType<PawnWindow>())
+            {
+                Destroy(components.gameObject);
+            }
         }
 
         private void BuyPawn(HexCell cell, string pawn)
