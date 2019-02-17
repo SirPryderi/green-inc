@@ -19,8 +19,13 @@ public class GameManager : Singleton<GameManager>
         {
             if (FindObjectOfType<MainUIController>() == null)
             {
-                SceneManager.LoadSceneAsync(0);
+                ToMainMenu();
             }
         }
+    }
+
+    public static void ToMainMenu()
+    {
+        SceneManager.LoadSceneAsync(0);
     }
 }
