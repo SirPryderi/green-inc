@@ -51,7 +51,7 @@ MonoBehaviour:
   item: {fileID: 11400000, guid: 8dd2baed12231a63c9b7fe40ac8e2165, type: 2}
   itemsPerHour: 5000000
   pricePerItem: 0.000015
-  co2PerItem: 0.15
+  co2PerItem: 0.001
   ProvidedInPastFrame: 0
 --- !u!1001 &385265327338942394
 PrefabInstance:
