@@ -16,9 +16,10 @@ namespace Pawns
 
         [HideInInspector] public ulong ProvidedInPastFrame;
 
-        public float ProductivityPercentage => (float) ProvidedInPastFrame / G.DeltaTime / itemsPerHour;
+        public float ProductivityPercentage => ProducedInPastHour / itemsPerHour;
+        public float ProducedInPastHour => (float) ProvidedInPastFrame / G.DeltaTime;
 
-        private ulong provided;
+        private ulong _provided;
 
         public override void StartFrame()
         {
@@ -27,20 +28,20 @@ namespace Pawns
 
         public override void EndFrame()
         {
-            ProvidedInPastFrame = provided;
-            provided = 0;
+            ProvidedInPastFrame = _provided;
+            _provided = 0;
         }
 
         public ulong ProduceItemsFor(ulong amount, Organisation org)
         {
-            provided += amount;
+            _provided += amount;
 
             var providedLimit = Convert.ToUInt64(itemsPerHour * G.DeltaTime);
 
-            if (provided > providedLimit)
+            if (_provided > providedLimit)
             {
-                amount = amount - (provided - providedLimit);
-                provided = providedLimit;
+                amount = amount - (_provided - providedLimit);
+                _provided = providedLimit;
             }
 
             if (amount == 0)
