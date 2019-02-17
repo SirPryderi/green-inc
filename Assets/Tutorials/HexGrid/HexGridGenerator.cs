@@ -74,12 +74,15 @@ public class HexGridGenerator
                 throw new Exception("Unable to find suitable tile for city.");
             }
 
-            var city = new City($"City {i}");
+            var cityName = $"City #{i + 1}";
+
+            var city = new City(cityName);
             G.MP.Orgs.Cities.Add(city);
 
             var tile = results[0].Item2;
             tile.Clear();
             var cityTile = tile.Spawn("Pawns/City");
+            cityTile.name = cityName;
             cityTile.GetComponent<CityTile>().City = city;
 
             // Makes nearby cells less attractive
