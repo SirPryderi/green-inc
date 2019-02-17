@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Food
   m_EditorClassIdentifier: 
   name: Food
+  sprite: {fileID: 21300000, guid: 09c4b7dad7f469c64847040b883b4b6d, type: 3}
