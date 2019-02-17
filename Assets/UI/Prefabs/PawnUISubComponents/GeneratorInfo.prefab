@@ -101,7 +101,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: d404c04ac11f8f0b7aa669f4d4a2d9e8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d49e70dc5f54a44c383df13bc775bfe8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -546,6 +546,16 @@ PrefabInstance:
       propertyPath: m_FillRect
       value: 
       objectReference: {fileID: 8885170777966008333}
+    - target: {fileID: 2081131318423714373, guid: 05ec1e0673127ecbabb514c1b973fffd,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2081131318423714373, guid: 05ec1e0673127ecbabb514c1b973fffd,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4981709548117855003, guid: 05ec1e0673127ecbabb514c1b973fffd,
         type: 3}
       propertyPath: slider
