@@ -4,6 +4,7 @@ namespace UI
     {
         NONE,
         BULLDOZER,
+        BUY,
         WIND_TURBINE,
         COAL_PLANT,
         TREE,

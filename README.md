@@ -31,7 +31,7 @@ A tale of carbon dioxide, wind turbines and improvised science.
 	- [X] Plant trees
 		- [X] Reduces CO2
 	- [ ] Build sustainable farms and crops
-	- [ ] Buy and dismantle other companies 
+	- [X] Buy and dismantle other companies 
     - [ ] Ultimately fight for space once the map is full
 
 - [ ] Other agents

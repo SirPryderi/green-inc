@@ -14,6 +14,7 @@ namespace UI
 
         public Texture2D destroyCursor;
         public Texture2D buildCursor;
+        public Texture2D buyCursor;
 
         public Canvas canvas;
         public PawnWindow pawnWindowPrefab;
@@ -43,6 +44,9 @@ namespace UI
                     break;
                 case BrushType.BULLDOZER:
                     Cursor.SetCursor(destroyCursor, Vector2.zero, CursorMode.Auto);
+                    break;
+                case BrushType.BUY:
+                    Cursor.SetCursor(buyCursor, Vector2.zero, CursorMode.Auto);
                     break;
                 default:
                     Cursor.SetCursor(buildCursor, Vector2.zero, CursorMode.Auto);
@@ -152,27 +156,29 @@ namespace UI
                     if (Input.GetMouseButton(0))
                         BulldozeCell(cell);
                     break;
+                case BrushType.BUY:
+                    if (Input.GetMouseButton(0))
+                        BuyPawn(cell);
+                    break;
                 case BrushType.WIND_TURBINE:
                     if (Input.GetMouseButtonDown(0))
-                        BuyPawn(cell, "Pawns/Electrical/WindTurbine");
+                        BuyNewPawn(cell, "Pawns/Electrical/WindTurbine");
                     break;
                 case BrushType.COAL_PLANT:
                     if (Input.GetMouseButtonDown(0))
-                        BuyPawn(cell, "Pawns/Electrical/ElectricalPlant");
+                        BuyNewPawn(cell, "Pawns/Electrical/ElectricalPlant");
                     break;
                 case BrushType.TREE:
                     if (Input.GetMouseButton(0))
-                        BuyPawn(cell, "Pawns/Trees/PineTree");
+                        BuyNewPawn(cell, "Pawns/Trees/PineTree");
                     break;
                 case BrushType.CROP:
                     if (Input.GetMouseButtonDown(0))
-                        BuyPawn(cell, "Pawns/Crop");
+                        BuyNewPawn(cell, "Pawns/Crop");
                     break;
                 case BrushType.NONE:
                     if (Input.GetMouseButtonDown(0))
                         Focus(cell.Pawn);
-                    break;
-                default:
                     break;
             }
 
@@ -215,7 +221,24 @@ namespace UI
             }
         }
 
-        private void BuyPawn(HexCell cell, string pawn)
+        private static void BuyPawn(HexCell cell)
+        {
+            if (cell.IsClear()) return;
+
+            var pawn = cell.Pawn;
+
+            if (pawn.owner == G.PC) return;
+
+            var price = pawn.price * 10;
+
+            if (G.PC.CannotAfford(price)) return;
+
+            G.PC.TransferMoney(pawn.owner, price);
+
+            pawn.owner = G.PC;
+        }
+
+        private static void BuyNewPawn(HexCell cell, string pawn)
         {
             if (!cell.IsClear()) return;
 
