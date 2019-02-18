@@ -81,7 +81,7 @@ public class HexGridGenerator
 
             var tile = results[0].Item2;
             tile.Clear();
-            var cityTile = tile.Spawn("Pawns/City");
+            var cityTile = tile.Spawn("Pawns/City", city);
             cityTile.name = cityName;
             cityTile.GetComponent<CityTile>().City = city;
 
