@@ -1,5 +1,3 @@
-using System;
-
 namespace Items.Storages.Inventories
 {
     public class SingleItemInventory : BaseInventory
@@ -45,11 +43,6 @@ namespace Items.Storages.Inventories
         public override bool IsFull()
         {
             return amount >= capacity;
-        }
-
-        public override bool Transfer(IStorage storage, Item item, ulong quantity = 1ul)
-        {
-            throw new NotImplementedException();
         }
     }
 }

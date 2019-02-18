@@ -12,6 +12,5 @@ namespace Items.Storages.Inventories
         public abstract bool Add(Item item, ulong quantity = 1);
         public abstract bool CanAdd(Item item, ulong quantity = 1);
         public abstract bool IsFull();
-        public abstract bool Transfer(IStorage storage, Item item, ulong quantity = 1ul);
     }
 }
