@@ -69,6 +69,7 @@ namespace Pawns
 
         public virtual void EndFrame()
         {
+            owner.ConsumeMoney(upkeep * G.DeltaTime, true);
         }
 
         public virtual bool CanBePlacedOn(HexCell cell)

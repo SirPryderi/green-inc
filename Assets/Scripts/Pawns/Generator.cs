@@ -21,11 +21,6 @@ namespace Pawns
 
         private ulong _provided;
 
-        public override void StartFrame()
-        {
-            owner.ConsumeMoney(upkeep * G.DeltaTime, true);
-        }
-
         public override void EndFrame()
         {
             ProvidedInPastFrame = _provided;
