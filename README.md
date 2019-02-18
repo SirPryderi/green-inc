@@ -29,7 +29,7 @@ A tale of carbon dioxide, wind turbines and improvised science.
 		- [ ] Less energy?
 		- [ ] Higher revenue from rent
 	- [X] Plant trees
-		- [ ] Reduces CO2
+		- [X] Reduces CO2
 	- [ ] Build sustainable farms and crops
 	- [ ] Buy and dismantle other companies 
     - [ ] Ultimately fight for space once the map is full
@@ -40,20 +40,43 @@ A tale of carbon dioxide, wind turbines and improvised science.
 		- [ ] Build new tiles over time
 		- [ ] Require:
 			- [X] Energy
-			- [ ] Food
+			- [X] Food
 			- [ ] Goods
 	- [ ] Competitor companies
 		- [ ] Electrical companies
-            - [ ] Produce electricity for cities
-			- [ ] Build new (non-green) electrical plants
+            - [X] Produce electricity for cities
+			- [X] Build new (non-green) electrical plants
 			- [ ] Buy fuel from mining companies
 		- [ ] Food companies
-            - [ ] Build new farms
-			- [ ] Produce food for cities
+            - [X] Build new farms
+			- [X] Produce food for cities
 			- [ ] In space competition with forests
 	- [ ] Other companies
 		- [ ] Mining companies (maybe)
             - [ ] Build new mines
+            
+- [ ] Unlock Technologies
+    - [ ] Tech tree?
+
+- [ ] Pawns
+    - [ ] Electrical
+        - [X] Coal Plants
+        - [ ] Nuclear Plants
+        - [ ] Oil Plants
+        - [ ] Solar Panels
+        - [X] Wind Turbines
+        - [ ] Dams?
+    - [ ] Resources
+        - [ ] Mine
+        - [ ] Oil Rig
+    - [ ] Food
+        - [X] Crops
+        - [ ] Farms
+        - [ ] Food factories (raw materials -> food)
+    - [ ] Factories
+        - [ ] Wood -> Goods
+        - [ ] Oil -> Plastic
+        - [ ] Plastic -> Goods
             
 - [ ] Random events/crisis
     - [ ] Bonus to the player for certain activities
