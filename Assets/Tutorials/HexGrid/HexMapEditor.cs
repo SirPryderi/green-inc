@@ -1,4 +1,3 @@
-using Evaluators;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -23,8 +22,6 @@ public class HexMapEditor : MonoBehaviour
         SelectColor(0);
         camera = Camera.main;
         Debug.Assert(camera != null, "Camera.main != null");
-
-        SetOverlay(0);
     }
 
     void Update()
@@ -84,7 +81,6 @@ public class HexMapEditor : MonoBehaviour
         RefreshGrid();
     }
 
-    [UsedImplicitly]
     public void Flatten(int elevation)
     {
         new HexGridGenerator(hexGrid).Flatten(elevation);
@@ -115,29 +111,6 @@ public class HexMapEditor : MonoBehaviour
     public void SetLocked(bool value)
     {
         IsLocked = value;
-    }
-
-    [UsedImplicitly]
-    public void SetOverlay(int overlay)
-    {
-        hexGrid.overlayType = (Overlay) overlay;
-
-        switch (hexGrid.overlayType)
-        {
-            case Overlay.CITY_ATTRACTIVENESS:
-                hexGrid.evaluator = new CityAttractivenessEvaluator();
-                break;
-            case Overlay.SOIL_FERTILITY:
-                hexGrid.evaluator = new SoilFertilityEvaluator();
-                break;
-            default:
-                hexGrid.evaluator = new CellColourEvaluator();
-                break;
-        }
-
-        if (hexGrid.cells == null) return;
-
-        hexGrid.Refresh();
     }
 
     public void PlayMap()
