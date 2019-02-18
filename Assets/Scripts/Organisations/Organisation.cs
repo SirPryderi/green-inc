@@ -48,8 +48,10 @@ namespace Organisations
 
         public void BuyPawn(HexCell cell, string pawn)
         {
-            var price = Pawn.Load(pawn).price;
+            var pawn1 = Pawn.Load(pawn);
+            var price = pawn1.price;
             if (CannotAfford(price)) return;
+            if(!pawn1.CanBePlacedOn(cell)) return;
             ConsumeMoney(price);
             cell.Spawn(pawn, this);
         }

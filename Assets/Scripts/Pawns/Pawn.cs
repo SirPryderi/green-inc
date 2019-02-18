@@ -12,6 +12,9 @@ namespace Pawns
         [Min(0)] public int upkeep;
         public Organisation owner;
 
+        public bool CanBePlacedOnLand = true;
+        public bool CanBePlacedOnWater = false;
+
         protected HexCell ParentCell;
         protected GameObject Mesh;
 
@@ -66,6 +69,11 @@ namespace Pawns
 
         public virtual void EndFrame()
         {
+        }
+
+        public virtual bool CanBePlacedOn(HexCell cell)
+        {
+            return cell.HasWater && CanBePlacedOnWater || !cell.HasWater && CanBePlacedOnLand;
         }
     }
 }
