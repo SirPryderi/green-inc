@@ -46,6 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   price: 500
   upkeep: 0
+  CanBePlacedOnLand: 1
+  CanBePlacedOnWater: 0
   absorbedCo2: 60
   producedO2: 0
 --- !u!1001 &5935140465838613555
@@ -106,6 +108,18 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 8fd631f6351ac35c29ad468eafc36d08, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300006, guid: 8fd631f6351ac35c29ad468eafc36d08, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300002, guid: 8fd631f6351ac35c29ad468eafc36d08, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 8fd631f6351ac35c29ad468eafc36d08, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fd631f6351ac35c29ad468eafc36d08, type: 3}
