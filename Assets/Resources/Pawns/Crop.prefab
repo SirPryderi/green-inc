@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 922719350661017129}
-  - component: {fileID: 8174532929364689466}
+  - component: {fileID: 7074859191108649285}
+  - component: {fileID: 8875889167533704563}
   m_Layer: 0
   m_Name: Crop
   m_TagString: Untagged
@@ -32,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8174532929364689466
+--- !u!114 &7074859191108649285
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,16 +42,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 8670046153907500887}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd8d5324a39425d822bb64318e165e1, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b8fbb84f7b9453495fb56f679b4b536, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   price: 1000
   upkeep: 2
+  CanBePlacedOnLand: 1
+  CanBePlacedOnWater: 0
+--- !u!114 &8875889167533704563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8670046153907500887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a53bc01e8a5b4232b81a380c8a1fd5c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 7074859191108649285}
   item: {fileID: 11400000, guid: be48f7ec558b819c0b738de7d328079f, type: 2}
-  itemsPerHour: 500
   pricePerItem: 0.01
   co2PerItem: 10
-  ProvidedInPastFrame: 0
+  itemsPerHour: 500
 --- !u!1001 &5115406768147214214
 PrefabInstance:
   m_ObjectHideFlags: 0

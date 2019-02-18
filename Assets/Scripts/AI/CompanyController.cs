@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Evaluators;
+using Logistics;
 using Organisations;
 using Pawns;
 using Object = UnityEngine.Object;
@@ -56,7 +57,7 @@ namespace AI
         {
             foreach (var pawn in Pawns)
             {
-                var gen = pawn.GetComponent<Generator>();
+                var gen = pawn.GetComponent<Provider>();
 
                 if (gen == null) continue;
 

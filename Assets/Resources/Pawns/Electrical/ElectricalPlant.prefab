@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 951472975639298946}
-  - component: {fileID: 1474825920371507448}
+  - component: {fileID: 3997809931214483803}
+  - component: {fileID: 8441279175190032000}
   m_Layer: 0
   m_Name: ElectricalPlant
   m_TagString: Electricity
@@ -34,7 +35,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1474825920371507448
+--- !u!114 &3997809931214483803
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,18 +44,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 3654753115611755602}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd8d5324a39425d822bb64318e165e1, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b8fbb84f7b9453495fb56f679b4b536, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   price: 50000
   upkeep: 10
   CanBePlacedOnLand: 1
   CanBePlacedOnWater: 0
+--- !u!114 &8441279175190032000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3654753115611755602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a53bc01e8a5b4232b81a380c8a1fd5c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 3997809931214483803}
   item: {fileID: 11400000, guid: 8dd2baed12231a63c9b7fe40ac8e2165, type: 2}
-  itemsPerHour: 5000000
   pricePerItem: 0.000015
   co2PerItem: 0.001
-  ProvidedInPastFrame: 0
+  itemsPerHour: 5000000
 --- !u!1001 &385265327338942394
 PrefabInstance:
   m_ObjectHideFlags: 0

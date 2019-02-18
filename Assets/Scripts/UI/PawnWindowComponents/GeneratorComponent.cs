@@ -1,4 +1,4 @@
-using Pawns;
+using Logistics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,7 +6,7 @@ namespace UI.PawnWindowComponents
 {
     public class GeneratorComponent : PawnWindowComponent
     {
-        [HideInInspector] public Generator component;
+        [HideInInspector] public Provider component;
 
         public Image icon;
         public BarIndicator bar;

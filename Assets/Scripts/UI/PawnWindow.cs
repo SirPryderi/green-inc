@@ -37,9 +37,9 @@ namespace UI
                 Instantiate(requesterComponent, window.body);
             }
             
-            foreach (var generator in pawn.GetComponents<Generator>())
+            foreach (var provider in pawn.GetComponents<Provider>())
             {
-                generatorComponent.component = generator;
+                generatorComponent.component = provider;
                 generatorComponent.parent = this;
                 Instantiate(generatorComponent, window.body);
             }

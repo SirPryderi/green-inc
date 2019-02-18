@@ -43,28 +43,28 @@ namespace Logistics
                     IsSatisfied = true;
                     break;
                 }
-                catch (ArgumentException)
+                catch (ArgumentException e)
                 {
-                    Debug.LogWarning("Payment failed.");
+                    Debug.LogWarning(e.Message);
                 }
             }
         }
 
-        private IEnumerable<Generator> FindProviders()
+        private IEnumerable<Provider> FindProviders()
         {
-            var result = FindObjectsOfType<Generator>();
-            var filter = new List<Generator>(result.Length);
+            var result = FindObjectsOfType<Provider>();
+            var filter = new List<Provider>(result.Length);
 
             filter.AddRange(result.Where(gen => gen.item == item));
             filter.TrimExcess();
 
             // TODO this could be done more efficiently
-            filter.Sort((generator, generator1) =>
+            filter.Sort((provider1, provider2) =>
             {
                 var transformPosition = parent.transform.position;
 
-                var distance1 = (generator1.transform.position - transformPosition).sqrMagnitude;
-                var distance2 = (generator.transform.position - transformPosition).sqrMagnitude;
+                var distance1 = (provider2.transform.position - transformPosition).sqrMagnitude;
+                var distance2 = (provider1.transform.position - transformPosition).sqrMagnitude;
 
                 return (int) (distance2 - distance1);
             });
