@@ -17,14 +17,14 @@ public class HexMapEditor : MonoBehaviour
     public Text temperatureText;
     private Camera camera;
 
-    void Awake()
+    private void Awake()
     {
         SelectColor(0);
         camera = Camera.main;
         Debug.Assert(camera != null, "Camera.main != null");
     }
 
-    void Update()
+    private void Update()
     {
         if (!EventSystem.current.IsPointerOverGameObject() && Input.GetMouseButton(0))
         {
@@ -32,7 +32,7 @@ public class HexMapEditor : MonoBehaviour
         }
     }
 
-    void HandleInput()
+    private void HandleInput()
     {
         var inputRay = camera.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(inputRay, out var hit))
@@ -70,7 +70,7 @@ public class HexMapEditor : MonoBehaviour
         activeElevation = (int) elevation;
     }
 
-    public void setCO2Levels(float level)
+    public void SetCO2Levels(float level)
     {
         var manager = GameManager.Instance.MapManager.ClimateManager;
         co2Text.text = $"{(int) level} ppm";
