@@ -9,7 +9,7 @@ namespace Items
     public struct ItemAmount
     {
         public Item item;
-        [Range(1, 999)] public ushort amount;
+        [Range(1, 999)] public ulong amount;
     }
 
     [CreateAssetMenu(menuName = "Items/Recipe")]
@@ -18,11 +18,11 @@ namespace Items
         public List<ItemAmount> ingredients;
         public List<ItemAmount> results;
 
-        public bool CanProduce(IStorage storage, ushort count = 1)
+        public bool CanProduce(IStorage storage, ulong count = 1)
         {
             foreach (var ingredient in ingredients)
             {
-                if (storage.ItemCount(ingredient.item) * count < ingredient.amount * count)
+                if (storage.CountItem(ingredient.item) * count < ingredient.amount * count)
                 {
                     return false;
                 }
@@ -31,7 +31,7 @@ namespace Items
             return true;
         }
 
-        public void Produce(IStorage storage, IStorage targetStorage = null, ushort count = 1)
+        public void Produce(IStorage storage, IStorage targetStorage = null, ulong count = 1)
         {
             if (targetStorage == null) targetStorage = storage;
 
@@ -39,17 +39,17 @@ namespace Items
 
             foreach (var ingredient in ingredients)
             {
-                for (var i = 0; i < ingredient.amount * count; i++)
+                for (var i = 0ul; i < ingredient.amount * count; i++)
                 {
-                    storage.RemoveItem(ingredient.item);
+                    storage.Remove(ingredient.item);
                 }
             }
 
             foreach (var result in results)
             {
-                for (var i = 0; i < result.amount * count; i++)
+                for (var i = 0ul; i < result.amount * count; i++)
                 {
-                    targetStorage.AddItem(result.item);
+                    targetStorage.Add(result.item);
                 }
             }
         }

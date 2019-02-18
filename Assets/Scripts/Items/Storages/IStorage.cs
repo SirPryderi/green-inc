@@ -2,10 +2,13 @@ namespace Items.Storages
 {
     public interface IStorage
     {
-        ushort ItemCount(Item item);
-        bool HasItem(Item item);
-        bool RemoveItem(Item item);
-        bool AddItem(Item item);
-        bool IsFull(Item item);
+        ulong CountItem(Item item);
+        bool Has(Item item, ulong quantity = 1ul);
+        bool Remove(Item item, ulong quantity = 1ul);
+        bool Add(Item item, ulong quantity = 1ul);
+        bool CanAdd(Item item, ulong quantity = 1ul);
+        bool IsFull();
+
+        bool Transfer(IStorage storage, Item item, ulong quantity = 1ul);
     }
 }
