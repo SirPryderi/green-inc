@@ -13,6 +13,7 @@ namespace UI
         public CityTileComponent cityTileComponent;
         public RequesterComponent requesterComponent;
         public GeneratorComponent generatorComponent;
+        public TreeComponent treeComponent;
 
         private void Awake()
         {
@@ -41,6 +42,13 @@ namespace UI
                 generatorComponent.component = generator;
                 generatorComponent.parent = this;
                 Instantiate(generatorComponent, window.body);
+            }
+            
+            foreach (var tree in pawn.GetComponents<Pawns.Trees.Tree>())
+            {
+                treeComponent.component = tree;
+                treeComponent.parent = this;
+                Instantiate(treeComponent, window.body);
             }
         }
 
