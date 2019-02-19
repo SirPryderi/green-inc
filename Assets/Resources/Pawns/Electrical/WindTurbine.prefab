@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6221717666528399019}
   - component: {fileID: 1364063129759969789}
-  - component: {fileID: 4219312382160906185}
+  - component: {fileID: 774773601904653552}
   m_Layer: 0
   m_Name: WindTurbine
   m_TagString: Electricity
@@ -49,7 +49,7 @@ MonoBehaviour:
   upkeep: 1
   CanBePlacedOnLand: 1
   CanBePlacedOnWater: 1
---- !u!114 &4219312382160906185
+--- !u!114 &774773601904653552
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -58,7 +58,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 781953900391421553}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a53bc01e8a5b4232b81a380c8a1fd5c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 5143363ec7fa443c937841a7eaec1a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 1364063129759969789}

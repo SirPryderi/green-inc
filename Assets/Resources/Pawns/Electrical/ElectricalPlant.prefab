@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 951472975639298946}
   - component: {fileID: 3997809931214483803}
-  - component: {fileID: 8441279175190032000}
+  - component: {fileID: 4950013664485629378}
   m_Layer: 0
   m_Name: ElectricalPlant
   m_TagString: Electricity
@@ -51,7 +51,7 @@ MonoBehaviour:
   upkeep: 10
   CanBePlacedOnLand: 1
   CanBePlacedOnWater: 0
---- !u!114 &8441279175190032000
+--- !u!114 &4950013664485629378
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -60,7 +60,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3654753115611755602}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a53bc01e8a5b4232b81a380c8a1fd5c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 5143363ec7fa443c937841a7eaec1a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 3997809931214483803}

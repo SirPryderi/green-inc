@@ -17,9 +17,9 @@ namespace UI.PawnWindowComponents
             icon.sprite = component.item.sprite;
 
             bar.Value = component.ProductivityPercentage;
-            bar.Text = $"{component.ProducedInPastHour:N}/{component.itemsPerHour:N}";
+            bar.Text = $"{component.ProducedInPastHour:N}/{component.ItemsPerHour:N}";
 
-            co2.text = FormatEmissions(component.ProducedInPastHour * component.co2PerItem);
+            co2.text = FormatEmissions(component.CO2InPastHour);
         }
     }
 }
