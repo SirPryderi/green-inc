@@ -76,4 +76,11 @@ public class HexCell : MonoBehaviour
             Destroy(child.gameObject);
         }
     }
+
+    public HexEdgeType GetEdgeType(HexDirection direction)
+    {
+        return HexMetrics.GetEdgeType(
+            _elevation, neighbors[(int) direction]._elevation
+        );
+    }
 }
