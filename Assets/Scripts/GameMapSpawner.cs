@@ -1,9 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class GameMapSpawner : MonoBehaviour
 {
     public HexGrid prefab;
+
+    [Range(1, 50)] public int mapWidth = 50;
+    [Range(1, 50)] public int mapHeight = 30;
 
     private void Awake()
     {
@@ -15,8 +19,8 @@ public class GameMapSpawner : MonoBehaviour
         }
         else
         {
-            prefab.width = 50;
-            prefab.height = 30;
+            prefab.width = mapWidth;
+            prefab.height = mapHeight;
 
             grid = Instantiate(prefab);
 
