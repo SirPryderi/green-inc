@@ -19,7 +19,7 @@ namespace Evaluators
 
             Color color;
 
-            if (cell.Elevation == 0 && temp > ice)
+            if (cell.Elevation == 0)
             {
                 color = seaColor;
             }
