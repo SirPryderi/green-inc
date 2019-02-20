@@ -26,18 +26,25 @@ public class HexGridGenerator
     public void GenerateFromPerlin()
     {
         const float scaleFactor = 15f;
+        const float maxElevation = 10f;
 
         var xOffset = GameManager.Instance.MapManager.RandomGenerator.MapOffsetX;
         var yOffset = GameManager.Instance.MapManager.RandomGenerator.MapOffsetY;
 
         foreach (var cell in _grid.cells)
         {
+            if (IsOnBorder(cell))
+            {
+                cell.Elevation = 0;
+                continue;
+            }
+
             var perlinNoise = Mathf.PerlinNoise(
                 cell.coordinates.X / scaleFactor + xOffset,
                 cell.coordinates.Y / scaleFactor + yOffset
             );
 
-            perlinNoise = Mathf.Clamp(perlinNoise * 10 - 2, 0, 10);
+            perlinNoise = Mathf.Clamp(perlinNoise * maxElevation - maxElevation / 5f, 0f, maxElevation);
 
             cell.Elevation = Mathf.FloorToInt(perlinNoise);
         }
@@ -47,6 +54,15 @@ public class HexGridGenerator
         GenerateTrees();
         GenerateCities();
         GenerateMines();
+    }
+
+    private bool IsOnBorder(HexCell cell)
+    {
+        return
+            cell.coordinates.Z == 0 ||
+            cell.coordinates.Z == _grid.height - 1 ||
+            cell.coordinates.ToOffsetCoordinates().x == 0 ||
+            cell.coordinates.ToOffsetCoordinates().x == _grid.width - 1;
     }
 
     private void GenerateMines()
