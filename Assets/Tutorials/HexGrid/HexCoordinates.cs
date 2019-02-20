@@ -54,8 +54,9 @@ public struct HexCoordinates
 
     public Vector2Int ToOffsetCoordinates()
     {
-        // TODO Check this might be wrong
-        return new Vector2Int(X, Y);
+        var col = x + (z - (z & 1)) / 2;
+        var row = z;
+        return new Vector2Int(col, row);
     }
 
     public int toIndex(HexGrid grid)
