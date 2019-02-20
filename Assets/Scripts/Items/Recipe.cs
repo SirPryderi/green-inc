@@ -31,27 +31,46 @@ namespace Items
             return true;
         }
 
-        public void Produce(IStorage storage, IStorage targetStorage = null, ulong count = 1)
+        public bool Produce(IStorage storage, IStorage targetStorage = null, ulong count = 1)
         {
-            if (targetStorage == null) targetStorage = storage;
+            if (!CanProduce(storage, count)) return false;
 
-            if (!CanProduce(storage, count)) return;
+            _produce(storage, targetStorage, count);
+
+            return true;
+        }
+
+        private void _produce(IStorage storage, IStorage targetStorage, ulong count)
+        {
+            if (count == 0ul) return;
+
+            if (targetStorage == null) targetStorage = storage;
 
             foreach (var ingredient in ingredients)
             {
-                for (var i = 0ul; i < ingredient.amount * count; i++)
-                {
-                    storage.Remove(ingredient.item);
-                }
+                storage.Remove(ingredient.item, ingredient.amount * count);
             }
 
             foreach (var result in results)
             {
-                for (var i = 0ul; i < result.amount * count; i++)
-                {
-                    targetStorage.Add(result.item);
-                }
+                targetStorage.Add(result.item, result.amount * count);
             }
+        }
+
+        public ulong ProduceAtMost(IStorage storage, IStorage targetStorage = null, ulong count = 1)
+        {
+            var maxCanProduce = count;
+
+            foreach (var ingredient in ingredients)
+            {
+                var tmp = storage.CountItem(ingredient.item) / ingredient.amount;
+
+                if (tmp < maxCanProduce) maxCanProduce = tmp;
+            }
+
+            _produce(storage, targetStorage, maxCanProduce);
+
+            return maxCanProduce;
         }
     }
 }
