@@ -1,5 +1,6 @@
 using System.Collections;
 using Pawns;
+using UI.DynamicMenus;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -19,7 +20,15 @@ namespace UI
         public Canvas canvas;
         public PawnWindow pawnWindowPrefab;
 
+        public DynamicMenu menu;
+        public GameObject menuContainer;
+
         public Pawn Focused { get; private set; }
+
+        private void Start()
+        {
+            menu.Generate(menuContainer);
+        }
 
         public void TogglePause()
         {

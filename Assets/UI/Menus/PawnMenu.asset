@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e1da5cc05a4d54a89e2d0c3ac44d8f, type: 3}
+  m_Name: PawnMenu
+  m_EditorClassIdentifier: 
+  entryPrefab: {fileID: 3275953517791679917, guid: f2a5a7a8edc66e81ba7f10722609ebbe,
+    type: 3}
+  entries:
+  - item: {fileID: 1364063129759969789, guid: c8d7e2992494f11edbef4685fcd0d0af, type: 3}
+    icon: {fileID: 21300000, guid: 695a8286f76d1d791b1ae677cf978d12, type: 3}
+  - item: {fileID: 3997809931214483803, guid: 309d951a8d6db9614ad3ba3e29bac00b, type: 3}
+    icon: {fileID: 21300000, guid: d42a7e575dd58387b9c60f01a3356c9f, type: 3}
+  - item: {fileID: 7074859191108649285, guid: 96c8502fa627ba559b84ed4528cc13a0, type: 3}
+    icon: {fileID: 21300000, guid: 3699b1779e24b49f287a97ee7fc1a469, type: 3}
+  - item: {fileID: 8983418879825213320, guid: f656516ff1e7a93fe86872550d0fd443, type: 3}
+    icon: {fileID: 21300000, guid: 09c4b7dad7f469c64847040b883b4b6d, type: 3}
+  - item: {fileID: 4076664318455462221, guid: bd4e94799099cb48ebb2ce30528f6a1d, type: 3}
+    icon: {fileID: 21300000, guid: c9e67ff1eccb2f913a2d1e2f096c4913, type: 3}
