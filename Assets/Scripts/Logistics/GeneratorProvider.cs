@@ -1,4 +1,4 @@
-using System;
+using Items.Storages;
 using Organisations;
 
 namespace Logistics
@@ -28,13 +28,31 @@ namespace Logistics
 
         #endregion
 
-        public override ulong ProduceItemsFor(ulong amount, Organisation org)
+        public override ulong ProduceItemsFor(ulong amount, Organisation org, IStorage storage = null)
         {
             CheckNewTick();
 
+            amount = ClapProduction(amount);
+
+            if (amount == 0)
+            {
+                return 0;
+            }
+
+            CalculateEmissions(amount);
+            Bill(amount, org);
+
+            // WARNING: does not check if the inventory is full
+            storage?.Add(item, amount);
+
+            return amount;
+        }
+
+        protected ulong ClapProduction(ulong amount)
+        {
             Provided += amount;
 
-            var providedLimit = Convert.ToUInt64(itemsPerHour * (ulong) G.DeltaTime);
+            var providedLimit = itemsPerHour * (ulong) G.DeltaTime;
 
             if (Provided > providedLimit)
             {
@@ -42,17 +60,12 @@ namespace Logistics
                 Provided = providedLimit;
             }
 
-            if (amount == 0)
-            {
-                return 0;
-            }
-
-            var total = Convert.ToInt64(amount * pricePerItem);
-            org.TransferMoney(parent.owner, total);
-
-            G.CM.Atmosphere.ReleaseGas("Carbon Dioxide", amount * co2PerItem);
-
             return amount;
+        }
+
+        protected void CalculateEmissions(ulong amount)
+        {
+            G.CM.Atmosphere.ReleaseGas("Carbon Dioxide", amount * co2PerItem);
         }
     }
 }

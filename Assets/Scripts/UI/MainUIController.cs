@@ -82,6 +82,11 @@ namespace UI
                 HandleEscapeButton();
             }
 
+            StartCoroutine(nameof(HandleAdvanceTime));
+        }
+
+        private void HandleAdvanceTime()
+        {
             if (Input.GetKeyDown(KeyCode.F1))
             {
                 G.O.AdvanceTime(1);
@@ -174,7 +179,7 @@ namespace UI
                     break;
                 case BrushType.CROP:
                     if (Input.GetMouseButtonDown(0))
-                        BuyNewPawn(cell, "Pawns/Crop");
+                        BuyNewPawn(cell, "Pawns/FoodSynthesizer");
                     break;
                 case BrushType.NONE:
                     if (Input.GetMouseButtonDown(0))

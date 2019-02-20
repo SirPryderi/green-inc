@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Items;
+using Items.Storages;
 using Pawns;
 using UnityEngine;
 
@@ -24,7 +25,7 @@ namespace Logistics
             this.item = item;
         }
 
-        public void Request(ulong amount)
+        public ulong Request(ulong amount, IStorage storage = null)
         {
             IsSatisfied = false;
             requested = amount;
@@ -36,7 +37,7 @@ namespace Logistics
             {
                 try
                 {
-                    satisfied += provider.ProduceItemsFor(requested - satisfied, parent.owner);
+                    satisfied += provider.ProduceItemsFor(requested - satisfied, parent.owner, storage);
 
                     if (satisfied < requested) continue;
 
@@ -48,6 +49,8 @@ namespace Logistics
                     Debug.LogWarning(e.Message);
                 }
             }
+
+            return satisfied;
         }
 
         private IEnumerable<Provider> FindProviders()

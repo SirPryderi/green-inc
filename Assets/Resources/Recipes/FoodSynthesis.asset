@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17e6fb57cc5a46e7bceb75e3b5e3068c, type: 3}
+  m_Name: FoodSynthesis
+  m_EditorClassIdentifier: 
+  ingredients:
+  - item: {fileID: 11400000, guid: 8dd2baed12231a63c9b7fe40ac8e2165, type: 2}
+    amount: 10
+  results:
+  - item: {fileID: 11400000, guid: be48f7ec558b819c0b738de7d328079f, type: 2}
+    amount: 1

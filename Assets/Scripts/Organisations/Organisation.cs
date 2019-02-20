@@ -25,9 +25,9 @@ namespace Organisations
             _money = startingMoney;
         }
 
-        public void TransferMoney(Organisation organisation, decimal amount)
+        public void TransferMoney(Organisation organisation, decimal amount, bool allowNegative = false)
         {
-            ConsumeMoney(amount);
+            ConsumeMoney(amount, allowNegative);
             organisation._money += amount;
         }
 
@@ -51,7 +51,7 @@ namespace Organisations
             var pawn1 = Pawn.Load(pawn);
             var price = pawn1.price;
             if (CannotAfford(price)) return;
-            if(!pawn1.CanBePlacedOn(cell)) return;
+            if (!pawn1.CanBePlacedOn(cell)) return;
             ConsumeMoney(price);
             cell.Spawn(pawn, this);
         }

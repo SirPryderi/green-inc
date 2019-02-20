@@ -1,4 +1,5 @@
 using Items;
+using Items.Storages;
 using Organisations;
 using Pawns;
 using UnityEngine;
@@ -24,6 +25,11 @@ namespace Logistics
 
         #endregion
 
-        public abstract ulong ProduceItemsFor(ulong amount, Organisation org);
+        public abstract ulong ProduceItemsFor(ulong amount, Organisation org, IStorage storage = null);
+
+        protected void Bill(ulong amount, Organisation org)
+        {
+            org.TransferMoney(parent.owner, amount * (decimal) pricePerItem, true);
+        }
     }
 }
