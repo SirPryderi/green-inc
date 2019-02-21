@@ -53,14 +53,11 @@ namespace UI.Tools
             if (Input.GetMouseButton(1))
             {
                 Reset();
-                yield return null;
+                yield break;
             }
 
-            var inputRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            if (!Physics.Raycast(inputRay, out var hit)) yield break;
-
-            var cell = G.MP.Grid.GetCell(hit.point);
+            var cell = RayCast();
+            if (cell == null) yield break;
 
             var success = false;
 
@@ -84,14 +81,26 @@ namespace UI.Tools
                     break;
             }
 
-            if (success && !Input.GetKey(KeyCode.LeftShift))
-            {
-                Reset();
-            }
-
+            if (success && !Input.GetKey(KeyCode.LeftShift)) Reset();
             GetComponent<MainUIUpdater>().UpdateBalance();
 
             yield return null;
+        }
+
+        private static HexCell RayCast()
+        {
+            if (Camera.main == null)
+            {
+                Debug.LogWarning("Could not find camera.");
+                return null;
+            }
+
+            var inputRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(inputRay, out var hit))
+                return G.MP.Grid.GetCell(hit.point);
+            else
+                return null;
         }
 
         private static bool BuyPawn(HexCell cell)
