@@ -46,14 +46,20 @@ namespace Organisations
             _money -= amount;
         }
 
-        public void BuyPawn(HexCell cell, string pawn)
+        [Obsolete]
+        public bool BuildPawn(HexCell cell, string pawn)
         {
-            var pawn1 = Pawn.Load(pawn);
-            var price = pawn1.price;
-            if (CannotAfford(price)) return;
-            if (!pawn1.CanBePlacedOn(cell)) return;
+            return BuildPawn(cell, Pawn.Load(pawn));
+        }
+
+        public bool BuildPawn(HexCell cell, Pawn pawn)
+        {
+            var price = pawn.price;
+            if (CannotAfford(price)) return false;
+            if (!pawn.CanBePlacedOn(cell)) return false;
             ConsumeMoney(price);
-            cell.Spawn(pawn, this);
+            cell.Spawn(pawn.gameObject, this);
+            return true;
         }
     }
 }

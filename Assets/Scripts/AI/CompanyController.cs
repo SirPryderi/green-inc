@@ -82,7 +82,7 @@ namespace AI
 
                 if (item2.IsClear())
                 {
-                    Company.BuyPawn(item2, pawn);
+                    Company.BuildPawn(item2, pawn);
                     break;
                 }
             }

@@ -80,6 +80,7 @@ public class HexGridGenerator
 
     private void GenerateCities()
     {
+        var cityPrefab = Resources.Load("Pawns/City") as GameObject;
         var evaluator = new CityAttractivenessEvaluator();
         var results = evaluator.EvaluateAll(_grid);
 
@@ -97,7 +98,7 @@ public class HexGridGenerator
 
             var tile = results[0].Item2;
             tile.Clear();
-            var cityTile = tile.Spawn("Pawns/City", city);
+            var cityTile = tile.Spawn(cityPrefab, city);
             cityTile.name = cityName;
             cityTile.GetComponent<CityTile>().City = city;
 

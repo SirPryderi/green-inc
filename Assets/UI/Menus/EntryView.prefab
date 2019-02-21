@@ -16,6 +16,7 @@ MonoBehaviour:
     item: {fileID: 0}
     icon: {fileID: 0}
   image: {fileID: 6924112869032722989}
+  type: 3
 --- !u!1001 &2066964988538057162
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -138,6 +139,21 @@ PrefabInstance:
       propertyPath: m_TargetGraphic
       value: 
       objectReference: {fileID: 6924112871030683532}
+    - target: {fileID: 8986992759928030785, guid: ccf9b14fa1fa172ca9d75dae6a67ce8f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3275953517791679917}
+    - target: {fileID: 8986992759928030785, guid: ccf9b14fa1fa172ca9d75dae6a67ce8f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Click
+      objectReference: {fileID: 0}
+    - target: {fileID: 8986992759928030785, guid: ccf9b14fa1fa172ca9d75dae6a67ce8f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccf9b14fa1fa172ca9d75dae6a67ce8f, type: 3}
 --- !u!1 &6924112871030683529 stripped

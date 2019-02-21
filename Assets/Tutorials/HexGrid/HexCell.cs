@@ -1,3 +1,4 @@
+using System;
 using Organisations;
 using Pawns;
 using UnityEngine;
@@ -48,24 +49,29 @@ public class HexCell : MonoBehaviour
         cell.neighbors[(int) direction.Opposite()] = this;
     }
 
-    public GameObject Spawn(string resource)
+    public GameObject Spawn(GameObject pawn)
     {
         var tmp = transform;
 
         return Instantiate(
-            Resources.Load(resource) as GameObject,
+            pawn,
             tmp.position,
             Quaternion.identity,
             tmp
         );
     }
 
-    public Pawn Spawn(string resource, Organisation owner)
+    [Obsolete]
+    public GameObject Spawn(string resource)
     {
-        var obj = Spawn(resource);
-        var pawn = obj.GetComponent<Pawn>();
-        pawn.owner = owner;
-        return pawn;
+        return Spawn(Resources.Load(resource) as GameObject);
+    }
+
+    public Pawn Spawn(GameObject pawn, Organisation owner)
+    {
+        var instance = Spawn(pawn).GetComponent<Pawn>();
+        instance.owner = owner;
+        return instance;
     }
 
     public void Clear()
