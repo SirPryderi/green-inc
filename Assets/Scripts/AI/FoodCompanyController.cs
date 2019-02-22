@@ -24,7 +24,7 @@ namespace AI
         {
             Pawns = OwnedPawns();
 
-            if (Requester.ItemSatisfaction(_food) < 0.95f)
+            if (LogisticNetwork.ItemSatisfaction(_food) < 0.95f)
             {
                 WantToBuild(_crop, _eval);
             }

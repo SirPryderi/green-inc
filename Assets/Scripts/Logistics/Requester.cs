@@ -31,7 +31,8 @@ namespace Logistics
             requested = amount;
             satisfied = 0;
 
-            var providers = FindProviders();
+            var providers = LogisticNetwork.FindProviders(item);
+            providers.Sort(new DistanceFrom(gameObject));
 
             foreach (var provider in providers)
             {
@@ -51,62 +52,6 @@ namespace Logistics
             }
 
             return satisfied;
-        }
-
-        private IEnumerable<Provider> FindProviders()
-        {
-            var result = FindObjectsOfType<Provider>();
-            var filter = new List<Provider>(result.Length);
-
-            filter.AddRange(result.Where(gen => gen.item == item));
-            filter.TrimExcess();
-
-            // TODO this could be done more efficiently
-            filter.Sort((provider1, provider2) =>
-            {
-                var transformPosition = parent.transform.position;
-
-                var distance1 = (provider2.transform.position - transformPosition).sqrMagnitude;
-                var distance2 = (provider1.transform.position - transformPosition).sqrMagnitude;
-
-                return (int) (distance2 - distance1);
-            });
-
-            return filter;
-        }
-
-        public static IEnumerable<Requester> FindRequesters(Item item)
-        {
-            var result = FindObjectsOfType<Requester>();
-            var filter = new List<Requester>(result.Length);
-
-            filter.AddRange(result.Where(requester => requester.item == item));
-            filter.TrimExcess();
-
-            return filter;
-        }
-
-        public static float ItemSatisfaction(Item item, out float requested, out float satisfied)
-        {
-            var requesters = FindRequesters(item);
-
-            requested = 0f;
-            satisfied = 0f;
-
-            foreach (var requester in requesters)
-            {
-                requested += requester.requested;
-                satisfied += requester.satisfied;
-            }
-
-            var percent = satisfied / requested;
-
-            return Mathf.Clamp01(percent);
-        }
-
-        public static float ItemSatisfaction(Item item)
-        {
-            return ItemSatisfaction(item, out _, out _);
         }
     }
 }

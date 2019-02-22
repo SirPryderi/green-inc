@@ -23,7 +23,7 @@ namespace AI
         {
             Pawns = OwnedPawns();
 
-            if (Requester.ItemSatisfaction(_electricity) < 0.95f)
+            if (LogisticNetwork.ItemSatisfaction(_electricity) < 0.95f)
             {
                 WantToBuild(_pawn, _eval);
             }
