@@ -28,7 +28,7 @@ namespace Logistics
 
             return filter;
         }
-        
+
         public static float ItemSatisfaction(Item item, out float requested, out float satisfied)
         {
             var requesters = FindRequesters(item);
@@ -45,6 +45,30 @@ namespace Logistics
             var percent = satisfied / requested;
 
             return Mathf.Clamp01(percent);
+        }
+
+        public struct Capacity
+        {
+            public float Maximum;
+            public float Current;
+            public float Percentage;
+        }
+
+        public static Capacity ItemCapacity(Item item)
+        {
+            var providers = FindProviders(item);
+
+            var capacity = new Capacity();
+
+            foreach (var provider in providers)
+            {
+                capacity.Maximum += provider.ItemsPerHour;
+                capacity.Current += provider.ProducedInPastHour;
+            }
+
+            capacity.Percentage = capacity.Current / capacity.Maximum;
+
+            return capacity;
         }
 
         public static float ItemSatisfaction(Item item)
