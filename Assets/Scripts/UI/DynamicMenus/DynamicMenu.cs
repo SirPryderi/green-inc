@@ -24,6 +24,7 @@ namespace UI.DynamicMenus
             {
                 entryPrefab.entry = entry;
                 entryPrefab.image.sprite = entry.icon;
+                entryPrefab.image.SetNativeSize();
 
                 var newEntry = Instantiate(entryPrefab, parent.transform);
                 newEntry.name = entry.item.name; 
