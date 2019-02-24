@@ -28,8 +28,6 @@ namespace Mechanics
 
         public void AdvanceTime(int hours)
         {
-            G.MP.Statistics.TakeSnapshot();
-
             Time += hours;
             DeltaTime = hours;
 
@@ -47,6 +45,8 @@ namespace Mechanics
             {
                 observable.PostTick();
             }
+            
+            G.MP.Statistics.TakeSnapshot();
 
             foreach (var observable in _observables)
             {

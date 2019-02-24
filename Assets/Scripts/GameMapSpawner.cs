@@ -11,6 +11,8 @@ public class GameMapSpawner : MonoBehaviour
 
     private void Awake()
     {
+        G.MP.Statistics.TakeSnapshot();
+        
         var grid = FindObjectOfType<HexGrid>();
         if (grid != null)
         {
