@@ -2,8 +2,12 @@ namespace Mechanics
 {
     public interface IObservable
     {
-        void StartFrame();
+        void PreTick();
 
-        void EndFrame();
+        void Tick();
+
+        void PostTick();
+
+        void LateTick();
     }
 }

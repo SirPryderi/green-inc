@@ -35,12 +35,22 @@ namespace Mechanics
 
             foreach (var observable in _observables)
             {
-                observable.StartFrame();
+                observable.PreTick();
             }
 
             foreach (var observable in _observables)
             {
-                observable.EndFrame();
+                observable.Tick();
+            }
+
+            foreach (var observable in _observables)
+            {
+                observable.PostTick();
+            }
+
+            foreach (var observable in _observables)
+            {
+                observable.LateTick();
             }
 
             Object.FindObjectOfType<HexGrid>().Refresh();

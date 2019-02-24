@@ -63,13 +63,21 @@ namespace Pawns
             return obj?.GetComponent<Pawn>();
         }
 
-        public virtual void StartFrame()
+        public virtual void PreTick()
         {
         }
 
-        public virtual void EndFrame()
+        public virtual void Tick()
+        {
+        }
+
+        public virtual void PostTick()
         {
             owner?.ConsumeMoney(upkeep * G.DeltaTime, true);
+        }
+
+        public virtual void LateTick()
+        {
         }
 
         public virtual bool CanBePlacedOn(HexCell cell)

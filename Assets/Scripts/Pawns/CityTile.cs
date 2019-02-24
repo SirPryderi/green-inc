@@ -55,7 +55,7 @@ namespace Pawns
         public int Population => Mathf.FloorToInt(population);
         public float Growth => growth;
 
-        public override void StartFrame()
+        public override void Tick()
         {
             // Calculates money from taxes
             _city.GenerateRevenue(this);
@@ -73,7 +73,7 @@ namespace Pawns
             foodRequester.Request(requiredFood);
         }
 
-        public override void EndFrame()
+        public override void PostTick()
         {
             Grow();
         }

@@ -31,12 +31,22 @@ namespace UI
             UpdateAll();
         }
 
-        public void StartFrame()
+        public void PreTick()
+        {
+            // Nope!
+        }
+
+        public void Tick()
         {
             // nothing to do just yet
         }
 
-        public void EndFrame()
+        public void PostTick()
+        {
+            // Nothing!
+        }
+
+        public void LateTick()
         {
             UpdateAll();
         }

@@ -58,11 +58,19 @@ namespace UI.ResourcesWindow
             }
         }
 
-        public void StartFrame()
+        public void PreTick()
         {
         }
 
-        public void EndFrame()
+        public void Tick()
+        {
+        }
+
+        public void PostTick()
+        {
+        }
+
+        public void LateTick()
         {
             Clear();
             Populate();

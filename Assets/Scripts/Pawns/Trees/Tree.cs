@@ -8,7 +8,7 @@ namespace Pawns.Trees
         [Min(0)] public float absorbedCo2;
         [Min(0)] public float producedO2;
 
-        public override void StartFrame()
+        public override void Tick()
         {
             G.CM.Atmosphere.Absorb("Carbon Dioxide", absorbedCo2 * G.DeltaTime);
         }
