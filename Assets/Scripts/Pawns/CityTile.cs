@@ -57,6 +57,7 @@ namespace Pawns
 
         public override void StartFrame()
         {
+            // Calculates money from taxes
             _city.GenerateRevenue(this);
 
             // Emissions
@@ -74,12 +75,31 @@ namespace Pawns
 
         public override void EndFrame()
         {
-            if (!energyRequester.IsSatisfied) return;
+            Grow();
+        }
 
-            if (population < maxPopulation)
-            {
-                population += G.DeltaTime * Growth;
-            }
+        private void Grow()
+        {
+            population += ComputeGrowth() * G.DeltaTime;
+            population = Mathf.Clamp(population, 0f, maxPopulation);
+        }
+
+        public float ComputeGrowth()
+        {
+            // if there isn't enough food cities will starve...
+            // ...actually, no scratch that, they just die too easily right now.
+
+            // Let's just prevent growth.
+            if (!foodRequester.IsSatisfied) return 0f;
+
+            // a city without energy won't grow either (???)
+            if (!energyRequester.IsSatisfied) return 0f;
+
+            // prevent cities from overgrowing
+            if (population >= maxPopulation) return 0f;
+
+            // Otherwise expect normal growth
+            return Growth;
         }
 
         public decimal CalculateRevenue(int time)
