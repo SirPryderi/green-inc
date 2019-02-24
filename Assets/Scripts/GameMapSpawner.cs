@@ -12,7 +12,7 @@ public class GameMapSpawner : MonoBehaviour
     private void Awake()
     {
         G.MP.Statistics.TakeSnapshot();
-        
+
         var grid = FindObjectOfType<HexGrid>();
         if (grid != null)
         {
@@ -26,10 +26,7 @@ public class GameMapSpawner : MonoBehaviour
 
             grid = Instantiate(prefab);
 
-            var gen = new HexGridGenerator(grid);
-
-            GameManager.Instance.MapManager.Randomise();
-            gen.GenerateFromPerlin();
+            G.GM.ResetMap(grid);
         }
 
         Destroy(gameObject);

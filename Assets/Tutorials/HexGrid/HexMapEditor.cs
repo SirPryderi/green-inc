@@ -103,8 +103,7 @@ public class HexMapEditor : MonoBehaviour
     public void Random()
     {
         ClearAll();
-        GameManager.Instance.MapManager.Randomise();
-        new HexGridGenerator(hexGrid).GenerateFromPerlin();
+        G.GM.ResetMap(hexGrid);
     }
 
     [UsedImplicitly]

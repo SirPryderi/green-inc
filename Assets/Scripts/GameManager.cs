@@ -9,8 +9,20 @@ public class GameManager : Singleton<GameManager>
     protected override void OnAwake()
     {
         base.OnAwake();
+        Reset();
+    }
 
+    public void Reset()
+    {
         MapManager = new MapManager();
+    }
+
+    public void ResetMap(HexGrid grid)
+    {
+        Reset();
+        MapManager.Grid = grid;
+        Instance.MapManager.Randomise();
+        new HexGridGenerator(grid).GenerateFromPerlin();
     }
 
     void Update()
