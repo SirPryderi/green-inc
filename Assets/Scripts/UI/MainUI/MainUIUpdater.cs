@@ -24,6 +24,9 @@ namespace UI
         public Text Population;
         public Text AverageTemperature;
 
+        public Color good;
+        public Color bad;
+
         public MainUIController MainUIController;
 
         private void Awake()
@@ -88,7 +91,8 @@ namespace UI
 
             var increase = deltaMoney / deltaTime * 24;
 
-            MoneyIncome.text = $"{increase:+##,###0}/DAY";
+            MoneyIncome.text = $"{increase:+#,#;-#,#;0}/DAY";
+            MoneyIncome.color = increase >=  0 ? good : bad;
         }
 
         private void UpdateCO2()
@@ -96,7 +100,7 @@ namespace UI
             // Amount
             var valueF = G.CM.Atmosphere.GetGasPercentage("Carbon Dioxide") * 1_000_000f;
             var value = Convert.ToInt32(valueF);
-            CO2Budget.text = $"CO₂ {value:##,###} <size=10>ppm</size>";
+            CO2Budget.text = $"CO₂ {value:#,#} <size=10>ppm</size>";
 
             // Variation
             var current = G.MP.Statistics.Data.Last;
@@ -113,9 +117,10 @@ namespace UI
             var deltaTime = current.Value.time - previous.Value.time;
             var deltaMoney = current.Value.carbonDioxideConcentration - previous.Value.carbonDioxideConcentration;
 
-            var increase = deltaMoney / deltaTime * 24 * 365 * 1_000_000;
+            var increase = deltaMoney / deltaTime * 24f * 365f * 1_000_000f;
 
-            CO2Income.text = $"{increase:+##,###0.00}/YEAR";
+            CO2Income.text = $"{increase:+#,0.00;-#,0.00;0.00}/YEAR";
+            CO2Income.color = increase > 0 ? bad : good;
         }
 
         public void UpdateClock()
