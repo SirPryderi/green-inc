@@ -1,4 +1,5 @@
 using System;
+using Items.Storages;
 using Logistics;
 using Organisations;
 using UnityEditor;
@@ -38,6 +39,14 @@ namespace Pawns
         [SerializeField] [Tooltip("Tax level")]
         private float taxPercentage;
 
+        [Header("Garbage")] [SerializeField] [Tooltip("Produced kg of garbage each hour")]
+        private float garbagePerCapita;
+
+        [SerializeField] [Tooltip("Garbage generator")]
+        private GeneratorProvider garbageGenerator;
+
+        private readonly Storage _garbageBufferStorage = new Storage();
+
         private City _city;
 
         public City City
@@ -71,6 +80,11 @@ namespace Pawns
             // Food
             var requiredFood = Convert.ToUInt64(G.DeltaTime * foodPerCapita * Population);
             foodRequester.Request(requiredFood);
+
+            // Garbage
+            var rate = Convert.ToUInt64(garbagePerCapita * Population);
+            garbageGenerator.itemsPerHour = rate;
+            garbageGenerator.ProduceItemsFor(rate * (ulong) G.DeltaTime, _city, _garbageBufferStorage);
         }
 
         public override void PostTick()
@@ -114,6 +128,7 @@ namespace Pawns
             {
                 var text = $"{City.Name}\nPop: {Population}\n" +
                            $"Energy: {energyRequester.SatisfiedPerc * 100:0.##}%\n" +
+                           $"Garbage: {_garbageBufferStorage.CountItem(garbageGenerator.item):N} kg\n" +
                            $"Food: {foodRequester.SatisfiedPerc * 100:0.##}%";
 
                 Handles.Label(transform.position, text);
