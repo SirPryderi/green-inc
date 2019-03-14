@@ -28,7 +28,7 @@ A tale of carbon dioxide, wind turbines and improvised science.
 	- [ ] Build high-tech housing
 		- [ ] Less energy?
 		- [ ] Higher revenue from rent
-    - [ ] Build CO2 capture plants
+    - [X] Build CO2 capture plants
 	- [X] Plant trees
 		- [X] Reduces CO2
 	- [ ] Build sustainable farms and crops
@@ -67,7 +67,7 @@ A tale of carbon dioxide, wind turbines and improvised science.
 - [ ] Pawns
     - [ ] Electrical
         - [X] Coal Plants
-        - [ ] Nuclear Plants
+        - [X] Nuclear Plants
         - [ ] Oil Plants
         - [ ] Solar Panels
         - [X] Wind Turbines
