@@ -5,6 +5,7 @@ using Evaluators;
 using Logistics;
 using Organisations;
 using Pawns;
+using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace AI
@@ -77,7 +78,8 @@ namespace AI
             {
                 if (Math.Abs(item1) < 0.01)
                 {
-                    throw new Exception("Could not find suitable tile.");
+                    Debug.LogWarning($"Could not find suitable tile to build {pawn} (company: {Company.Name})");
+                    return;
                 }
 
                 if (item2.IsClear())
