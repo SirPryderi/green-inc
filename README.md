@@ -28,6 +28,7 @@ A tale of carbon dioxide, wind turbines and improvised science.
 	- [ ] Build high-tech housing
 		- [ ] Less energy?
 		- [ ] Higher revenue from rent
+    - [ ] Build CO2 capture plants
 	- [X] Plant trees
 		- [X] Reduces CO2
 	- [ ] Build sustainable farms and crops
@@ -42,6 +43,9 @@ A tale of carbon dioxide, wind turbines and improvised science.
 			- [X] Energy
 			- [X] Food
 			- [ ] Goods
+        - [ ] Produce:
+            - [ ] Waste
+            - [X] CO2
 	- [ ] Competitor companies
 		- [ ] Electrical companies
             - [X] Produce electricity for cities
@@ -54,6 +58,8 @@ A tale of carbon dioxide, wind turbines and improvised science.
 	- [ ] Other companies
 		- [ ] Mining companies (maybe)
             - [ ] Build new mines
+        - [ ] Waste disposal
+            - [ ] Create landfills
             
 - [ ] Unlock Technologies
     - [ ] Tech tree?
