@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35e1da5cc05a4d54a89e2d0c3ac44d8f, type: 3}
   m_Name: PawnMenu
   m_EditorClassIdentifier: 
-  entryPrefab: {fileID: 3275953517791679917, guid: f2a5a7a8edc66e81ba7f10722609ebbe,
-    type: 3}
+  entryPrefab: {fileID: 221, guid: f2a5a7a8edc66e81ba7f10722609ebbe, type: 3}
   entries:
   - item: {fileID: 1364063129759969789, guid: c8d7e2992494f11edbef4685fcd0d0af, type: 3}
     icon: {fileID: 21300000, guid: 695a8286f76d1d791b1ae677cf978d12, type: 3}
@@ -25,5 +24,7 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: 09c4b7dad7f469c64847040b883b4b6d, type: 3}
   - item: {fileID: 258731695359928768, guid: e0fc257a40cbdd528a647016f9ab4364, type: 3}
     icon: {fileID: 21300000, guid: d404c04ac11f8f0b7aa669f4d4a2d9e8, type: 3}
+  - item: {fileID: 4780777936717176646, guid: 13a695fcec88597a6a00913d39cc908f, type: 3}
+    icon: {fileID: 21300000, guid: a2955a352732539698aa1a29a07cb846, type: 3}
   - item: {fileID: 4076664318455462221, guid: bd4e94799099cb48ebb2ce30528f6a1d, type: 3}
     icon: {fileID: 21300000, guid: c9e67ff1eccb2f913a2d1e2f096c4913, type: 3}
