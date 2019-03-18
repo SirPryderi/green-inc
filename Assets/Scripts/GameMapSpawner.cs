@@ -6,8 +6,8 @@ public class GameMapSpawner : MonoBehaviour
 {
     public HexGrid prefab;
 
-    [Range(1, 50)] public int mapWidth = 50;
-    [Range(1, 50)] public int mapHeight = 30;
+    [Range(1, 50)] public int chunkSizeX = 15;
+    [Range(1, 50)] public int chunkSizeY = 10;
 
     private void Awake()
     {
@@ -21,8 +21,8 @@ public class GameMapSpawner : MonoBehaviour
         }
         else
         {
-            prefab.width = mapWidth;
-            prefab.height = mapHeight;
+            prefab.chunkCountX = chunkSizeX;
+            prefab.chunkCountZ = chunkSizeY;
 
             grid = Instantiate(prefab);
 

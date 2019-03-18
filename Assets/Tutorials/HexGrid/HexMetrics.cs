@@ -15,6 +15,8 @@ public static class HexMetrics
     public const int terraceSteps = terracesPerSlope * 2 + 1;
     public const float horizontalTerraceStepSize = 1f / terraceSteps;
     public const float verticalTerraceStepSize = 1f / (terracesPerSlope + 1);
+    
+    public const int chunkSizeX = 5, chunkSizeZ = 5; 
 
     private static readonly Vector3[] corners =
     {

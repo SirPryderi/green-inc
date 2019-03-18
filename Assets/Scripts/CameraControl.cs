@@ -101,8 +101,8 @@ public class CameraControl : MonoBehaviour
     {
         var grid = G.MP.Grid;
 
-        var xMax = (grid.width - 0.5f) * (2f * HexMetrics.innerRadius);
-        var zMax = (grid.height - 1) * (1.5f * HexMetrics.outerRadius);
+        var xMax = (grid.CellCountX - 0.5f) * (2f * HexMetrics.innerRadius);
+        var zMax = (grid.CellCountZ - 1) * (1.5f * HexMetrics.outerRadius);
 
         return new Vector3(xMax, 0, zMax);
     }

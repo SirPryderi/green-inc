@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class HexGrid : MonoBehaviour
 {
-    public int width = 6;
-    public int height = 6;
+    public int chunkCountX = 4, chunkCountZ = 3;
+
     public HexCell cellPrefab;
     public Text cellLabelPrefab;
     public Color defaultColor = Color.white;
@@ -18,18 +18,28 @@ public class HexGrid : MonoBehaviour
     private HexMesh hexMesh;
     private Canvas gridCanvas;
 
-    public int NumberOfCells => height * width;
+    #region Properties
+    public int CellCountX => chunkCountX * HexMetrics.chunkSizeX;
+    public int CellCountZ => chunkCountZ * HexMetrics.chunkSizeZ;
+    public int NumberOfCells => CellCountZ * CellCountX;
+    #endregion
 
     private void Awake()
     {
         G.MP.Grid = this;
 
-        cells = new HexCell[height * width];
+        
         gridCanvas = GetComponentInChildren<Canvas>();
         hexMesh = GetComponentInChildren<HexMesh>();
 
-        for (int z = 0, i = 0; z < height; z++)
-        for (var x = 0; x < width; x++)
+        CreateCells();
+    }
+
+    private void CreateCells()
+    {
+        cells = new HexCell[CellCountZ * CellCountX];
+        for (int z = 0, i = 0; z < CellCountZ; z++)
+        for (var x = 0; x < CellCountX; x++)
             CreateCell(x, z, i++);
     }
 
@@ -114,13 +124,13 @@ public class HexGrid : MonoBehaviour
         {
             if ((z & 1) == 0)
             {
-                cell.SetNeighbor(HexDirection.SE, cells[i - width]);
-                if (x > 0) cell.SetNeighbor(HexDirection.SW, cells[i - width - 1]);
+                cell.SetNeighbor(HexDirection.SE, cells[i - CellCountX]);
+                if (x > 0) cell.SetNeighbor(HexDirection.SW, cells[i - CellCountX - 1]);
             }
             else
             {
-                cell.SetNeighbor(HexDirection.SW, cells[i - width]);
-                if (x < width - 1) cell.SetNeighbor(HexDirection.SE, cells[i - width + 1]);
+                cell.SetNeighbor(HexDirection.SW, cells[i - CellCountX]);
+                if (x < CellCountX - 1) cell.SetNeighbor(HexDirection.SE, cells[i - CellCountX + 1]);
             }
         }
     }

@@ -61,7 +61,7 @@ public struct HexCoordinates
 
     public int toIndex(HexGrid grid)
     {
-        return X + Z * grid.width + Z / 2;
+        return X + Z * grid.CellCountX + Z / 2;
     }
 
     public override string ToString()

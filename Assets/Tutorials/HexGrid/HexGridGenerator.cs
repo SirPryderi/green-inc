@@ -60,9 +60,9 @@ public class HexGridGenerator
     {
         return
             cell.coordinates.Z == 0 ||
-            cell.coordinates.Z == _grid.height - 1 ||
+            cell.coordinates.Z == _grid.CellCountZ - 1 ||
             cell.coordinates.ToOffsetCoordinates().x == 0 ||
-            cell.coordinates.ToOffsetCoordinates().x == _grid.width - 1;
+            cell.coordinates.ToOffsetCoordinates().x == _grid.CellCountX - 1;
     }
 
     private void GenerateMines()
