@@ -45,7 +45,9 @@ namespace Pawns
         {
             try
             {
+                #pragma warning disable 0168
                 G.O.UnRegister(this);
+                #pragma warning enable 0168
             }
             catch (NullReferenceException)
             {
