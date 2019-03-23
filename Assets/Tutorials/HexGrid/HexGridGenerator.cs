@@ -26,27 +26,24 @@ public class HexGridGenerator
     public void GenerateFromPerlin()
     {
         const float scaleFactor = 15f;
-        const float maxElevation = 10f;
+        const float maxElevation = 15f;
 
-        var xOffset = GameManager.Instance.MapManager.RandomGenerator.MapOffsetX;
-        var yOffset = GameManager.Instance.MapManager.RandomGenerator.MapOffsetY;
+        var xOffset = G.MP.RandomGenerator.MapOffsetX;
+        var yOffset = G.MP.RandomGenerator.MapOffsetY;
 
         foreach (var cell in _grid.cells)
         {
-            if (IsOnBorder(cell))
-            {
-                cell.Elevation = 0;
-                continue;
-            }
+            var offsetCoordinates = cell.coordinates.ToOffsetCoordinates();
 
             var perlinNoise = Mathf.PerlinNoise(
-                cell.coordinates.X / scaleFactor + xOffset,
-                cell.coordinates.Y / scaleFactor + yOffset
+                offsetCoordinates.x / scaleFactor + xOffset,
+                offsetCoordinates.y / scaleFactor + yOffset
             );
 
-            perlinNoise = Mathf.Clamp(perlinNoise * maxElevation - maxElevation / 5f, 0f, maxElevation);
-
-            cell.Elevation = Mathf.FloorToInt(perlinNoise);
+            // Lowers the altitude to make more sea appear
+            perlinNoise = perlinNoise * maxElevation - maxElevation / 5f;
+            var perlinValueInt = Mathf.RoundToInt(Mathf.Clamp(perlinNoise, 0f, maxElevation));
+            cell.Elevation = Mask(perlinValueInt, offsetCoordinates.x, offsetCoordinates.y);
         }
 
         _grid.Refresh();
@@ -63,6 +60,26 @@ public class HexGridGenerator
             cell.coordinates.Z == _grid.CellCountZ - 1 ||
             cell.coordinates.ToOffsetCoordinates().x == 0 ||
             cell.coordinates.ToOffsetCoordinates().x == _grid.CellCountX - 1;
+    }
+
+    private int Mask(int height, int x, int y)
+    {
+        const float radius = 5f;
+
+        var wHalf = _grid.CellCountX / 2;
+        var hHalf = _grid.CellCountZ / 2;
+
+        if (x > wHalf) x = _grid.CellCountX - x - 1;
+        if (y > hHalf) y = _grid.CellCountZ - y - 1;
+
+        var min = Mathf.Min(x, y);
+
+        if (min <= radius && height > min)
+        {
+            return Mathf.FloorToInt(min / radius * height);
+        }
+
+        return height;
     }
 
     private void GenerateMines()
