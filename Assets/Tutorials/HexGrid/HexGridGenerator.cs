@@ -151,7 +151,7 @@ public class HexGridGenerator
 
         foreach (var cell in _grid.cells)
         {
-            if (cell.Elevation <= 0) continue;
+            if (cell.HasWater) continue;
 
             if (Random.value < MathExtension.GaussianProbability(cell.Temperature, 20, 5))
             {
