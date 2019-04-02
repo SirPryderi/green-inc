@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Atmo
@@ -9,9 +8,9 @@ namespace Atmo
 
         // Model Parameters
         private const float EquatorTemperature = 27f; // °C
-        private const float PoleTemperature = -30f; // °C
-        private const float K = 5.2f; // equatorial falloff factor
-        private const float D = -0.04f; // degrees per meter of altitude
+        private const float PoleTemperature = -20f; // °C
+        private const float K = 8f; // equatorial falloff factor
+        private const float D = -0.0098f; // degrees per meter of altitude
         
         // Noise parameters
         private const float NoiseScalingFactor = 1f / 30f; // Scaling factor, size of the noise patches
