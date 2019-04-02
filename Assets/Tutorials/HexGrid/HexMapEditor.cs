@@ -1,4 +1,5 @@
 using JetBrains.Annotations;
+using Stat;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -22,6 +23,9 @@ public class HexMapEditor : MonoBehaviour
         SelectColor(0);
         camera = Camera.main;
         Debug.Assert(camera != null, "Camera.main != null");
+
+        var d = (int) (G.CM.Atmosphere.GetGasPercentage("Carbon Dioxide") * 1_000_000);
+        co2Text.text = $"{d} ppm";
     }
 
     private void Update()
@@ -58,6 +62,7 @@ public class HexMapEditor : MonoBehaviour
     public void RefreshGrid()
     {
         hexGrid.Refresh();
+        temperatureText.text = $"{Statistics.AverageTemperature:N} °C";
     }
 
     public void SelectColor(int index)
@@ -73,8 +78,7 @@ public class HexMapEditor : MonoBehaviour
     public void SetCO2Levels(float level)
     {
         var manager = GameManager.Instance.MapManager.ClimateManager;
-        co2Text.text = $"{(int) level} ppm";
-        temperatureText.text = $"{manager.GetBaseTemperature(0)} °C";
+        co2Text.text = $"{(int) level:D} ppm";
 
         manager.Atmosphere.SetCO2Concentration(level / 1_000_000f);
 
@@ -103,7 +107,10 @@ public class HexMapEditor : MonoBehaviour
     public void Random()
     {
         ClearAll();
+        var old = G.CM.Atmosphere.GetGasPercentage("Carbon Dioxide");
         G.GM.ResetMap(hexGrid);
+        G.CM.Atmosphere.SetCO2Concentration(old);
+        RefreshGrid();
     }
 
     [UsedImplicitly]
