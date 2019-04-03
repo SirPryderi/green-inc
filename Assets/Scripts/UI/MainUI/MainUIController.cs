@@ -13,6 +13,7 @@ namespace UI
 
         public Canvas canvas;
         public PawnWindow pawnWindowPrefab;
+        public Window resourcesWindowPrefab;
 
         public DynamicMenu menu;
         public GameObject menuContainer;
@@ -150,6 +151,11 @@ namespace UI
         {
             pawnWindowPrefab.pawn = pawn;
             Instantiate(pawnWindowPrefab, canvas.transform);
+        }
+
+        public void ToggleResourceWindow()
+        {
+            Instantiate(resourcesWindowPrefab, canvas.transform);
         }
 
         private static void CloseAllPawnWindows()
