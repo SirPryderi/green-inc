@@ -39,6 +39,11 @@ namespace UI
         {
             G.O.AdvanceTime(12);
         }
+        
+        public void Advance(int hours)
+        {
+            G.O.AdvanceTime(hours);
+        }
 
         private void Update()
         {
