@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Garbage
   m_EditorClassIdentifier: 
   name: Garbage
-  sprite: {fileID: 21300000, guid: bb692614db80ae7f18f61075d03a937e, type: 3}
+  sprite: {fileID: 21300000, guid: 484b3f2e5ffbfdf8b973d7305145003b, type: 3}

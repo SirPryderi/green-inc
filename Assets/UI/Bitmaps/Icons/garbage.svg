@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   viewBox="0 0 512 512"
+   style="enable-background:new 0 0 512 512;"
+   xml:space="preserve"
+   width="512"
+   height="512"
+   sodipodi:docname="reduce.svg"
+   inkscape:version="0.92.1 r15371"><metadata
+     id="metadata13"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
+     id="defs11" /><sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1440"
+     inkscape:window-height="836"
+     id="namedview9"
+     showgrid="false"
+     inkscape:zoom="0.4609375"
+     inkscape:cx="-214.77966"
+     inkscape:cy="256"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="Layer_1" /><g
+     id="g6"
+     style="fill:#ffffff"><path
+       d="M166,0h-15v15c0,29.626,12.656,57.008,32.499,76h145.001C348.344,72.008,361,44.626,361,15V0h-15   c-38.39,0-71.686,21.94-90,52.78C237.686,21.94,204.39,0,166,0z"
+       id="path2"
+       style="fill:#ffffff" /><path
+       d="m 61,346 v 77.754 C 43.563,429.952 31,446.435 31,466 c 0,24.853 20.147,46 45,46 h 360 c 24.853,0 45,-21.147 45,-46 0,-19.565 -12.563,-36.048 -30,-42.246 V 346 C 451,263.505 399.694,193.136 327.316,164.645 329.477,160.501 331,155.997 331,151 c 0,-16.569 -13.431,-30 -30,-30 h -90 c -16.569,0 -30,13.431 -30,30 0,4.997 1.523,9.501 3.684,13.645 C 112.306,193.136 61,263.505 61,346 Z"
+       id="path4"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="scsssscscsssscs"
+       style="fill:#ffffff" /></g></svg>
