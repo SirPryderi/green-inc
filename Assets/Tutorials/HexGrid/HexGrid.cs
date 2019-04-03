@@ -84,8 +84,6 @@ public class HexGrid : MonoBehaviour
         rectTransform.sizeDelta = new Vector2(HexMetrics.outerRadius, HexMetrics.outerRadius);
         rectTransform.anchoredPosition = new Vector2(position.x, position.z);
         cell.uiRect = rectTransform;
-
-        label.text = cell.coordinates.ToString();
         
         AddCellToChunk(x, z, cell);
     }
