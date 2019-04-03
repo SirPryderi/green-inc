@@ -50,7 +50,6 @@ public class HexGridGenerator
 
         GenerateTrees();
         GenerateCities();
-        GenerateMines();
     }
 
     private bool IsOnBorder(HexCell cell)
