@@ -16,7 +16,7 @@ namespace UI.DynamicMenus
     public class DynamicMenu : ScriptableObject
     {
         public EntryView entryPrefab;
-        public List<EntryStruct> entries;
+        [HideInInspector] public List<EntryStruct> entries;
 
         public void Generate(GameObject parent)
         {
@@ -27,7 +27,7 @@ namespace UI.DynamicMenus
                 entryPrefab.image.SetNativeSize();
 
                 var newEntry = Instantiate(entryPrefab, parent.transform);
-                newEntry.name = entry.item.name; 
+                newEntry.name = entry.item.name;
                 newEntry.transform.SetAsFirstSibling();
             }
         }
