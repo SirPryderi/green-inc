@@ -112,7 +112,7 @@ namespace UI
                 tools.Reset();
                 return;
             }
-            
+
             var window = FindObjectOfType<Window>();
             if (window != null)
             {
@@ -155,7 +155,19 @@ namespace UI
 
         public void ToggleResourceWindow()
         {
-            Instantiate(resourcesWindowPrefab, canvas.transform);
+            var windows = FindObjectsOfType<ResourcesWindow.ResourcesWindow>();
+
+            if (windows.Length > 0)
+            {
+                foreach (var window in windows)
+                {
+                    Destroy(window.gameObject);
+                }
+            }
+            else
+            {
+                Instantiate(resourcesWindowPrefab, canvas.transform);
+            }
         }
 
         private static void CloseAllPawnWindows()
